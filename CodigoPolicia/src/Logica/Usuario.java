@@ -43,12 +43,21 @@ public class Usuario {
      * @param contra contraseña del usuario
      * @return estado del registro
      */
-    public boolean registrar(String alias, String email, String contra, ArrayList <Usuario> u) {
-        this.alias = alias;
-        this.email = email;
-        this.contra = contra;
-        this.fechaReg = new Date();
-        return true;
+    public boolean registrar(String alias, String email, String contra) {
+        
+        if(this.analisisDatosRegistros(alias, email, contra)){
+            this.alias = alias;
+            this.email = email;
+            this.contra = contra;
+            this.fechaReg = new Date(); 
+            return true;
+        }
+        
+        else{
+            return false;          
+        }     
+        
+       
     }
     
     /**
@@ -94,12 +103,12 @@ public class Usuario {
     }
     
     /**
-     * coprueba que este disponible el alias
+     * comprueba que este disponible el alias
      * @param a alias del usuario
      * @param u listado de alias
      * @return 
      */    
-    private boolean comprobarAliasUsuario(String a,ArrayList <Usuario> u){
+    public boolean comprobarAliasUsuario(String a,ArrayList <Usuario> u){
         for(int i=0;i< u.size();i++){
             if (u.get(i).alias.equals(a)){
                 return false;
@@ -109,10 +118,10 @@ public class Usuario {
         return true;
     }
     /**
-     * 
-     * @param a
-     * @param e
-     * @param c
+     * analiza los datos a registrar si son correctos o no
+     * @param a alias del usuario
+     * @param e email del usuario
+     * @param c contrasenioa del usuario
      * @return 
      */
     private boolean analisisDatosRegistros(String a, String e, String c){
@@ -138,7 +147,7 @@ public class Usuario {
             estado = estado && false;
         }
         // verficar que halla un @ y un .
-        for(int i=0;i<a.length();i++){
+        for(int i=0;i<e.length();i++){
             if(e.charAt(i) =='@'){
                 cont++;
             }
@@ -148,6 +157,13 @@ public class Usuario {
             if(cont>1||cont1>1){
                 estado = estado && false;
             }
+        }
+        
+        // analisis contraseña
+        
+        //comprobar que no tenga espacios, que no sea vaci
+        if (!c.trim().equals(c) || c.equals("")){
+            estado= estado && false;
         }
         return estado;
         

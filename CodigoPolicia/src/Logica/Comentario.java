@@ -13,28 +13,29 @@ public class Comentario {
     }
 
     /**
-     * 
+     * fecha del comentario
      */
     private Date fecha;
 
     /**
-     * 
+     * descricion del comentario
      */
     private String texto;
 
     /**
-     * 
+     * email de quien hace el comentario
      */
     private String email;
 
-    /**
-     * @param t 
-     * @param email 
+    /** registro del comentario
+     * @param t describcion del comentario
+     * @param email email de quien hace el comentario
      * @return
      */
     public void registrarComentario(String t, String email) {
-        // TODO implement here
-       
+        this.texto = t;
+        this.email = email;
+        this.fecha = new Date();       
     }
 
 }

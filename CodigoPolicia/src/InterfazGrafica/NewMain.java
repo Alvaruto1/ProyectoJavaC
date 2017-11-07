@@ -35,7 +35,7 @@ public class NewMain {
     public void prueba(){
         
         usuario.add(0,new Usuario());
-        usuario.get(0).registrar("Al", "No", "h", usuario);
+        usuario.get(0).registrar("Al", "No", "h");
         
         ventana1.ingresarVentana(ventana3);
         ventana2.ingresarVentana(ventana3);
