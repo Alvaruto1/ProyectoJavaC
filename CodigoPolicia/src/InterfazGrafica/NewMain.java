@@ -5,11 +5,16 @@
  */
 package InterfazGrafica;
 
+import Logica.Usuario;
+import java.util.ArrayList;
+
 /**
  *
  * @author alvar
  */
 public class NewMain {
+    
+    ArrayList <Usuario> usuario = new ArrayList();
     
     IniciarSesion ventana1= new IniciarSesion();
     Registro ventana2= new Registro();            
@@ -28,6 +33,10 @@ public class NewMain {
         
     }
     public void prueba(){
+        
+        usuario.add(0,new Usuario());
+        usuario.get(0).registrar("Al", "No", "h", usuario);
+        
         ventana1.ingresarVentana(ventana3);
         ventana2.ingresarVentana(ventana3);
         ventana3.ingresarVentana(ventana1,ventana2);
