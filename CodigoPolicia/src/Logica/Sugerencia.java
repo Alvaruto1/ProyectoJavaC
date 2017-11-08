@@ -13,22 +13,31 @@ public class Sugerencia {
     }
 
     /**
-     * 
+     * fecha de la sugerencia
      */
     private Date fecha;
 
     /**
-     * 
+     * descripcion de la sugerencia
      */
-    private Date texto;
+    private String texto;
 
-    /**
-     * @param t 
-     * @return
+    /** registrar sugerencia
+     * @param t descripcion de la sugerencia
+     * @return estado de hacer sugerencia
      */
-    public void sugerencia(String t) {
-        // TODO implement here
+    public boolean hacerSugerencia(String t) {
         
+        //analisis texto
+        if(t.equals("") || t.charAt(0)==' '){
+            return false;                   
+        }
+        else{
+            this.texto = t;
+            this.fecha = new Date();   
+            return true;
+        }
+                
     }
 
 }

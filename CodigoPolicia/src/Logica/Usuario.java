@@ -117,6 +117,48 @@ public class Usuario {
         }
         return true;
     }
+    
+    /** registra un comentario sobre la norma
+     * @param t describcion comentario     
+     * @param comentarios arreglo de comentarios de la norma
+     * @return estado de registro
+     */
+    public boolean registrarComentario(String t, ArrayList <Comentario> comentarios) {
+        Comentario com= new Comentario();
+        boolean estado = true;
+        //analisis texto
+        if(t.equals("") || t.charAt(0)==' '){
+            estado = estado && false;                    
+        }
+        
+        // analisis email
+        int cont=0,cont1=0;        
+        // no vacia, la primera no espacio, y no debeb tener espacios
+        if(email.length()!=0 || email.charAt(0)!=' ' || !email.trim().equals(email)){
+            estado = estado && false;
+        }
+        // verficar que halla un @ y un .
+        for(int i=0;i<email.length();i++){
+            if(email.charAt(i) =='@'){
+                cont++;
+            }
+            if(email.charAt(i) =='.'){
+                cont1++;
+            }
+            if(cont>1||cont1>1){
+                estado = estado && false;
+            }
+        }
+        
+        if (estado) {
+            com.registrarComentario(t, email);
+            comentarios.add(com);
+        } 
+        
+        return estado;
+        
+            
+    }
     /**
      * analiza los datos a registrar si son correctos o no
      * @param a alias del usuario
