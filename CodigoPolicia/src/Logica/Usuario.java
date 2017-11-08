@@ -35,7 +35,7 @@ public class Usuario {
     /**
      * puntaje acumulado segun quices realizados
      */
-    private double puntajeAcum;
+    private int puntajeAcum;
 
     /**
      * @param alias nombre unico del usuario
@@ -84,7 +84,7 @@ public class Usuario {
     /**
      * @return puntaje acumulado del usuario
      */
-    public Double obtenerPuntaje() {        
+    public int obtenerPuntaje() {        
         return this.puntajeAcum;
     }
 
