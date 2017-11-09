@@ -5,14 +5,27 @@
  */
 package InterfazGrafica;
 
+import Logica.ProgramaCNP;
 import com.sun.imageio.plugins.jpeg.JPEG;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author alvar
  */
 public class IniciarSesion extends javax.swing.JFrame {
-    MenuPrincipal ventana;
+    /**
+     * Ventana menu pricipal
+     */    
+    private MenuPrincipal menu; 
+    /**
+     * Ventana registro
+     */    
+    private Registro registro; 
+    /**
+     * programa de codigo policia
+     */
+    private ProgramaCNP programa;
     /**
      * Creates new form MenuPrincipal
      */
@@ -22,8 +35,16 @@ public class IniciarSesion extends javax.swing.JFrame {
     public void actualizarSesion(String t){
         lblUsuario.setText(t);
     }
-    public void inicioVentana(MenuPrincipal ventana){
-        this.ventana=ventana;
+    /**
+     * inicia la ventana con sus respectivos parametros
+     * @param menu principal
+     * @param registro ventana de registro
+     * @param p programa codigo policia
+     */
+    public void inicioVentana(MenuPrincipal menu, Registro registro , ProgramaCNP p){
+        this.programa = p;        
+        this.menu = menu;
+        this.registro = registro;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,10 +65,10 @@ public class IniciarSesion extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         iniSeBtn = new javax.swing.JButton();
         regisBtn = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        aliasCampo = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        contraCampo = new javax.swing.JTextField();
+        lblAlias = new javax.swing.JLabel();
+        txtAlias = new javax.swing.JTextField();
+        lblContrasenia = new javax.swing.JLabel();
+        txtContrasenia = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         repInfBtn = new javax.swing.JButton();
         panicoBtn = new javax.swing.JButton();
@@ -146,22 +167,22 @@ public class IniciarSesion extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Alias:");
+        lblAlias.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblAlias.setForeground(new java.awt.Color(255, 255, 255));
+        lblAlias.setText("Alias:");
 
-        aliasCampo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        aliasCampo.addActionListener(new java.awt.event.ActionListener() {
+        txtAlias.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtAlias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aliasCampoActionPerformed(evt);
+                txtAliasActionPerformed(evt);
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Contraseña:");
+        lblContrasenia.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblContrasenia.setForeground(new java.awt.Color(255, 255, 255));
+        lblContrasenia.setText("Contraseña:");
 
-        contraCampo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtContrasenia.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -171,13 +192,13 @@ public class IniciarSesion extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(lblAlias)
                         .addGap(12, 12, 12)
-                        .addComponent(aliasCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtAlias, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addComponent(lblContrasenia)
                         .addGap(12, 12, 12)
-                        .addComponent(contraCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
@@ -193,12 +214,12 @@ public class IniciarSesion extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(120, 120, 120)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(aliasCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblAlias)
+                    .addComponent(txtAlias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(contraCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblContrasenia)
+                    .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
                 .addComponent(iniSeBtn)
                 .addGap(47, 47, 47)
@@ -303,7 +324,14 @@ public class IniciarSesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void iniSeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniSeBtnActionPerformed
-        // TODO add your handling code here:
+        if(programa.autenticarUsuario(txtAlias.getText(), txtContrasenia.getText())){
+            JOptionPane.showMessageDialog(this, programa.obtenerAlias()+ " ha iniciado sesion" );
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Por favor verifique sus dtos de ingreso");            
+        }
+        txtAlias.setText("");
+        txtContrasenia.setText("");
     }//GEN-LAST:event_iniSeBtnActionPerformed
 
     private void regisBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regisBtnActionPerformed
@@ -318,9 +346,9 @@ public class IniciarSesion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_repInfBtnActionPerformed
 
-    private void aliasCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aliasCampoActionPerformed
+    private void txtAliasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAliasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_aliasCampoActionPerformed
+    }//GEN-LAST:event_txtAliasActionPerformed
 
     private void menuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBtnActionPerformed
         
@@ -330,30 +358,30 @@ public class IniciarSesion extends javax.swing.JFrame {
         
         //new MenuPrincipal().setVisible(true);
         //
-        ventana.setVisible(true);
+        menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_menuBtnMouseClicked
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField aliasCampo;
-    private javax.swing.JTextField contraCampo;
     private javax.swing.JButton iniSeBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel lblAlias;
+    private javax.swing.JLabel lblContrasenia;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JButton menuBtn;
     private javax.swing.JButton panicoBtn;
     private javax.swing.JButton regisBtn;
     private javax.swing.JButton repInfBtn;
+    private javax.swing.JTextField txtAlias;
+    private javax.swing.JTextField txtContrasenia;
     // End of variables declaration//GEN-END:variables
 }

@@ -19,7 +19,11 @@ public class Registro extends javax.swing.JFrame {
     /**
      * Ventana menu pricipal
      */    
-    private MenuPrincipal ventana;    
+    private MenuPrincipal menu; 
+    /**
+     * Ventana iniciar Sesion
+     */    
+    private IniciarSesion sesion; 
     /**
      * programa de codigo policia
      */
@@ -41,12 +45,14 @@ public class Registro extends javax.swing.JFrame {
     
     /**
      * inicia la ventana con sus respectivos parametros
-     * @param ventana principal
+     * @param menu ventana principal
+     * @param sesion ventana iniciar sesion
      * @param p programa codigo policia
      */
-    public void inicioVentana(MenuPrincipal ventana, ProgramaCNP p){
+    public void inicioVentana(MenuPrincipal menu, IniciarSesion sesion , ProgramaCNP p){
         this.programa = p;        
-        this.ventana = ventana;
+        this.menu = menu;
+        this.sesion = sesion;
     }
     
     
@@ -290,6 +296,11 @@ public class Registro extends javax.swing.JFrame {
                 menuBtnMouseClicked(evt);
             }
         });
+        menuBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -351,11 +362,25 @@ public class Registro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void regisBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regisBtnActionPerformed
-        // TODO add your handling code here:
+        String t = programa.registrarUsuario(txtAlias.getText(),txtCorreo.getText(),txtContrasenia.getText());        
+        // Si el usuario es registrado
+        if (t=="Bienvenido ud se ha registrado exitosamente"){            
+            programa.autenticarUsuario(txtAlias.getText(), txtContrasenia.getText());  
+            this.setVisible(false);
+            menu.setVisible(true);            
+                    
+        }        
+        txtAlias.setText("");
+        txtCorreo.setText("");
+        txtContrasenia.setText("");                
+        
+        // mensaje de exito o error del registro
+        JOptionPane.showMessageDialog(this,t);
     }//GEN-LAST:event_regisBtnActionPerformed
 
     private void iniSeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniSeBtnActionPerformed
-        // TODO add your handling code here:
+        sesion.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_iniSeBtnActionPerformed
 
     private void panicoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_panicoBtnActionPerformed
@@ -375,30 +400,17 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAliasActionPerformed
 
     private void menuBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtnMouseClicked
-        ventana.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_menuBtnMouseClicked
 
     private void regisBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regisBtnMouseClicked
-        String t = programa.registrarUsuario(txtAlias.getText(),txtCorreo.getText(),txtContrasenia.getText());        
-        // Si el usuario es registrado
-        if (t=="Bienvenido ud se ha registrado exitosamente"){            
-            programa.autenticarUsuario(txtAlias.getText(), txtContrasenia.getText());  
-            this.setVisible(false);
-            ventana.setVisible(true);
-            txtAlias.setText("");
-            txtCorreo.setText("");
-            txtContrasenia.setText("");  
-                    
-        }
-        else{
-            txtAlias.setText("");
-            txtCorreo.setText("");
-            txtContrasenia.setText("");            
-        }
-        // mensaje de exito o error del registro
-        JOptionPane.showMessageDialog(this,t);
+        
     }//GEN-LAST:event_regisBtnMouseClicked
+
+    private void menuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBtnActionPerformed
+        menu.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_menuBtnActionPerformed
 
     
 

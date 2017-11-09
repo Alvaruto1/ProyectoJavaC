@@ -161,9 +161,9 @@ public class ProgramaCNP {
      * Inicializa las ventanas con sus respectivos parametros
      */
     public void inicializarVentanas(){
-        this.ventanaRegistro.inicioVentana(ventanaMenu, this);
+        this.ventanaRegistro.inicioVentana(ventanaMenu, ventanaSesion, this);
         this.ventanaMenu.inicioVentana(ventanaSesion, ventanaRegistro);
-        this.ventanaSesion.inicioVentana(ventanaMenu);
+        this.ventanaSesion.inicioVentana(ventanaMenu, ventanaRegistro, this);
     }
     
     /**
@@ -174,6 +174,10 @@ public class ProgramaCNP {
         ventanaRegistro.actualizarSesion(usuarioAlias);
         ventanaSesion.actualizarSesion(usuarioAlias);
         ventanaMenu.actualizarSesion(usuarioAlias);
+    }
+    
+    public String obtenerAlias(){
+        return this.usuarioAlias;
     }
 
 }
