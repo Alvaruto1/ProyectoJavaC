@@ -1,6 +1,7 @@
 package Logica;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 
 /**
@@ -100,6 +101,17 @@ public class Norma {
      */
     public String getId() {
         return this.id;
+    }
+    
+    /**
+     * Registro de un comentario a la norma
+     * @param t descripcion del comentario
+     * @param email correo del usuario
+     */
+    public void registrarComentario(String t, String email) {
+        Comentario c = new Comentario();
+        c.registrarComentario(t,email); 
+        comentarios.add(c);             
     }
 
     

@@ -29,8 +29,7 @@ public class Comentario {
 
     /** registro del comentario
      * @param t describcion del comentario
-     * @param email email de quien hace el comentario
-     * @return
+     * @param email email de quien hace el comentario    
      */
     public void registrarComentario(String t, String email) {
         this.texto = t;

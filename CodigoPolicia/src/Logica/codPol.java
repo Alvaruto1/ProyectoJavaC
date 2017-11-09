@@ -43,7 +43,7 @@ public class codPol {
 
     /**
      * consulta del codigo completo la ruta del pdf
-     * @return 
+     * @return ruta del codigo en pdf
      */
     public String consultar() {
         return this.rutaPdf;        
@@ -53,6 +53,7 @@ public class codPol {
      * consulta por norma segun opcion (caricatura, boletin o lyenda)
      * @param id de la norma # articulo
      * @param opcion dada por ser una caricatura, boletin o lyenda
+     * @return retorna el texto, o caraictura o boletin de la norma
      */
     public String consultarNorma(String id, int opcion) {
         for (Norma norma : normas) {
@@ -71,9 +72,21 @@ public class codPol {
             }            
         }
         
-        return "N.D";
-               
-        
+        return "N.D";       
+    }
+    
+    /**
+     * registra comentario en la norma
+     * @param t descripcion del comentario de la norma
+     * @param email correo de 
+     * @param id 
+     */
+    public void registrarComentario(String t, String email, String id) {        
+        for(Norma n: normas){
+            if(n.getId().equals(id)){
+                n.registrarComentario(t, email);                
+            }
+        }             
     }
 
 }

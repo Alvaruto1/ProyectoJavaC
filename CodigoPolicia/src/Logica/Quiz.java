@@ -9,7 +9,7 @@ public class Quiz {
     /**
      * Constructor parametrico
      */
-    public Quiz(Usuario u){
+    public Quiz(){
         establecerBasePregRes();
     }
 
@@ -41,7 +41,7 @@ public class Quiz {
     /**
      * alias de quien realizo el quiz
      */
-    private Usuario usuario;
+    private String alias;
 
     /**
      * escoge al azar 5 preguntas de la base para hacer el quiz
@@ -62,7 +62,8 @@ public class Quiz {
     }
 
     /**
-     * @return
+     * verifica las respuestas del usuario con las reales
+     * @param r respuestas del usuario
      */
     public void calificar(ArrayList <String> r) {
         int calificacion=0;
@@ -75,17 +76,20 @@ public class Quiz {
     }
 
     /**
-     * @return
+     * actualiza puntaje de usuario
      */
-    public boolean actualizarPuntaje() {
-        this.usuario.actualizarPuntaje(this.puntaje);
-        return false;
+    public void actualizarPuntaje(Usuario u) {
+        u.actualizarPuntaje(this.puntaje);
+        this.alias = u.obtenerAlias();
+        
     }
     /**
      * se establecen las preguntas y respuestas
      */
     private void establecerBasePregRes(){
-        
+        //adicionar preguntas y respuestas
+        basePreguntas.add("Pregunta 1");
+        baseRespuestas.add("Respuesta 1");
     }
     
 
