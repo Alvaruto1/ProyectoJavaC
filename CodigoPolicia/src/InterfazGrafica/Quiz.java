@@ -9,13 +9,13 @@ package InterfazGrafica;
  *
  * @author alvar
  */
-public class Articulos extends javax.swing.JFrame {
+public class Quiz extends javax.swing.JFrame {
     
     
     /**
      * Creates new form MenuPrincipal
      */
-    public Articulos() {
+    public Quiz() {
         
         initComponents();
     }
@@ -40,16 +40,18 @@ public class Articulos extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        cbxLibro = new javax.swing.JComboBox<>();
-        cbxTitulo = new javax.swing.JComboBox<>();
-        cbxCapitulo = new javax.swing.JComboBox<>();
-        txtArticulos = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        txtComentario = new javax.swing.JTextField();
-        btnVerComentarios = new javax.swing.JButton();
-        btnEnviarComentario = new javax.swing.JButton();
-        cbxArticulo = new javax.swing.JComboBox<>();
-        cbxTema = new javax.swing.JComboBox<>();
+        jPanel5 = new javax.swing.JPanel();
+        lblPregunta4 = new javax.swing.JLabel();
+        lblPregunta5 = new javax.swing.JLabel();
+        lblPregunta1 = new javax.swing.JLabel();
+        lblPregunta2 = new javax.swing.JLabel();
+        lblPregunta3 = new javax.swing.JLabel();
+        txtRespuesta1 = new javax.swing.JTextField();
+        txtRespuesta2 = new javax.swing.JTextField();
+        txtRespuesta3 = new javax.swing.JTextField();
+        txtRespuesta4 = new javax.swing.JTextField();
+        txtRespuesta5 = new javax.swing.JTextField();
+        btnEnviarRespuestas = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         btnRepInf = new javax.swing.JButton();
         btnPanico = new javax.swing.JButton();
@@ -106,7 +108,7 @@ public class Articulos extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(16, 67, 16));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Artículos");
+        jLabel1.setText("Quiz");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -127,102 +129,99 @@ public class Articulos extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(131, 184, 61));
 
-        cbxLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libro 1", "Libro 2", "Libro 3", "Libro 4" }));
+        jPanel5.setBackground(new java.awt.Color(0, 102, 0));
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        cbxTitulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Título 1", "Título 2", "Título 3", "Tíulo4" }));
+        lblPregunta4.setText("Espacio Preg4");
 
-        cbxCapitulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Capítulo 1", "Capítulo 2", "Capítulo 3", "Capítulo 4" }));
-        cbxCapitulo.addActionListener(new java.awt.event.ActionListener() {
+        lblPregunta5.setText("Espacio Preg5");
+
+        lblPregunta1.setText("Espacio Preg1");
+
+        lblPregunta2.setText("Espacio Preg2");
+
+        lblPregunta3.setText("Espacio Preg3");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblPregunta1, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                    .addComponent(lblPregunta2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblPregunta3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblPregunta4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblPregunta5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtRespuesta5)
+                    .addComponent(txtRespuesta4)
+                    .addComponent(txtRespuesta3)
+                    .addComponent(txtRespuesta2)
+                    .addComponent(txtRespuesta1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(lblPregunta1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtRespuesta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(lblPregunta2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtRespuesta2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblPregunta3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtRespuesta3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblPregunta4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtRespuesta4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(lblPregunta5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtRespuesta5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        btnEnviarRespuestas.setBackground(new java.awt.Color(131, 184, 61));
+        btnEnviarRespuestas.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        btnEnviarRespuestas.setForeground(new java.awt.Color(16, 67, 16));
+        btnEnviarRespuestas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/enviarSugerencia.png"))); // NOI18N
+        btnEnviarRespuestas.setText("Enviar Respuestas");
+        btnEnviarRespuestas.setDoubleBuffered(true);
+        btnEnviarRespuestas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEnviarRespuestas.setPreferredSize(new java.awt.Dimension(180, 100));
+        btnEnviarRespuestas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEnviarRespuestas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxCapituloActionPerformed(evt);
+                btnEnviarRespuestasActionPerformed(evt);
             }
         });
-
-        txtArticulos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtArticulosActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(16, 67, 16));
-        jLabel5.setText("Enviar Comentario ");
-
-        btnVerComentarios.setBackground(new java.awt.Color(131, 184, 61));
-        btnVerComentarios.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        btnVerComentarios.setForeground(new java.awt.Color(16, 67, 16));
-        btnVerComentarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/verComentarios.png"))); // NOI18N
-        btnVerComentarios.setText("Ver Comentarios");
-        btnVerComentarios.setDoubleBuffered(true);
-        btnVerComentarios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnVerComentarios.setPreferredSize(new java.awt.Dimension(180, 100));
-        btnVerComentarios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnVerComentarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerComentariosActionPerformed(evt);
-            }
-        });
-
-        btnEnviarComentario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/enviarComentario.png"))); // NOI18N
-
-        cbxArticulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Artículo 1", "Artículo 2", "Artículo 3", "Artículo 4" }));
-
-        cbxTema.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tema 1", "Tema 2", "Tema 3", "Tema 4" }));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnVerComentarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(txtComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnEnviarComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                            .addComponent(txtArticulos)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(cbxLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(cbxTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(cbxCapitulo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(24, 24, 24))))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(cbxArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(cbxTema, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(24, 24, 24))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnEnviarRespuestas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxCapitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxTema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(txtArticulos, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEnviarComentario))
-                .addGap(18, 18, 18)
-                .addComponent(btnVerComentarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEnviarRespuestas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -320,43 +319,37 @@ public class Articulos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRepInfActionPerformed
 
-    private void btnVerComentariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerComentariosActionPerformed
+    private void btnEnviarRespuestasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarRespuestasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnVerComentariosActionPerformed
-
-    private void cbxCapituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCapituloActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxCapituloActionPerformed
-
-    private void txtArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtArticulosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtArticulosActionPerformed
+    }//GEN-LAST:event_btnEnviarRespuestasActionPerformed
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEnviarComentario;
+    private javax.swing.JButton btnEnviarRespuestas;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnPanico;
     private javax.swing.JButton btnRepInf;
-    private javax.swing.JButton btnVerComentarios;
-    private javax.swing.JComboBox<String> cbxArticulo;
-    private javax.swing.JComboBox<String> cbxCapitulo;
-    private javax.swing.JComboBox<String> cbxLibro;
-    private javax.swing.JComboBox<String> cbxTema;
-    private javax.swing.JComboBox<String> cbxTitulo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JLabel lblPregunta1;
+    private javax.swing.JLabel lblPregunta2;
+    private javax.swing.JLabel lblPregunta3;
+    private javax.swing.JLabel lblPregunta4;
+    private javax.swing.JLabel lblPregunta5;
     private javax.swing.JLabel lblUsuario;
-    private javax.swing.JTextField txtArticulos;
-    private javax.swing.JTextField txtComentario;
+    private javax.swing.JTextField txtRespuesta1;
+    private javax.swing.JTextField txtRespuesta2;
+    private javax.swing.JTextField txtRespuesta3;
+    private javax.swing.JTextField txtRespuesta4;
+    private javax.swing.JTextField txtRespuesta5;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,13 +9,13 @@ package InterfazGrafica;
  *
  * @author alvar
  */
-public class Articulos extends javax.swing.JFrame {
+public class Sugerencias extends javax.swing.JFrame {
     
     
     /**
      * Creates new form MenuPrincipal
      */
-    public Articulos() {
+    public Sugerencias() {
         
         initComponents();
     }
@@ -40,16 +40,11 @@ public class Articulos extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        cbxLibro = new javax.swing.JComboBox<>();
-        cbxTitulo = new javax.swing.JComboBox<>();
-        cbxCapitulo = new javax.swing.JComboBox<>();
-        txtArticulos = new javax.swing.JTextField();
+        sugerenciaCampo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtComentario = new javax.swing.JTextField();
-        btnVerComentarios = new javax.swing.JButton();
-        btnEnviarComentario = new javax.swing.JButton();
-        cbxArticulo = new javax.swing.JComboBox<>();
-        cbxTema = new javax.swing.JComboBox<>();
+        correoCampo = new javax.swing.JTextField();
+        btnEnviarSugerencia = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         btnRepInf = new javax.swing.JButton();
         btnPanico = new javax.swing.JButton();
@@ -106,7 +101,7 @@ public class Articulos extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(16, 67, 16));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Artículos");
+        jLabel1.setText("Sugerencias");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -127,103 +122,69 @@ public class Articulos extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(131, 184, 61));
 
-        cbxLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libro 1", "Libro 2", "Libro 3", "Libro 4" }));
-
-        cbxTitulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Título 1", "Título 2", "Título 3", "Tíulo4" }));
-
-        cbxCapitulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Capítulo 1", "Capítulo 2", "Capítulo 3", "Capítulo 4" }));
-        cbxCapitulo.addActionListener(new java.awt.event.ActionListener() {
+        sugerenciaCampo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxCapituloActionPerformed(evt);
-            }
-        });
-
-        txtArticulos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtArticulosActionPerformed(evt);
+                sugerenciaCampoActionPerformed(evt);
             }
         });
 
         jLabel5.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(16, 67, 16));
-        jLabel5.setText("Enviar Comentario ");
+        jLabel5.setText("Correo:");
 
-        btnVerComentarios.setBackground(new java.awt.Color(131, 184, 61));
-        btnVerComentarios.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        btnVerComentarios.setForeground(new java.awt.Color(16, 67, 16));
-        btnVerComentarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/verComentarios.png"))); // NOI18N
-        btnVerComentarios.setText("Ver Comentarios");
-        btnVerComentarios.setDoubleBuffered(true);
-        btnVerComentarios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnVerComentarios.setPreferredSize(new java.awt.Dimension(180, 100));
-        btnVerComentarios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnVerComentarios.addActionListener(new java.awt.event.ActionListener() {
+        btnEnviarSugerencia.setBackground(new java.awt.Color(131, 184, 61));
+        btnEnviarSugerencia.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        btnEnviarSugerencia.setForeground(new java.awt.Color(16, 67, 16));
+        btnEnviarSugerencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/enviarSugerencia.png"))); // NOI18N
+        btnEnviarSugerencia.setText("Enviar Sugerencia");
+        btnEnviarSugerencia.setDoubleBuffered(true);
+        btnEnviarSugerencia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEnviarSugerencia.setPreferredSize(new java.awt.Dimension(180, 100));
+        btnEnviarSugerencia.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEnviarSugerencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerComentariosActionPerformed(evt);
+                btnEnviarSugerenciaActionPerformed(evt);
             }
         });
 
-        btnEnviarComentario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/enviarComentario.png"))); // NOI18N
-
-        cbxArticulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Artículo 1", "Artículo 2", "Artículo 3", "Artículo 4" }));
-
-        cbxTema.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tema 1", "Tema 2", "Tema 3", "Tema 4" }));
+        jLabel6.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(16, 67, 16));
+        jLabel6.setText("Escribir Sugerencia:");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnVerComentarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnEnviarSugerencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(txtComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnEnviarComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                            .addComponent(txtArticulos)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(cbxLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(cbxTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(cbxCapitulo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(sugerenciaCampo)
+                            .addComponent(correoCampo))
                         .addGap(24, 24, 24))))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(cbxArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(cbxTema, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxCapitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxTema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(txtArticulos, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sugerenciaCampo, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEnviarComentario))
-                .addGap(18, 18, 18)
-                .addComponent(btnVerComentarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(correoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEnviarSugerencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
 
         jPanel6.setBackground(new java.awt.Color(0, 51, 0));
@@ -320,35 +281,27 @@ public class Articulos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRepInfActionPerformed
 
-    private void btnVerComentariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerComentariosActionPerformed
+    private void sugerenciaCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sugerenciaCampoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnVerComentariosActionPerformed
+    }//GEN-LAST:event_sugerenciaCampoActionPerformed
 
-    private void cbxCapituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCapituloActionPerformed
+    private void btnEnviarSugerenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarSugerenciaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbxCapituloActionPerformed
-
-    private void txtArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtArticulosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtArticulosActionPerformed
+    }//GEN-LAST:event_btnEnviarSugerenciaActionPerformed
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEnviarComentario;
+    private javax.swing.JButton btnEnviarSugerencia;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnPanico;
     private javax.swing.JButton btnRepInf;
-    private javax.swing.JButton btnVerComentarios;
-    private javax.swing.JComboBox<String> cbxArticulo;
-    private javax.swing.JComboBox<String> cbxCapitulo;
-    private javax.swing.JComboBox<String> cbxLibro;
-    private javax.swing.JComboBox<String> cbxTema;
-    private javax.swing.JComboBox<String> cbxTitulo;
+    private javax.swing.JTextField correoCampo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -356,7 +309,6 @@ public class Articulos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JLabel lblUsuario;
-    private javax.swing.JTextField txtArticulos;
-    private javax.swing.JTextField txtComentario;
+    private javax.swing.JTextField sugerenciaCampo;
     // End of variables declaration//GEN-END:variables
 }
