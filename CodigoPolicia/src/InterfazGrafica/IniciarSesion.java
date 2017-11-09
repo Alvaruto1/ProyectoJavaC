@@ -6,7 +6,9 @@
 package InterfazGrafica;
 
 import Logica.ProgramaCNP;
-import com.sun.imageio.plugins.jpeg.JPEG;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,6 +33,21 @@ public class IniciarSesion extends javax.swing.JFrame {
      */
     public IniciarSesion() {        
         initComponents();
+        this.setLocationRelativeTo(null);
+        cerrarVentanaSecundaria();
+    }
+    
+    /**
+     * oculta la ventana secundaria y muestra el menu principal
+     */
+    public void cerrarVentanaSecundaria(){
+        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                menu.setVisible(true);
+            }
+        });
+        
     }
     public void actualizarSesion(String t){
         lblUsuario.setText(t);
@@ -80,6 +97,7 @@ public class IniciarSesion extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(400, 704));
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 0));
 
@@ -220,7 +238,7 @@ public class IniciarSesion extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblContrasenia)
                     .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
                 .addComponent(iniSeBtn)
                 .addGap(47, 47, 47)
                 .addComponent(regisBtn)
@@ -335,7 +353,8 @@ public class IniciarSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_iniSeBtnActionPerformed
 
     private void regisBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regisBtnActionPerformed
-        // TODO add your handling code here:
+        registro.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_regisBtnActionPerformed
 
     private void panicoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_panicoBtnActionPerformed
@@ -355,9 +374,7 @@ public class IniciarSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_menuBtnActionPerformed
 
     private void menuBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtnMouseClicked
-        
-        //new MenuPrincipal().setVisible(true);
-        //
+            
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_menuBtnMouseClicked

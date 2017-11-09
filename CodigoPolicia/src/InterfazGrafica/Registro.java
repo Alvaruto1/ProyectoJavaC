@@ -6,6 +6,9 @@
 package InterfazGrafica;
 
 import Logica.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,6 +36,22 @@ public class Registro extends javax.swing.JFrame {
      */
     public Registro() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
+        cerrarVentanaSecundaria();
+    }
+    
+    /**
+     * oculta la ventana secundaria y muestra el menu principal
+     */
+    public void cerrarVentanaSecundaria(){
+        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                menu.setVisible(true);
+            }
+        });
+        
     }
     
     /**
@@ -53,7 +72,9 @@ public class Registro extends javax.swing.JFrame {
         this.programa = p;        
         this.menu = menu;
         this.sesion = sesion;
-    }
+    }    
+    
+    
     
     
     /**
@@ -92,6 +113,7 @@ public class Registro extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(400, 704));
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 0));
 
@@ -258,7 +280,7 @@ public class Registro extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
                 .addComponent(regisBtn)
                 .addGap(47, 47, 47)
                 .addComponent(iniSeBtn)

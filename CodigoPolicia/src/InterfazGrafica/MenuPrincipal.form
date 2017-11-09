@@ -45,6 +45,9 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[400, 704]"/>
+        </Property>
       </Properties>
 
       <Layout>
@@ -218,7 +221,7 @@
                       <Component id="lecQuizBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="sugerenciasBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="42" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="inicSesiBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="registrarBtn" alignment="3" min="-2" max="-2" attributes="0"/>
