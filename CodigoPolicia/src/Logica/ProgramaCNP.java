@@ -1,4 +1,7 @@
 package Logica;
+import InterfazGrafica.IniciarSesion;
+import InterfazGrafica.MenuPrincipal;
+import InterfazGrafica.Registro;
 import java.util.*;
 
 /**
@@ -12,15 +15,30 @@ public class ProgramaCNP {
     public ProgramaCNP() {
     }
 
+    // vistas del programa Codigo de Polciia
+    
+    /**
+     * ventana correspondiente al registro del usuario
+     */
+    private Registro ventanaRegistro = new Registro();    
+    /**
+     * ventana correspondiente al menu principal
+     */
+    private MenuPrincipal ventanaMenu = new MenuPrincipal();
+    /**
+     * ventana correspondiente al menu principal
+     */
+    private IniciarSesion ventanaSesion = new IniciarSesion();
+    
+    
     /**
      * codigo de policia
-     */
-    
+     */ 
     private codPol codigoPolicia;
     /**
      * arreglo de usuarios
      */    
-    private ArrayList <Usuario> usuarios;
+    private ArrayList <Usuario> usuarios = new ArrayList <Usuario>();
     /**
      * estado si se encuentra loggeado o no un usuario
      */
@@ -40,9 +58,8 @@ public class ProgramaCNP {
     /**
      * @param args[]     
      */
-    public void main(String args[]) {
-        // TODO implement here
-        
+    public static void main(String args[]) {    
+        new ProgramaCNP().iniciarProgramaCNP();        
     }
 
     /**
@@ -72,9 +89,9 @@ public class ProgramaCNP {
     public String registrarUsuario(String alias, String email, String contra) {
         Usuario u = new Usuario();
         if(u.comprobarAliasUsuario(alias, usuarios)){
-            if(u.registrar(alias, email, contra)){
-                usuarios.add(u);
-                return "Usuario registrado exitosamente";
+            if(u.registrar(alias, email, contra)){                
+                usuarios.add(u);                  
+                return "Bienvenido ud se ha registrado exitosamente";
             
             }
             else{
@@ -103,8 +120,10 @@ public class ProgramaCNP {
             if (u.obtenerAlias().equals(alias)){
                 if(u.autenticar(contra)){
                     this.usuarioAlias = u.obtenerAlias();
-                    this.usuarioAutenticado = true;
+                    this.usuarioAutenticado = true;   
+                    actualizarSesion(); //actualiza el nombre de usuario de la sesion
                     return true;
+                    
                 }
                 
             }
@@ -127,6 +146,34 @@ public class ProgramaCNP {
             }
         }        
         codigoPolicia.registrarComentario(comentario, email , idNorma);
+    }
+    
+    /**
+     * inicia el programa de Codigo de Policia
+     */
+    public void iniciarProgramaCNP(){
+        inicializarVentanas();
+        ventanaMenu.setVisible(true);
+    }
+    
+    
+    /**
+     * Inicializa las ventanas con sus respectivos parametros
+     */
+    public void inicializarVentanas(){
+        this.ventanaRegistro.inicioVentana(ventanaMenu, this);
+        this.ventanaMenu.inicioVentana(ventanaSesion, ventanaRegistro);
+        this.ventanaSesion.inicioVentana(ventanaMenu);
+    }
+    
+    /**
+     * actualiza el nombre del usuario en cada ventana
+     */
+    public void actualizarSesion(){
+        
+        ventanaRegistro.actualizarSesion(usuarioAlias);
+        ventanaSesion.actualizarSesion(usuarioAlias);
+        ventanaMenu.actualizarSesion(usuarioAlias);
     }
 
 }

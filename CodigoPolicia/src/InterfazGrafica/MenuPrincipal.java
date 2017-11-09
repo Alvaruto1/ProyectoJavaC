@@ -20,7 +20,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
         initComponents();
     }
-    public void ingresarVentana(IniciarSesion venSesion, Registro venRegistro){
+    public void actualizarSesion(String t){
+        lblUsuario.setText(t);
+    }
+    public void inicioVentana(IniciarSesion venSesion, Registro venRegistro){
         this.venSesion=venSesion;
         this.venRegistro=venRegistro;
     }

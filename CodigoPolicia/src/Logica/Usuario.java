@@ -72,7 +72,7 @@ public class Usuario {
      * @return la contraseña del usuario
      */
     public boolean autenticar(String contra) {
-        if (this.contra == contra){
+        if (this.contra.equals(contra)){
             return true;
         }
         else{
@@ -109,13 +109,19 @@ public class Usuario {
      * @return 
      */    
     public boolean comprobarAliasUsuario(String a,ArrayList <Usuario> u){
-        for(int i=0;i< u.size();i++){
+        if(u!=null){
+            for(int i=0;i< u.size();i++){
             if (u.get(i).alias.equals(a)){
                 return false;
             }                 
             
         }
-        return true;
+        return true;            
+        }
+        else{
+            return true;
+        }
+        
     }
     
     /** registra un comentario sobre la norma
@@ -173,20 +179,23 @@ public class Usuario {
         // tamaño menor a 10 y mayor a 0
         if(a.length()>10 && a.length()!=0){
             estado = estado && false;
+            System.out.println("entra alias1");
         }
         String aux = a.trim();
         
         // no pueder ser vacia, ni el primer caracter pueder ser un espacio
-        if(!aux.equals("") || a.charAt(0)!=' '){
+        if(aux.equals("") || a.charAt(0)==' '){
             estado = estado && false;
+            System.out.println("entra alias2");
         }
         
         // analisis email
         int cont=0,cont1=0;
         aux=e.trim();
         // no vacia, la primera no espacio, y no debeb tener espacios
-        if(e.length()!=0 || e.charAt(0)!=' ' || !aux.equals(e)){
+        if(e.length()==0 || e.charAt(0)==' ' || !aux.equals(e)){
             estado = estado && false;
+            System.out.println("entra email1");
         }
         // verficar que halla un @ y un .
         for(int i=0;i<e.length();i++){
@@ -195,17 +204,19 @@ public class Usuario {
             }
             if(e.charAt(i) =='.'){
                 cont1++;
-            }
-            if(cont>1||cont1>1){
+            }            
+        }
+        if(cont!=1||cont1!=1){
                 estado = estado && false;
-            }
+                System.out.println("entra email2");
         }
         
         // analisis contraseña
         
         //comprobar que no tenga espacios, que no sea vaci
-        if (!c.trim().equals(c) || c.equals("")){
+        if (!c.trim().equals(c) || c.equals("")){            
             estado= estado && false;
+            System.out.println("entra contra1");
         }
         return estado;
         

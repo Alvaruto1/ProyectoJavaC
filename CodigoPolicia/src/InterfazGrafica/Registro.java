@@ -5,21 +5,51 @@
  */
 package InterfazGrafica;
 
+import Logica.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author alvar
  */
 public class Registro extends javax.swing.JFrame {
-    MenuPrincipal ventana;
+    
+    //Atributos
+    
+    /**
+     * Ventana menu pricipal
+     */    
+    private MenuPrincipal ventana;    
+    /**
+     * programa de codigo policia
+     */
+    private ProgramaCNP programa;
     /**
      * Creates new form MenuPrincipal
      */
     public Registro() {
         initComponents();
     }
-    public void ingresarVentana(MenuPrincipal ventana){
-        this.ventana=ventana;
+    
+    /**
+     * actualiza el nombre del usuario en la ventana
+     * @param t nombre del usuario
+     */
+    public void actualizarSesion(String t){
+        lblUsuario.setText(t);
     }
+    
+    /**
+     * inicia la ventana con sus respectivos parametros
+     * @param ventana principal
+     * @param p programa codigo policia
+     */
+    public void inicioVentana(MenuPrincipal ventana, ProgramaCNP p){
+        this.programa = p;        
+        this.ventana = ventana;
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,14 +69,12 @@ public class Registro extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         regisBtn = new javax.swing.JButton();
         iniSeBtn = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        aliasCampo = new javax.swing.JTextField();
+        lblCorreo = new javax.swing.JLabel();
+        txtCorreo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        correoCampo = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        nombreCampo = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        contraCampo = new javax.swing.JTextField();
+        txtContrasenia = new javax.swing.JTextField();
+        lblAlias = new javax.swing.JLabel();
+        txtAlias = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         repInfBtn = new javax.swing.JButton();
         panicoBtn = new javax.swing.JButton();
@@ -130,6 +158,11 @@ public class Registro extends javax.swing.JFrame {
         regisBtn.setForeground(new java.awt.Color(0, 51, 0));
         regisBtn.setText("Registrarse");
         regisBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        regisBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                regisBtnMouseClicked(evt);
+            }
+        });
         regisBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 regisBtnActionPerformed(evt);
@@ -147,39 +180,33 @@ public class Registro extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Alias:");
+        lblCorreo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblCorreo.setForeground(new java.awt.Color(255, 255, 255));
+        lblCorreo.setText("Correo:");
 
-        aliasCampo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        aliasCampo.addActionListener(new java.awt.event.ActionListener() {
+        txtCorreo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aliasCampoActionPerformed(evt);
+                txtCorreoActionPerformed(evt);
             }
         });
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Correo:");
+        jLabel5.setText("Contraseña:");
 
-        correoCampo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtContrasenia.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Nombre:");
+        lblAlias.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblAlias.setForeground(new java.awt.Color(255, 255, 255));
+        lblAlias.setText("Alias");
 
-        nombreCampo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        nombreCampo.addActionListener(new java.awt.event.ActionListener() {
+        txtAlias.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtAlias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreCampoActionPerformed(evt);
+                txtAliasActionPerformed(evt);
             }
         });
-
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Contraseña:");
-
-        contraCampo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -197,43 +224,35 @@ public class Registro extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
+                        .addComponent(lblAlias)
                         .addGap(12, 12, 12)
-                        .addComponent(nombreCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtAlias, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(lblCorreo)
                         .addGap(12, 12, 12)
-                        .addComponent(aliasCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(12, 12, 12)
-                        .addComponent(correoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(12, 12, 12)
-                        .addComponent(contraCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addGap(80, 80, 80)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(nombreCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblAlias)
+                    .addComponent(txtAlias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(aliasCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblCorreo)
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(correoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(contraCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                    .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
                 .addComponent(regisBtn)
                 .addGap(47, 47, 47)
                 .addComponent(iniSeBtn)
@@ -347,43 +366,62 @@ public class Registro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_repInfBtnActionPerformed
 
-    private void aliasCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aliasCampoActionPerformed
+    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_aliasCampoActionPerformed
+    }//GEN-LAST:event_txtCorreoActionPerformed
 
-    private void nombreCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreCampoActionPerformed
+    private void txtAliasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAliasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreCampoActionPerformed
+    }//GEN-LAST:event_txtAliasActionPerformed
 
     private void menuBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtnMouseClicked
         ventana.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_menuBtnMouseClicked
 
+    private void regisBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regisBtnMouseClicked
+        String t = programa.registrarUsuario(txtAlias.getText(),txtCorreo.getText(),txtContrasenia.getText());        
+        // Si el usuario es registrado
+        if (t=="Bienvenido ud se ha registrado exitosamente"){            
+            programa.autenticarUsuario(txtAlias.getText(), txtContrasenia.getText());  
+            this.setVisible(false);
+            ventana.setVisible(true);
+            txtAlias.setText("");
+            txtCorreo.setText("");
+            txtContrasenia.setText("");  
+                    
+        }
+        else{
+            txtAlias.setText("");
+            txtCorreo.setText("");
+            txtContrasenia.setText("");            
+        }
+        // mensaje de exito o error del registro
+        JOptionPane.showMessageDialog(this,t);
+    }//GEN-LAST:event_regisBtnMouseClicked
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField aliasCampo;
-    private javax.swing.JTextField contraCampo;
-    private javax.swing.JTextField correoCampo;
     private javax.swing.JButton iniSeBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel lblAlias;
+    private javax.swing.JLabel lblCorreo;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JButton menuBtn;
-    private javax.swing.JTextField nombreCampo;
     private javax.swing.JButton panicoBtn;
     private javax.swing.JButton regisBtn;
     private javax.swing.JButton repInfBtn;
+    private javax.swing.JTextField txtAlias;
+    private javax.swing.JTextField txtContrasenia;
+    private javax.swing.JTextField txtCorreo;
     // End of variables declaration//GEN-END:variables
 }
