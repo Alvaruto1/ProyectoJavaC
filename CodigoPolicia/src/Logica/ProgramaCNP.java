@@ -1,7 +1,6 @@
 package Logica;
-import InterfazGrafica.IniciarSesion;
-import InterfazGrafica.MenuPrincipal;
-import InterfazGrafica.Registro;
+import InterfazGrafica.*;
+
 import java.util.*;
 
 /**
@@ -29,12 +28,32 @@ public class ProgramaCNP {
      * ventana correspondiente al menu principal
      */
     private IniciarSesion ventanaSesion = new IniciarSesion();
+    /**
+     * ventana correspondiente a las sugerencias
+     */
+    private Sugerencias ventanaSugerencia = new Sugerencias();
+    /**
+     * ventana correspondiente a los comentarios
+     */
+    private Comentarios ventanaComentario = new Comentarios();
+    /**
+     * ventana correspondiente al quiz
+     */
+    private Quices ventanaQuiz = new Quices();
+    /**
+     * ventana correspondiente a las normas
+     */
+    private Normas ventanaNorma = new Normas();
+    /**
+     * ventana correspondiente al reporte infracciones
+     */
+    private ReportarInfracción ventanaInfraccion = new ReportarInfracción();
     
     
     /**
      * codigo de policia
      */ 
-    private codPol codigoPolicia;
+    private CodPol codigoPolicia;
     /**
      * arreglo de usuarios
      */    
@@ -47,17 +66,15 @@ public class ProgramaCNP {
     /**
      * nombre del usuario loggeado
      */
-    private String usuarioAlias = "Invitado";    
-   
-
+    private String usuarioAlias = "Invitado";  
     /**
      * correo al que se le envia
      */
     private String emailPCNP;
-
     /**
      * @param args[]     
      */
+    
     public static void main(String args[]) {    
         new ProgramaCNP().iniciarProgramaCNP();        
     }
@@ -162,7 +179,7 @@ public class ProgramaCNP {
      */
     public void inicializarVentanas(){
         this.ventanaRegistro.inicioVentana(ventanaMenu, ventanaSesion, this);
-        this.ventanaMenu.inicioVentana(ventanaSesion, ventanaRegistro);
+        this.ventanaMenu.inicioVentana(ventanaSesion, ventanaRegistro, ventanaNorma, ventanaQuiz, ventanaSugerencia, ventanaInfraccion);
         this.ventanaSesion.inicioVentana(ventanaMenu, ventanaRegistro, this);
     }
     

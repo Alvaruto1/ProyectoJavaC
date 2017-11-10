@@ -1,8 +1,6 @@
 package Logica;
 
 import java.util.ArrayList;
-import java.util.Date;
-
 
 /**
  * 
@@ -18,50 +16,48 @@ public class Norma {
      * @param tema de la norma
      * @param multa de la norma
      */
-    public Norma(String id, String texto, String boletin, String caricatura, String tema, String multa) {
+    public Norma(String id, String texto, String boletin, String caricatura, String tema, String multa, String titulo) {
         this.precioMulta = multa;
         this.id = id;
         this.texto = texto;
         this.caricatura = caricatura;
         this.boletin = boletin;
-        this.tema = tema;        
+        this.tema = tema;   
+        this.titulo = titulo;
     }
 
     /**
      * id de la norma # numero de articulo
      */
-    private String id;
-    
+    private String id;    
     /**
      * descripcion de la norma articulo
      */
-    private String texto;
-
+    private String texto;    
+    /**
+     * titulo articulo
+     */
+    private String titulo;
     /**
      * clasificaicon de la norma
      */
     private String tema;
-
     /**
      * ruta del boletin de la norma
      */
     private String boletin;
-
     /**
      * ruta a archivo pdf de la norma caricatura
      */
     private String caricatura;
-
     /**
      * precio o valor de la multa de la norma     
      */
     private String precioMulta;
-
     /**
      * cantidad de consultas que se han hecho sobre esta norma
      */
     private int consultas = 0;
-
     /**
      * comentarios realizados por los usuarios sobre la norma
      */

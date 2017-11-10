@@ -1,37 +1,88 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package InterfazGrafica;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author alvar
  */
 public class MenuPrincipal extends javax.swing.JFrame {
-    IniciarSesion sesion;
-    Registro registro;
+    
+    // atributos
     
     /**
-     * Creates new form MenuPrincipal
+     * ventana de iniciar sesion
      */
-    public MenuPrincipal() {
-        
+    private IniciarSesion sesion;
+    /**
+     * ventana de registro
+     */
+    private Registro registro;
+    /**
+     * ventana de Normas
+     */
+    private Normas norma;
+    /**
+     * ventana de Quiz
+     */
+    private Quices quiz;
+    /**
+     * ventana de Sugerencias
+     */
+    private Sugerencias sugerencia;
+    /**
+     * ventana de reporte de infracciones
+     */
+    private ReportarInfracción infraccion;
+    
+    
+    /**
+     * constructor por defecto
+     */
+    public MenuPrincipal() {        
         initComponents();
         this.setLocationRelativeTo(null);
-        
+        cerrarPrograma();        
     }
+    
+    /**
+     * confrima si desea cerrar el programa
+     */
+    public void cerrarPrograma(){        
+        addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                if(JOptionPane.showConfirmDialog(null,"Esta seguro de cerrar el programa","Cerrar Programa", JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){
+                    setDefaultCloseOperation(EXIT_ON_CLOSE);
+                }
+                else{
+                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                }
+            }
+        });
+    }
+    
+    /**
+     * actualiza el nombre del usuario en la ventana
+     * @param t nombre del usuario
+     */  
     public void actualizarSesion(String t){
         lblUsuario.setText(t);
     }
-    public void inicioVentana(IniciarSesion venSesion, Registro venRegistro){
-        this.sesion=venSesion;
-        this.registro=venRegistro;
+    
+    /**
+     * inicia la ventana con sus respectivos parametros
+     * @param venSesion ventana iniciar sesion
+     * @param venRegistro ventana registro
+     */
+    public void inicioVentana(IniciarSesion venSesion, Registro venRegistro, Normas n, Quices q, Sugerencias s, ReportarInfracción i){
+        this.sesion = venSesion;
+        this.registro = venRegistro;
+        this.norma = n;
+        this.quiz = q;
+        this.sugerencia = s;
+        this.infraccion = i;
     }    
     
   
@@ -324,23 +375,28 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lecQuizBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lecQuizBtnActionPerformed
-        // TODO add your handling code here:
+        quiz.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_lecQuizBtnActionPerformed
 
     private void normaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_normaBtnActionPerformed
-        // TODO add your handling code here:
+        norma.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_normaBtnActionPerformed
 
     private void sugerenciasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sugerenciasBtnActionPerformed
-        // TODO add your handling code here:
+        sugerencia.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_sugerenciasBtnActionPerformed
 
     private void inicSesiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicSesiBtnActionPerformed
-        // TODO add your handling code here:
+        sesion.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_inicSesiBtnActionPerformed
 
     private void registrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarBtnActionPerformed
-        // TODO add your handling code here:
+        registro.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_registrarBtnActionPerformed
 
     private void panicoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_panicoBtnActionPerformed
@@ -348,17 +404,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_panicoBtnActionPerformed
 
     private void repInfBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repInfBtnActionPerformed
-        // TODO add your handling code here:
+        infraccion.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_repInfBtnActionPerformed
 
     private void inicSesiBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inicSesiBtnMouseClicked
-        sesion.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_inicSesiBtnMouseClicked
 
     private void registrarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarBtnMouseClicked
-        registro.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_registrarBtnMouseClicked
 
     
