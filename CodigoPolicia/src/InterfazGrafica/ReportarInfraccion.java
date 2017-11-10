@@ -9,13 +9,13 @@ package InterfazGrafica;
  *
  * @author alvar
  */
-public class reportInfraccion extends javax.swing.JFrame {
+public class ReportarInfraccion extends javax.swing.JFrame {
     
     
     /**
      * Creates new form MenuPrincipal
      */
-    public reportInfraccion() {
+    public ReportarInfraccion() {
         
         initComponents();
     }

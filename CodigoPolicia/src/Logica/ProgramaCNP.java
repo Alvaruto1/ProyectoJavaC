@@ -47,7 +47,7 @@ public class ProgramaCNP {
     /**
      * ventana correspondiente al reporte infracciones
      */
-    private ReportarInfracción ventanaInfraccion = new ReportarInfracción();
+    private ReportarInfraccion ventanaInfraccion = new ReportarInfraccion();
     
     
     /**

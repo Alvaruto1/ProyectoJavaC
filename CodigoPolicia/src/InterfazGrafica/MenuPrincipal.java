@@ -35,7 +35,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     /**
      * ventana de reporte de infracciones
      */
-    private ReportarInfracción infraccion;
+    private ReportarInfraccion infraccion;
     
     
     /**
@@ -76,7 +76,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
      * @param venSesion ventana iniciar sesion
      * @param venRegistro ventana registro
      */
-    public void inicioVentana(IniciarSesion venSesion, Registro venRegistro, Normas n, Quices q, Sugerencias s, ReportarInfracción i){
+    public void inicioVentana(IniciarSesion venSesion, Registro venRegistro, Normas n, Quices q, Sugerencias s, ReportarInfraccion i){
         this.sesion = venSesion;
         this.registro = venRegistro;
         this.norma = n;
