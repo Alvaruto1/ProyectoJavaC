@@ -37,9 +37,9 @@ public class NewMain {
         usuario.add(0,new Usuario());
         usuario.get(0).registrar("Al", "No", "h");
         
-        ventana1.ingresarVentana(ventana3);
-        ventana2.ingresarVentana(ventana3);
-        ventana3.ingresarVentana(ventana1,ventana2);
+        //ventana1.ingresarVentana(ventana3);
+        //ventana2.ingresarVentana(ventana3);
+        //ventana3.ingresarVentana(ventana1,ventana2);
         
         ventana3.setVisible(true);
         
