@@ -36,6 +36,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
      * ventana de reporte de infracciones
      */
     private ReportarInfraccion infraccion;
+    /**
+     * ventana panico
+     */
+    private Panico panico;
     
     
     /**
@@ -76,13 +80,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
      * @param venSesion ventana iniciar sesion
      * @param venRegistro ventana registro
      */
-    public void inicioVentana(IniciarSesion venSesion, Registro venRegistro, Normas n, Quices q, Sugerencias s, ReportarInfraccion i){
+    public void inicioVentana(IniciarSesion venSesion, Registro venRegistro, Normas n, Quices q, Sugerencias s, ReportarInfraccion i, Panico p){
         this.sesion = venSesion;
         this.registro = venRegistro;
         this.norma = n;
         this.quiz = q;
         this.sugerencia = s;
         this.infraccion = i;
+        this.panico = p;
     }    
     
   
@@ -400,7 +405,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarBtnActionPerformed
 
     private void panicoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_panicoBtnActionPerformed
-        // TODO add your handling code here:
+        panico.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_panicoBtnActionPerformed
 
     private void repInfBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repInfBtnActionPerformed

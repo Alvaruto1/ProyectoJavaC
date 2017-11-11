@@ -48,6 +48,10 @@ public class ProgramaCNP {
      * ventana correspondiente al reporte infracciones
      */
     private ReportarInfraccion ventanaInfraccion = new ReportarInfraccion();
+    /**
+     * ventana correspondiente al panico
+     */
+    private Panico ventanaPanico = new Panico();
     
     
     /**
@@ -179,8 +183,9 @@ public class ProgramaCNP {
      */
     public void inicializarVentanas(){
         this.ventanaRegistro.inicioVentana(ventanaMenu, ventanaSesion, this);
-        this.ventanaMenu.inicioVentana(ventanaSesion, ventanaRegistro, ventanaNorma, ventanaQuiz, ventanaSugerencia, ventanaInfraccion);
-        this.ventanaSesion.inicioVentana(ventanaMenu, ventanaRegistro, this);
+        this.ventanaMenu.inicioVentana(ventanaSesion, ventanaRegistro, ventanaNorma, ventanaQuiz, ventanaSugerencia, ventanaInfraccion, ventanaPanico);
+        this.ventanaSesion.inicioVentana(ventanaMenu, ventanaRegistro, ventanaInfraccion, this);
+        this.ventanaInfraccion.inicioVentana(ventanaMenu);
     }
     
     /**

@@ -17,12 +17,17 @@ public class IniciarSesion extends javax.swing.JFrame {
     private MenuPrincipal menu; 
     /**
      * Ventana registro
-     */    
+     */  
     private Registro registro; 
+    /**
+     * ventana infraccion
+     */
+    private ReportarInfraccion infraccion;
     /**
      * programa de codigo policia
      */
     private ProgramaCNP programa;
+    
     
     /**
      * contructor por defecto
@@ -58,12 +63,14 @@ public class IniciarSesion extends javax.swing.JFrame {
      * inicia la ventana con sus respectivos parametros
      * @param menu principal
      * @param registro ventana de registro
+     * @param i ventana infraccion
      * @param p programa codigo policia
      */
-    public void inicioVentana(MenuPrincipal menu, Registro registro , ProgramaCNP p){
+    public void inicioVentana(MenuPrincipal menu, Registro registro , ReportarInfraccion i, ProgramaCNP p){
         this.programa = p;        
         this.menu = menu;
         this.registro = registro;
+        this.infraccion = i;
     }
     
     @SuppressWarnings("unchecked")
@@ -361,7 +368,8 @@ public class IniciarSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_panicoBtnActionPerformed
 
     private void repInfBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repInfBtnActionPerformed
-        // TODO add your handling code here:
+        infraccion.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_repInfBtnActionPerformed
 
     private void txtAliasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAliasActionPerformed
@@ -369,13 +377,13 @@ public class IniciarSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAliasActionPerformed
 
     private void menuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBtnActionPerformed
-        
+        menu.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_menuBtnActionPerformed
 
     private void menuBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtnMouseClicked
             
-        menu.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_menuBtnMouseClicked
 
     
