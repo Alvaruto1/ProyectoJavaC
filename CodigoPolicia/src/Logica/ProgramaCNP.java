@@ -57,9 +57,13 @@ public class ProgramaCNP {
      */    
     private Articulos ventanaArticulo = new Articulos();
     /**
-     * Ventana material didactico
+     * Ventana esoger tipo material didactico
      */    
     private EscogerMaterialDidactico ventanaEscogerDidactico = new EscogerMaterialDidactico();
+    /**
+     * Ventana material didactico
+     */    
+    private MaterialDidactico ventanaDidactico = new MaterialDidactico();
     
     
     /**
@@ -196,6 +200,8 @@ public class ProgramaCNP {
         this.ventanaInfraccion.inicioVentana(ventanaMenu,ventanaPanico);
         this.ventanaPanico.inicioVentana(ventanaMenu, ventanaInfraccion);
         this.ventanaNorma.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico,ventanaArticulo,ventanaEscogerDidactico);
+        this.ventanaDidactico.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico, ventanaComentario);
+        this.ventanaEscogerDidactico.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico, ventanaDidactico, this);
     }
     
     /**
@@ -206,6 +212,7 @@ public class ProgramaCNP {
         ventanaRegistro.actualizarSesion(usuarioAlias);
         ventanaSesion.actualizarSesion(usuarioAlias);
         ventanaMenu.actualizarSesion(usuarioAlias);
+        
     }
     
     public String obtenerAlias(){

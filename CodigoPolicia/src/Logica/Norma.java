@@ -11,17 +11,16 @@ public class Norma {
      * contructor parametrico crea y registra datos de una norma
      * @param id de la norma # articulo
      * @param texto de la norma articulo 
-     * @param boletin ruta del boletin de la norma
-     * @param caricatura ruta de la caricatura de la norma
      * @param tema de la norma
      * @param multa de la norma
+     * @param titulo titulo de la norma
      */
-    public Norma(String id, String texto, String boletin, String caricatura, String tema, String multa, String titulo) {
+    public Norma(String id, String texto, String tema, String multa, String titulo) {
         this.precioMulta = multa;
         this.id = id;
         this.texto = texto;
-        this.caricatura = caricatura;
-        this.boletin = boletin;
+        this.caricatura = "/src/img/caricatura"+id+".pdf";
+        this.boletin = "/src/img/boletin"+id+".pdf";
         this.tema = tema;   
         this.titulo = titulo;
     }

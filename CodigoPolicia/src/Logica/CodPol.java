@@ -11,7 +11,7 @@ public class CodPol {
      */
     public CodPol() {
         //adicion de los articulos
-        normas.add(new Norma("1", "texto articulo 1", "N.D", "N.D", "N.D", "N.D", "N.D"));
+        normas.add(new Norma("1", "texto articulo 1", "N.D", "N.D", "N.D"));
     }
     
     /**
