@@ -34,7 +34,7 @@ public class Normas extends javax.swing.JFrame {
     /**
      * Ventana material didactico
      */    
-    private MaterialDidactico didactico;
+    private EscogerMaterialDidactico escogerDidactico;
     
     /**
      * COnstructor
@@ -71,8 +71,8 @@ public class Normas extends javax.swing.JFrame {
      * @param i ventana infraccion     
      * @param panico ventana panico 
      */
-    public void inicioVentana(MenuPrincipal menu, ReportarInfraccion i , Panico panico, Articulos a, MaterialDidactico m){
-        this.didactico = m;
+    public void inicioVentana(MenuPrincipal menu, ReportarInfraccion i , Panico panico, Articulos a, EscogerMaterialDidactico m){
+        this.escogerDidactico = m;
         this.articulo = a;       
         this.menu = menu;        
         this.infraccion = i;
@@ -327,7 +327,7 @@ public class Normas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMaterialDidacticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaterialDidacticoActionPerformed
-        didactico.setVisible(true);
+        escogerDidactico.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnMaterialDidacticoActionPerformed
 

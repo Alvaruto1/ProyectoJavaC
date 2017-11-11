@@ -155,7 +155,7 @@ public class Panico extends javax.swing.JFrame {
         btnEnviarEmergencia.setBackground(new java.awt.Color(131, 184, 61));
         btnEnviarEmergencia.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         btnEnviarEmergencia.setForeground(new java.awt.Color(16, 67, 16));
-        btnEnviarEmergencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Emergencia.png"))); // NOI18N
+        btnEnviarEmergencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/enviarSugerencia.png"))); // NOI18N
         btnEnviarEmergencia.setText("Enviar Emergencia");
         btnEnviarEmergencia.setDoubleBuffered(true);
         btnEnviarEmergencia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

@@ -237,7 +237,7 @@
                   <Color blue="10" green="43" red="10" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/Emergencia.png"/>
+                  <Image iconType="3" name="/img/enviarSugerencia.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Enviar Emergencia"/>
                 <Property name="doubleBuffered" type="boolean" value="true"/>

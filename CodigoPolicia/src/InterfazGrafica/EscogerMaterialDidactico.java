@@ -9,15 +9,19 @@ package InterfazGrafica;
  *
  * @author alvar
  */
-public class Articulos extends javax.swing.JFrame {
+public class EscogerMaterialDidactico extends javax.swing.JFrame {
     
     
     /**
      * Creates new form MenuPrincipal
      */
-    public Articulos() {
+    public EscogerMaterialDidactico() {
         
         initComponents();
+        
+        groupbtnEscogerMD.add(rbtnBoletin);
+        groupbtnEscogerMD.add(rbtnCaricatura);
+        
     }
     public void ingresarVentana(){
         
@@ -31,7 +35,7 @@ public class Articulos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollBar1 = new javax.swing.JScrollBar();
+        groupbtnEscogerMD = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -43,15 +47,12 @@ public class Articulos extends javax.swing.JFrame {
         cbxLibro = new javax.swing.JComboBox<>();
         cbxTitulo = new javax.swing.JComboBox<>();
         cbxCapitulo = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
-        txtComentario = new javax.swing.JTextField();
-        btnVerComentarios = new javax.swing.JButton();
-        btnEnviarComentario = new javax.swing.JButton();
-        cbxArticulo = new javax.swing.JComboBox<>();
+        btnVerMaterialDidactico = new javax.swing.JButton();
         cbxTema = new javax.swing.JComboBox<>();
-        jPanel5 = new javax.swing.JPanel();
-        txtArticulos = new javax.swing.JTextField();
-        jScrollBar2 = new javax.swing.JScrollBar();
+        cbxArticulo = new javax.swing.JComboBox<>();
+        rbtnCaricatura = new javax.swing.JRadioButton();
+        rbtnBoletin = new javax.swing.JRadioButton();
+        jLabel4 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         btnRepInf = new javax.swing.JButton();
         btnPanico = new javax.swing.JButton();
@@ -108,7 +109,7 @@ public class Articulos extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(16, 67, 16));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Artículos");
+        jLabel1.setText("Escoger Material Didáctico");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -140,112 +141,82 @@ public class Articulos extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(16, 67, 16));
-        jLabel5.setText("Enviar Comentario ");
-
-        btnVerComentarios.setBackground(new java.awt.Color(131, 184, 61));
-        btnVerComentarios.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        btnVerComentarios.setForeground(new java.awt.Color(16, 67, 16));
-        btnVerComentarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/verComentarios.png"))); // NOI18N
-        btnVerComentarios.setText("Ver Comentarios");
-        btnVerComentarios.setDoubleBuffered(true);
-        btnVerComentarios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnVerComentarios.setPreferredSize(new java.awt.Dimension(180, 100));
-        btnVerComentarios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnVerComentarios.addActionListener(new java.awt.event.ActionListener() {
+        btnVerMaterialDidactico.setBackground(new java.awt.Color(131, 184, 61));
+        btnVerMaterialDidactico.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        btnVerMaterialDidactico.setForeground(new java.awt.Color(16, 67, 16));
+        btnVerMaterialDidactico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MaterialDidactico.jpeg"))); // NOI18N
+        btnVerMaterialDidactico.setText("Ver Material Didáctico");
+        btnVerMaterialDidactico.setDoubleBuffered(true);
+        btnVerMaterialDidactico.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnVerMaterialDidactico.setPreferredSize(new java.awt.Dimension(180, 100));
+        btnVerMaterialDidactico.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnVerMaterialDidactico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerComentariosActionPerformed(evt);
+                btnVerMaterialDidacticoActionPerformed(evt);
             }
         });
-
-        btnEnviarComentario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Enviar.png"))); // NOI18N
-
-        cbxArticulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Artículo 1", "Artículo 2", "Artículo 3", "Artículo 4" }));
 
         cbxTema.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tema 1", "Tema 2", "Tema 3", "Tema 4" }));
 
-        jPanel5.setBackground(new java.awt.Color(131, 184, 61));
+        cbxArticulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Título artículo", "2. Título artículo", "3. Título artículo", "4. Título artículo" }));
 
-        txtArticulos.setEditable(false);
-        txtArticulos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtArticulosActionPerformed(evt);
-            }
-        });
+        rbtnCaricatura.setText("Caricatura");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(txtArticulos, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtArticulos, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
-            .addComponent(jScrollBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        rbtnBoletin.setText("Boletín");
+
+        jLabel4.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(16, 67, 16));
+        jLabel4.setText("Seleccionar Caricatura ó Boletín:");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnVerMaterialDidactico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addComponent(jLabel4)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(txtComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnEnviarComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(rbtnCaricatura, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(rbtnBoletin, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(cbxLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(cbxTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(cbxCapitulo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(cbxArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(68, 68, 68)
+                                .addComponent(cbxTema, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(24, 24, 24))))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(cbxArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(cbxTema, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(btnVerComentarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbtnCaricatura)
+                    .addComponent(rbtnBoletin))
+                .addGap(61, 61, 61)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbxTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbxCapitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(71, 71, 71)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbxTema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEnviarComentario))
-                .addGap(18, 18, 18)
-                .addComponent(btnVerComentarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
+                .addComponent(btnVerMaterialDidactico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -343,45 +314,38 @@ public class Articulos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRepInfActionPerformed
 
-    private void btnVerComentariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerComentariosActionPerformed
+    private void btnVerMaterialDidacticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerMaterialDidacticoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnVerComentariosActionPerformed
+    }//GEN-LAST:event_btnVerMaterialDidacticoActionPerformed
 
     private void cbxCapituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCapituloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxCapituloActionPerformed
 
-    private void txtArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtArticulosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtArticulosActionPerformed
-
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEnviarComentario;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnPanico;
     private javax.swing.JButton btnRepInf;
-    private javax.swing.JButton btnVerComentarios;
+    private javax.swing.JButton btnVerMaterialDidactico;
     private javax.swing.JComboBox<String> cbxArticulo;
     private javax.swing.JComboBox<String> cbxCapitulo;
     private javax.swing.JComboBox<String> cbxLibro;
     private javax.swing.JComboBox<String> cbxTema;
     private javax.swing.JComboBox<String> cbxTitulo;
+    private javax.swing.ButtonGroup groupbtnEscogerMD;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollBar jScrollBar1;
-    private javax.swing.JScrollBar jScrollBar2;
     private javax.swing.JLabel lblUsuario;
-    private javax.swing.JTextField txtArticulos;
-    private javax.swing.JTextField txtComentario;
+    private javax.swing.JRadioButton rbtnBoletin;
+    private javax.swing.JRadioButton rbtnCaricatura;
     // End of variables declaration//GEN-END:variables
 }
