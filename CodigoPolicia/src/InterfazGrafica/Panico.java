@@ -140,6 +140,8 @@ public class Panico extends javax.swing.JFrame {
             }
         });
 
+        jPanel5.setBackground(new java.awt.Color(131, 184, 61));
+
         lblMapaUbicacionUsuario.setBackground(new java.awt.Color(255, 255, 255));
         lblMapaUbicacionUsuario.setText("Espacio en donde estará el mapa del Usuario");
 
@@ -159,24 +161,21 @@ public class Panico extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(16, 67, 16));
-        jLabel6.setText("Correo Usuario:");
+        jLabel6.setText("Correo:");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jLabel6)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(txtCorreo, javax.swing.GroupLayout.Alignment.TRAILING)
             .addComponent(txtEmergencia, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(lblMapaUbicacionUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
                     .addComponent(jLabel7)
                     .addComponent(jLabel5))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(lblMapaUbicacionUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
