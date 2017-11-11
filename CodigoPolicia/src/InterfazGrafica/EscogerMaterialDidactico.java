@@ -101,6 +101,8 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
         rbtnCaricatura = new javax.swing.JRadioButton();
         rbtnBoletin = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
         jPanel6 = new javax.swing.JPanel();
         btnRepInf = new javax.swing.JButton();
         btnPanico = new javax.swing.JButton();
@@ -178,10 +180,13 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(131, 184, 61));
 
+        cbxLibro.setBackground(new java.awt.Color(51, 153, 0));
         cbxLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libro 1", "Libro 2", "Libro 3", "Libro 4" }));
 
+        cbxTitulo.setBackground(new java.awt.Color(51, 153, 0));
         cbxTitulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Título 1", "Título 2", "Título 3", "Tíulo4" }));
 
+        cbxCapitulo.setBackground(new java.awt.Color(51, 153, 0));
         cbxCapitulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Capítulo 1", "Capítulo 2", "Capítulo 3", "Capítulo 4" }));
         cbxCapitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,17 +209,29 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
             }
         });
 
+        cbxTema.setBackground(new java.awt.Color(51, 153, 0));
         cbxTema.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tema 1", "Tema 2", "Tema 3", "Tema 4" }));
 
+        cbxArticulo.setBackground(new java.awt.Color(51, 153, 0));
         cbxArticulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Título artículo", "2. Título artículo", "3. Título artículo", "4. Título artículo" }));
 
+        rbtnCaricatura.setBackground(new java.awt.Color(51, 153, 0));
         rbtnCaricatura.setText("Caricatura");
+        rbtnCaricatura.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        rbtnBoletin.setBackground(new java.awt.Color(51, 153, 0));
         rbtnBoletin.setText("Boletín");
+        rbtnBoletin.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel4.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(16, 67, 16));
         jLabel4.setText("Seleccionar Caricatura ó Boletín:");
+
+        jSeparator1.setBackground(new java.awt.Color(0, 102, 0));
+        jSeparator1.setForeground(new java.awt.Color(51, 255, 51));
+
+        jSeparator2.setBackground(new java.awt.Color(0, 102, 0));
+        jSeparator2.setForeground(new java.awt.Color(51, 255, 51));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -244,6 +261,12 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
                                 .addGap(68, 68, 68)
                                 .addComponent(cbxTema, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(24, 24, 24))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator2)
+                    .addComponent(jSeparator1))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,7 +277,9 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbtnCaricatura)
                     .addComponent(rbtnBoletin))
-                .addGap(61, 61, 61)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbxTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -263,7 +288,9 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbxTema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66)
                 .addComponent(btnVerMaterialDidactico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -405,6 +432,8 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JRadioButton rbtnBoletin;
     private javax.swing.JRadioButton rbtnCaricatura;
