@@ -42,6 +42,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private Panico panico;
     
     
+    
+    
     /**
      * constructor por defecto
      */

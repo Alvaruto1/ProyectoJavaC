@@ -52,6 +52,14 @@ public class ProgramaCNP {
      * ventana correspondiente al panico
      */
     private Panico ventanaPanico = new Panico();
+    /**
+     * Ventana articulos
+     */    
+    private Articulos ventanaArticulo = new Articulos();
+    /**
+     * Ventana material didactico
+     */    
+    private MaterialDidactico ventanaDidactico = new MaterialDidactico();
     
     
     /**
@@ -182,10 +190,12 @@ public class ProgramaCNP {
      * Inicializa las ventanas con sus respectivos parametros
      */
     public void inicializarVentanas(){
-        this.ventanaRegistro.inicioVentana(ventanaMenu, ventanaSesion, this);
+        this.ventanaRegistro.inicioVentana(ventanaMenu, ventanaSesion, ventanaPanico, ventanaInfraccion, this);
         this.ventanaMenu.inicioVentana(ventanaSesion, ventanaRegistro, ventanaNorma, ventanaQuiz, ventanaSugerencia, ventanaInfraccion, ventanaPanico);
-        this.ventanaSesion.inicioVentana(ventanaMenu, ventanaRegistro, ventanaInfraccion, this);
-        this.ventanaInfraccion.inicioVentana(ventanaMenu);
+        this.ventanaSesion.inicioVentana(ventanaMenu, ventanaRegistro, ventanaInfraccion, ventanaPanico, this);
+        this.ventanaInfraccion.inicioVentana(ventanaMenu,ventanaPanico);
+        this.ventanaPanico.inicioVentana(ventanaMenu, ventanaInfraccion);
+        this.ventanaNorma.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico,ventanaArticulo,ventanaDidactico);
     }
     
     /**

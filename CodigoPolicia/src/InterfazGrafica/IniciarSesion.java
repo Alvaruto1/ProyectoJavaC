@@ -24,9 +24,14 @@ public class IniciarSesion extends javax.swing.JFrame {
      */
     private ReportarInfraccion infraccion;
     /**
+     * Ventana del panico
+     */    
+    private Panico panico;    
+    /**
      * programa de codigo policia
      */
     private ProgramaCNP programa;
+    
     
     
     /**
@@ -64,13 +69,15 @@ public class IniciarSesion extends javax.swing.JFrame {
      * @param menu principal
      * @param registro ventana de registro
      * @param i ventana infraccion
+     * @param panico ventana panico
      * @param p programa codigo policia
      */
-    public void inicioVentana(MenuPrincipal menu, Registro registro , ReportarInfraccion i, ProgramaCNP p){
+    public void inicioVentana(MenuPrincipal menu, Registro registro , ReportarInfraccion i , Panico panico, ProgramaCNP p){
         this.programa = p;        
         this.menu = menu;
         this.registro = registro;
         this.infraccion = i;
+        this.panico = panico;
     }
     
     @SuppressWarnings("unchecked")
@@ -364,7 +371,8 @@ public class IniciarSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_regisBtnActionPerformed
 
     private void panicoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_panicoBtnActionPerformed
-        // TODO add your handling code here:
+        panico.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_panicoBtnActionPerformed
 
     private void repInfBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repInfBtnActionPerformed

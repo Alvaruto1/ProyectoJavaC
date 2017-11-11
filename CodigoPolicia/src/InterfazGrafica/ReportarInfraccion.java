@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package InterfazGrafica;
 
-import Logica.ProgramaCNP;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -20,6 +14,10 @@ public class ReportarInfraccion extends javax.swing.JFrame {
      * Ventana menu pricipal
      */    
     private MenuPrincipal menu;
+    /**
+     * Ventana del panico
+     */    
+    private Panico panico;
     
     /**
      * cosntructor
@@ -30,9 +28,7 @@ public class ReportarInfraccion extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         cerrarVentanaSecundaria();
     }
-    public void ingresarVentana(){
-        
-    }
+    
     /**
      * oculta la ventana secundaria y muestra el menu principal
      */
@@ -57,9 +53,11 @@ public class ReportarInfraccion extends javax.swing.JFrame {
     /**
      * inicia la ventana con sus respectivos parametros
      * @param menu principal   
+     * @param p ventana panico
      */
-    public void inicioVentana(MenuPrincipal menu){              
-        this.menu = menu;        
+    public void inicioVentana(MenuPrincipal menu, Panico p){              
+        this.menu = menu;    
+        this.panico = p;
     }
     
     @SuppressWarnings("unchecked")
@@ -363,7 +361,8 @@ public class ReportarInfraccion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPanicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPanicoActionPerformed
-        // TODO add your handling code here:
+        panico.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnPanicoActionPerformed
 
     private void btnRepInfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepInfActionPerformed

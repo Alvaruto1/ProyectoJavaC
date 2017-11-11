@@ -23,8 +23,16 @@ public class Registro extends javax.swing.JFrame {
      */    
     private IniciarSesion sesion; 
     /**
+     * Ventana del panico
+     */    
+    private Panico panico;
+    /**
+     * Ventana de infraccion
+     */    
+    private ReportarInfraccion infraccion;
+    /**
      * programa de codigo policia
-     */
+     */    
     private ProgramaCNP programa;
     
     /**
@@ -64,10 +72,12 @@ public class Registro extends javax.swing.JFrame {
      * @param sesion ventana iniciar sesion
      * @param p programa codigo policia
      */
-    public void inicioVentana(MenuPrincipal menu, IniciarSesion sesion , ProgramaCNP p){
+    public void inicioVentana(MenuPrincipal menu, IniciarSesion sesion , Panico panico, ReportarInfraccion r, ProgramaCNP p){
         this.programa = p;        
         this.menu = menu;
         this.sesion = sesion;
+        this.panico = panico;
+        this.infraccion = r;
     }    
     
 
@@ -395,11 +405,13 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_iniSeBtnActionPerformed
 
     private void panicoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_panicoBtnActionPerformed
-        // TODO add your handling code here:
+        panico.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_panicoBtnActionPerformed
 
     private void repInfBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repInfBtnActionPerformed
-        // TODO add your handling code here:
+        infraccion.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_repInfBtnActionPerformed
 
     private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
