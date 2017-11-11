@@ -11,16 +11,14 @@ public class Norma {
      * contructor parametrico crea y registra datos de una norma
      * @param id de la norma # articulo
      * @param texto de la norma articulo 
-     * @param tema de la norma
-     * @param multa de la norma
+     * @param tema de la norma    
      * @param titulo titulo de la norma
      */
-    public Norma(String id, String texto, String tema, String multa, String titulo) {
-        this.precioMulta = multa;
+    public Norma(String id, String texto, String tema, String titulo) {        
         this.id = id;
         this.texto = texto;
-        this.caricatura = "/src/img/caricatura"+id+".pdf";
-        this.boletin = "/src/img/boletin"+id+".pdf";
+        this.caricatura = "/src/caricaturas/caricatura"+id+".pdf";
+        this.boletin = "/src/boletines/boletin"+id+".pdf";
         this.tema = tema;   
         this.titulo = titulo;
     }
@@ -51,11 +49,7 @@ public class Norma {
     private String caricatura;
     /**
      * precio o valor de la multa de la norma     
-     */
-    private String precioMulta;
-    /**
-     * cantidad de consultas que se han hecho sobre esta norma
-     */
+     */    
     private int consultas = 0;
     /**
      * comentarios realizados por los usuarios sobre la norma

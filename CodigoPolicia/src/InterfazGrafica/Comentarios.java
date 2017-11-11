@@ -18,6 +18,7 @@ public class Comentarios extends javax.swing.JFrame {
     public Comentarios() {
         
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     public void ingresarVentana(){
         
@@ -32,6 +33,7 @@ public class Comentarios extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollBar1 = new javax.swing.JScrollBar();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -44,18 +46,15 @@ public class Comentarios extends javax.swing.JFrame {
         cbxTitulo = new javax.swing.JComboBox<>();
         cbxCapitulo = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        txtComentario = new javax.swing.JTextField();
         btnEnviarComentario = new javax.swing.JButton();
         cbxTema = new javax.swing.JComboBox<>();
         cbxArticulo1 = new javax.swing.JComboBox<>();
-        jPanel5 = new javax.swing.JPanel();
-        lblUsuario2 = new javax.swing.JLabel();
-        lblUsuario1 = new javax.swing.JLabel();
-        lblUsuario3 = new javax.swing.JLabel();
-        txtComentario1 = new javax.swing.JTextField();
-        txtComentario2 = new javax.swing.JTextField();
-        txtComentario3 = new javax.swing.JTextField();
-        jScrollBar2 = new javax.swing.JScrollBar();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
         jPanel6 = new javax.swing.JPanel();
         btnRepInf = new javax.swing.JButton();
         btnPanico = new javax.swing.JButton();
@@ -133,10 +132,16 @@ public class Comentarios extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(131, 184, 61));
 
+        cbxLibro.setBackground(new java.awt.Color(51, 153, 0));
+        cbxLibro.setForeground(new java.awt.Color(255, 255, 255));
         cbxLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libro 1", "Libro 2", "Libro 3", "Libro 4" }));
 
+        cbxTitulo.setBackground(new java.awt.Color(51, 153, 0));
+        cbxTitulo.setForeground(new java.awt.Color(255, 255, 255));
         cbxTitulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Título 1", "Título 2", "Título 3", "Tíulo4" }));
 
+        cbxCapitulo.setBackground(new java.awt.Color(51, 153, 0));
+        cbxCapitulo.setForeground(new java.awt.Color(255, 255, 255));
         cbxCapitulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Capítulo 1", "Capítulo 2", "Capítulo 3", "Capítulo 4" }));
         cbxCapitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,58 +153,37 @@ public class Comentarios extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(16, 67, 16));
         jLabel5.setText("Enviar Comentario ");
 
+        btnEnviarComentario.setBackground(new java.awt.Color(0, 102, 0));
         btnEnviarComentario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Enviar.png"))); // NOI18N
 
+        cbxTema.setBackground(new java.awt.Color(51, 153, 0));
+        cbxTema.setForeground(new java.awt.Color(255, 255, 255));
         cbxTema.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tema 1", "Tema 2", "Tema 3", "Tema 4" }));
 
+        cbxArticulo1.setBackground(new java.awt.Color(51, 153, 0));
+        cbxArticulo1.setForeground(new java.awt.Color(255, 255, 255));
         cbxArticulo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Título artículo", "2. Título artículo", "3. Título artículo", "4. Título artículo" }));
 
-        jPanel5.setBackground(new java.awt.Color(0, 102, 0));
+        jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(153, 255, 102));
+        jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
-        lblUsuario2.setText("usuario456:");
+        jTextArea2.setBackground(new java.awt.Color(153, 255, 102));
+        jTextArea2.setColumns(20);
+        jTextArea2.setLineWrap(true);
+        jTextArea2.setRows(5);
+        jScrollPane2.setViewportView(jTextArea2);
 
-        lblUsuario1.setText("usuario123:");
+        jSeparator1.setBackground(new java.awt.Color(0, 102, 0));
+        jSeparator1.setForeground(new java.awt.Color(51, 255, 51));
+        jSeparator1.setToolTipText("");
 
-        lblUsuario3.setText("usuario789:");
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtComentario3, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-                    .addComponent(txtComentario2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUsuario1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUsuario2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUsuario3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtComentario1, javax.swing.GroupLayout.Alignment.LEADING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(lblUsuario1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtComentario1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblUsuario2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtComentario2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(lblUsuario3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtComentario3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 32, Short.MAX_VALUE))
-                    .addComponent(jScrollBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        jSeparator2.setBackground(new java.awt.Color(0, 102, 0));
+        jSeparator2.setForeground(new java.awt.Color(51, 255, 51));
+        jSeparator2.setToolTipText("");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -210,23 +194,34 @@ public class Comentarios extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(txtComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnEnviarComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addComponent(cbxLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(cbxTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(cbxArticulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(cbxTema, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbxCapitulo, 0, 103, Short.MAX_VALUE)))))
-                .addGap(23, 23, 23))
+                        .addComponent(btnEnviarComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(25, 25, 25))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1)
+                    .addComponent(jSeparator2))
+                .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(cbxLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cbxTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbxArticulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbxCapitulo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbxTema, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,19 +231,23 @@ public class Comentarios extends javax.swing.JFrame {
                     .addComponent(cbxLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbxTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbxCapitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxTema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbxArticulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtComentario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEnviarComentario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnEnviarComentario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16))
         );
 
         jPanel6.setBackground(new java.awt.Color(0, 51, 0));
@@ -356,6 +355,7 @@ public class Comentarios extends javax.swing.JFrame {
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnPanico;
     private javax.swing.JButton btnRepInf;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbxArticulo1;
     private javax.swing.JComboBox<String> cbxCapitulo;
     private javax.swing.JComboBox<String> cbxLibro;
@@ -369,17 +369,14 @@ public class Comentarios extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollBar jScrollBar1;
-    private javax.swing.JScrollBar jScrollBar2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JLabel lblUsuario;
-    private javax.swing.JLabel lblUsuario1;
-    private javax.swing.JLabel lblUsuario2;
-    private javax.swing.JLabel lblUsuario3;
-    private javax.swing.JTextField txtComentario;
-    private javax.swing.JTextField txtComentario1;
-    private javax.swing.JTextField txtComentario2;
-    private javax.swing.JTextField txtComentario3;
     // End of variables declaration//GEN-END:variables
 }
