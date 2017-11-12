@@ -26,6 +26,10 @@ public class MaterialDidactico extends javax.swing.JFrame {
      * Ventana de comentarios
      */    
     private Comentarios comentario; 
+    /**
+     * Ventana de escoger material didactico
+     */    
+    private EscogerMaterialDidactico escoger; 
     
     /**
      * constructor
@@ -63,8 +67,11 @@ public class MaterialDidactico extends javax.swing.JFrame {
      * @param menu principal
      * @param i ventana infraccion
      * @param panico ventana panico     
+     * @param com ventana comentario 
+     * @param es escoger material didactico
      */
-    public void inicioVentana(MenuPrincipal menu, ReportarInfraccion i , Panico panico, Comentarios com){
+    public void inicioVentana(MenuPrincipal menu, ReportarInfraccion i , Panico panico, Comentarios com, EscogerMaterialDidactico es){
+        this.escoger = es;
         this.comentario = com;              
         this.menu = menu;        
         this.infraccion = i;
@@ -366,7 +373,8 @@ public class MaterialDidactico extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRepInfActionPerformed
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-        
+        escoger.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed

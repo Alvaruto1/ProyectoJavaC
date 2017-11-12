@@ -200,9 +200,12 @@ public class ProgramaCNP {
         this.ventanaInfraccion.inicioVentana(ventanaMenu,ventanaPanico);
         this.ventanaPanico.inicioVentana(ventanaMenu, ventanaInfraccion);
         this.ventanaNorma.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico,ventanaArticulo,ventanaEscogerDidactico);
-        this.ventanaDidactico.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico, ventanaComentario);
+        this.ventanaDidactico.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico, ventanaComentario, ventanaEscogerDidactico);
         this.ventanaEscogerDidactico.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico, ventanaDidactico, this);
         this.ventanaArticulo.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, ventanaComentario, this);
+        this.ventanaComentario.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, this);
+        this.ventanaQuiz.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, this);
+        this.ventanaSugerencia.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, this);
     }
     
     /**
