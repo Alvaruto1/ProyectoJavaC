@@ -3,6 +3,8 @@ package InterfazGrafica;
 import Logica.ProgramaCNP;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.JFrame;
 
 /**
@@ -29,15 +31,148 @@ public class Articulos extends javax.swing.JFrame {
     /**
      * programa de codigo policia
      */    
-    private ProgramaCNP programa;
+    private ProgramaCNP programa;    
+    
+    /**
+     * Titulos Libro/ Titulo/ Capitulo /Articulo
+     */
+    private ArrayList <String> libro = new ArrayList <String>();
+    private ArrayList <ArrayList<String>> titulo = new ArrayList <ArrayList<String>>();
+    private ArrayList <ArrayList<ArrayList<String>>> capitulo = new ArrayList <ArrayList<ArrayList<String>>>();;
+    
+    
     
     /**
      * Constructor
      */
-    public Articulos() {        
+    public Articulos() {   
+        inicializarArticulo();
         initComponents();
+        
         this.setLocationRelativeTo(null);
         cerrarVentanaSecundaria();
+    }
+    /**
+     * Iniciliza la matriz de articulos, y coloca valores de filtros
+     */
+    public void inicializarArticulo(){
+       //libros
+        libro.add("LIBRO I DISPOSICIONES GENERALES ");
+        libro.add("LIBRO II DE LA LIBERTAD, LOS DERECHOS Y DEBERES DE LAS PERSONAS EN MATERIA DE CONVIVENCIA");
+        libro.add("LIBRO III MEDIOS DE POLICÍA, MEDIDAS CORRECTIVAS, AUTORIDADES DE POLICÍA Y COMPETENCIAS, PROCEDIMIENTOS, MECANISMOS ALTERNATIVOS DE SOLUCIÓN DE DESACUERDOS O CONFLICTOS");
+       //titulos
+        //titulos libro 1
+        ArrayList <String> libro1Titulo = new ArrayList<String>();
+        libro1Titulo.add("TÍTULO I OBJETO DEL CÓDIGO, ÁMBITO DE APLICACIÓN Y AUTONOMÍA BASES DE LA CONVIVENCIA ");
+        libro1Titulo.add("TÍTULO IIPODER, FUNCIÓN Y ACTIVIDAD DE POLICÍA");
+        //titulos libro 2
+        ArrayList <String> libro2Titulo = new ArrayList<String>();
+        libro2Titulo.add("TÍTULO IDEL CONTENIDO DEL LIBRO");
+        libro2Titulo.add("TÍTULO IIDE LOS COMPORTAMIENTOS CONTRARIOS A LA CONVIVENCIA");
+        libro2Titulo.add("TÍTULO IIIDEL DERECHO DE LAS PERSONAS A LA SEGURIDAD Y A LA DE SUS BIENES");
+        libro2Titulo.add("TÍTULO IVDE LA TRANQUILIDAD Y LAS RELACIONES RESPETUOSAS");
+        libro2Titulo.add("TÍTULO VDE LAS RELACIONES RESPETUOSAS CON GRUPOS ESPECÍFICOS DE LA SOCIEDAD");
+        libro2Titulo.add("TÍTULO VIDEL DERECHO DE REUNIÓN");
+        libro2Titulo.add("TÍTULO VIIDE LA PROTECCIÓN DE BIENES INMUEBLES");
+        libro2Titulo.add("TÍTULO VIIIDE LA ACTIVIDAD ECONÓMICA");
+        libro2Titulo.add("TÍTULO IXDEL AMBIENTE");
+        libro2Titulo.add("TÍTULO XMINERÍA");
+        libro2Titulo.add("TÍTULO XISALUD PÚBLICA");
+        libro2Titulo.add("TÍTULO XIIDEL PATRIMONIO CULTURAL Y SU CONSERVACIÓN");
+        libro2Titulo.add("TÍTULO XIIIDE LA RELACIÓN CON LOS ANIMALES");
+        libro2Titulo.add("TÍTULO XIVDEL URBANISMO");
+        libro2Titulo.add("TÍTULO XVDE LA LIBERTAD DE MOVILIDAD Y CIRCULACIÓN");
+        //titulos libro 3
+        ArrayList <String> libro3Titulo = new ArrayList<String>();
+        libro3Titulo.add("TÍTULO IMEDIOS DE POLICÍA Y MEDIDAS CORRECTIVAS");
+        libro3Titulo.add("TÍTULO IIAUTORIDADES DE POLICÍA Y COMPETENCIAS");
+        libro3Titulo.add("TÍTULO IIIPROCESO ÚNICO DE POLICÍA");
+        
+        titulo.add(libro1Titulo);
+        titulo.add(libro2Titulo);
+        titulo.add(libro3Titulo);
+       //capitulos        
+        ArrayList <String> libro1Titulo1Capitulo = new ArrayList<String>();
+        libro1Titulo1Capitulo.add("CAPÍTULO I OBJETO DEL CÓDIGO, ÁMBITO DE APLICACIÓN Y AUTONOMÍA ");
+        libro1Titulo1Capitulo.add("CAPÍTULO IIBASES DE LA CONVIVENCIA Y SEGURIDAD CIUDADANA");
+        ArrayList <String> libro1Titulo2Capitulo = new ArrayList<String>();
+        libro1Titulo2Capitulo.add("CAPÍTULO IPODER DE POLICÍA");
+        libro1Titulo2Capitulo.add("CAPÍTULO IIFUNCIÓN Y ACTIVIDAD DE POLICÍA");
+        libro1Titulo2Capitulo.add("CAPÍTULO IIICONCRECIÓN DE LA ORDEN DE POLICÍA");
+        ArrayList <String> libro2Titulo1Capitulo = new ArrayList<String>();
+        libro2Titulo1Capitulo.add("CAPÍTULO IÚNICOASPECTOS GENERALES");
+        ArrayList <String> libro2Titulo2Capitulo = new ArrayList<String>();
+        libro2Titulo2Capitulo.add("CAPÍTULO IIÚNICO");
+        ArrayList <String> libro2Titulo3Capitulo = new ArrayList<String>();
+        libro2Titulo3Capitulo.add("CAPÍTULO IVIDA E INTEGRIDAD DE LAS PERSONAS");
+        libro2Titulo3Capitulo.add("CAPÍTULO IIDE LA SEGURIDAD EN LOS SERVICIOS PÚBLICOS");
+        libro2Titulo3Capitulo.add("CAPÍTULO IIIARTÍCULOS PIROTÉCNICOS Y SUSTANCIAS PELIGROSAS");
+        ArrayList <String> libro2Titulo4Capitulo = new ArrayList<String>();
+        libro2Titulo4Capitulo.add("CAPÍTULO IPRIVACIDAD DE LAS PERSONAS");
+        libro2Titulo4Capitulo.add("CAPÍTULO IIDE LOS ESTABLECIMIENTOS EDUCATIVOS");
+        ArrayList <String> libro2Titulo5Capitulo = new ArrayList<String>();
+        libro2Titulo5Capitulo.add("CAPÍTULO INIÑOS, NIÑAS Y ADOLESCENTES");
+        libro2Titulo5Capitulo.add("CAPÍTULO IIGRUPOS DE ESPECIAL PROTECCIÓN CONSTITUCIONAL");
+        libro2Titulo5Capitulo.add("CAPÍTULO IIIEJERCICIO DE LA PROSTITUCIÓN");
+        ArrayList <String> libro2Titulo6Capitulo = new ArrayList<String>();
+        libro2Titulo6Capitulo.add("CAPÍTULO ICLASIFICACIÓN Y REGLAMENTACIÓN");
+        libro2Titulo6Capitulo.add("CAPÍTULO IIEXPRESIONES O MANIFESTACIONES EN EL ESPACIO PÚBLICO");
+        libro2Titulo6Capitulo.add("CAPÍTULO IIIACTIVIDADES QUE INVOLUCRAN AGLOMERACIONES DE PÚBLICO NO COMPLEJAS");
+        libro2Titulo6Capitulo.add("CAPÍTULO IVACTIVIDADES QUE INVOLUCRAN AGLOMERACIONES DE PÚBLICO COMPLEJAS");
+        ArrayList <String> libro2Titulo7Capitulo = new ArrayList<String>();
+        libro2Titulo7Capitulo.add("CAPÍTULO IDE LA POSESIÓN, LA TENENCIA Y LAS SERVIDUMBRES");
+        ArrayList <String> libro2Titulo8Capitulo = new ArrayList<String>();
+        libro2Titulo8Capitulo.add("CAPÍTULO IDE LA ACTIVIDAD ECONÓMICA Y SU REGLAMENTACIÓN");
+        libro2Titulo8Capitulo.add("CAPÍTULO IIESTACIONAMIENTOS O PARQUEADEROS");
+        libro2Titulo8Capitulo.add("CAPÍTULO IIICOMPORTAMIENTOS QUE AFECTAN LA ACTIVIDAD ECONÓMICA");
+        libro2Titulo8Capitulo.add("CAPÍTULO IVDE LA SEGURIDAD DE LOS EQUIPOS TERMINALES MÓVILES Y/O TARJETAS SIMCARD (IMSI)");
+        ArrayList <String> libro2Titulo9Capitulo = new ArrayList<String>();
+        libro2Titulo9Capitulo.add("CAPÍTULO IAMBIENTE");
+        libro2Titulo9Capitulo.add("CAPÍTULO IIRECURSO HÍDRICO, FAUNA, FLORA Y AIRE");
+        libro2Titulo9Capitulo.add("CAPÍTULO IIISISTEMA NACIONAL DE ÁREAS PROTEGIDAS (SINAP)");
+        ArrayList <String> libro2Titulo10Capitulo = new ArrayList<String>();
+        libro2Titulo10Capitulo.add("CAPÍTULO IMEDIDAS PARA EL CONTROL DE LA EXPLOTACIÓN Y APROVECHAMIENTO ILÍCITA DE MINERALES");
+        ArrayList <String> libro2Titulo11Capitulo = new ArrayList<String>();
+        libro2Titulo11Capitulo.add("CAPÍTULO IDE LA SALUD PÚBLICA");
+        libro2Titulo11Capitulo.add("CAPÍTULO IILIMPIEZA Y RECOLECCIÓN DE RESIDUOS Y DE ESCOMBROS");
+        ArrayList <String> libro2Titulo12Capitulo = new ArrayList<String>();
+        libro2Titulo12Capitulo.add("CAPÍTULO IPROTECCIÓN DE LOS BIENES DEL PATRIMONIO CULTURAL Y ARQUEOLÓGICO");
+        ArrayList <String> libro2Titulo13Capitulo = new ArrayList<String>();
+        libro2Titulo13Capitulo.add("CAPÍTULO IDEL RESPETO Y CUIDADO DE LOS ANIMALES");
+        libro2Titulo13Capitulo.add("CAPÍTULO IIANIMALES DOMÉSTICOS O MASCOTAS");
+        libro2Titulo13Capitulo.add("CAPÍTULO IIIDE LA CONVIVENCIA DE LAS PERSONAS CON ANIMALES");
+        libro2Titulo13Capitulo.add("CAPÍTULO IVEJEMPLARES CANINOS POTENCIALMENTE PELIGROSOS");
+        ArrayList <String> libro2Titulo14Capitulo = new ArrayList<String>();
+        libro2Titulo14Capitulo.add("CAPÍTULO ICOMPORTAMIENTOS QUE AFECTAN LA INTEGRIDAD URBANÍSTICA");
+        libro2Titulo14Capitulo.add("CAPÍTULO IIDEL CUIDADO E INTEGRIDAD DEL ESPACIO PÚBLICO");
+        ArrayList <String> libro2Titulo15Capitulo = new ArrayList<String>();
+        libro2Titulo15Capitulo.add("CAPÍTULO ICIRCULACIÓN Y DERECHO DE VÍA");
+        libro2Titulo15Capitulo.add("CAPÍTULO IIDE LA MOVILIDAD DE LOS PEATONES Y EN BICICLETA");
+        libro2Titulo15Capitulo.add("CAPÍTULO IIICONVIVENCIA EN LOS SISTEMAS DE TRANSPORTE MOTORIZADOS");
+        ArrayList <String> libro3Titulo1Capitulo = new ArrayList<String>();
+        libro3Titulo1Capitulo.add("CAPÍTULO IMEDIOS DE POLICÍA");
+        libro3Titulo1Capitulo.add("CAPÍTULO IIMEDIDAS CORRECTIVAS");
+        ArrayList <String> libro3Titulo2Capitulo = new ArrayList<String>();
+        libro3Titulo2Capitulo.add("CAPÍTULO IAUTORIDADES DE POLICÍA");
+        ArrayList <String> libro3Titulo3Capitulo = new ArrayList<String>();
+        libro3Titulo3Capitulo.add("CAPÍTULO IPROCESO ÚNICO DE POLICÍA");
+        libro3Titulo3Capitulo.add("CAPÍTULO IIPROCESO VERBAL INMEDIATO");
+        libro3Titulo3Capitulo.add("CAPÍTULO IIIPROCESO VERBAL ABREVIADO");
+        libro3Titulo3Capitulo.add("CAPÍTULO IVMECANISMOS ALTERNATIVOS DE SOLUCIÓN DE DESACUERDOS Y CONFLICTOS");
+        libro3Titulo3Capitulo.add("CAPÍTULO VDISPOSICIONES FINALES, VIGENCIA DEL CÓDIGO, NORMAS COMPLEMENTARIAS Y DEROGATORIAS");
+        
+        capitulo.add(new ArrayList<ArrayList<String>>() {{add(libro1Titulo2Capitulo);add(libro1Titulo1Capitulo);add(libro1Titulo1Capitulo);}});
+        capitulo.add(new ArrayList<ArrayList<String>>() {{add(libro2Titulo1Capitulo);add(libro2Titulo2Capitulo);add(libro2Titulo3Capitulo);add(libro2Titulo4Capitulo);add(libro2Titulo5Capitulo);add(libro2Titulo6Capitulo);
+            add(libro2Titulo7Capitulo);add(libro2Titulo8Capitulo);add(libro2Titulo9Capitulo);add(libro2Titulo10Capitulo);add(libro2Titulo11Capitulo);add(libro2Titulo12Capitulo);
+            add(libro2Titulo13Capitulo);add(libro2Titulo14Capitulo);add(libro2Titulo15Capitulo);}});
+        capitulo.add(new ArrayList<ArrayList<String>>() {{add(libro3Titulo1Capitulo); add(libro3Titulo2Capitulo);add(libro3Titulo3Capitulo);}});
+        
+             
+        
+        
+        
+        
+                
     }
     
     /**
@@ -104,7 +239,6 @@ public class Articulos extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel5 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         btnRepInf = new javax.swing.JButton();
         btnPanico = new javax.swing.JButton();
@@ -184,11 +318,23 @@ public class Articulos extends javax.swing.JFrame {
 
         cbxLibro.setBackground(new java.awt.Color(51, 153, 0));
         cbxLibro.setForeground(new java.awt.Color(255, 255, 255));
-        cbxLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libro 1", "Libro 2", "Libro 3", "Libro 4" }));
+        cbxLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { libro.get(0), libro.get(1), libro.get(2)}));
+        cbxLibro.setName(""); // NOI18N
+        cbxLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxLibroActionPerformed(evt);
+            }
+        });
 
         cbxTitulo.setBackground(new java.awt.Color(51, 153, 0));
         cbxTitulo.setForeground(new java.awt.Color(255, 255, 255));
         cbxTitulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Título 1", "Título 2", "Título 3", "Tíulo4" }));
+        cbxTitulo.setToolTipText("");
+        cbxTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxTituloActionPerformed(evt);
+            }
+        });
 
         cbxCapitulo.setBackground(new java.awt.Color(51, 153, 0));
         cbxCapitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -250,10 +396,6 @@ public class Articulos extends javax.swing.JFrame {
         jSeparator2.setBackground(new java.awt.Color(0, 102, 0));
         jSeparator2.setForeground(new java.awt.Color(51, 255, 51));
 
-        jLabel5.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(16, 67, 16));
-        jLabel5.setText("Artículo 1. Nombre del articulo");
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -267,12 +409,23 @@ public class Articulos extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jSeparator1)
                         .addContainerGap())
+                    .addComponent(btnVerComentarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel4)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnEnviarComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2))
+                        .addGap(23, 23, 23))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(cbxLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cbxTitulo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbxTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(12, 12, 12))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(cbxArticulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -280,20 +433,7 @@ public class Articulos extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbxCapitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbxTema, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel4)
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnEnviarComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane2)))
-                        .addGap(23, 23, 23))))
-            .addComponent(btnVerComentarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,10 +449,8 @@ public class Articulos extends javax.swing.JFrame {
                     .addComponent(cbxTema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                .addGap(11, 11, 11)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
@@ -427,7 +565,7 @@ public class Articulos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRepInfActionPerformed
 
     private void cbxCapituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCapituloActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_cbxCapituloActionPerformed
 
     private void btnVerComentariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerComentariosActionPerformed
@@ -440,7 +578,42 @@ public class Articulos extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuActionPerformed
 
-    
+    private void cbxLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxLibroActionPerformed
+                
+        for(int i=0; i<libro.size();i++){
+            if(cbxLibro.getSelectedIndex()==i){
+                cbxTitulo.removeAllItems();
+                for(String a: titulo.get(i)){
+                    cbxTitulo.addItem(a);                   
+                }
+                filtrasCapitulo(i);      
+                
+            }            
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_cbxLibroActionPerformed
+
+    private void cbxTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTituloActionPerformed
+        filtrasCapitulo(cbxLibro.getSelectedIndex());
+    }//GEN-LAST:event_cbxTituloActionPerformed
+
+    /**
+     * filtra dependiendo del libro titulo capitulo
+     * @param i numero del libro
+     */
+    private void filtrasCapitulo(int i){
+        for(int j=0; j<titulo.get(i).size();j++){
+                    if(cbxTitulo.getSelectedIndex()==j){
+                        cbxCapitulo.removeAllItems();
+                        for(String a: capitulo.get(i).get(j)){
+                            cbxCapitulo.addItem(a);                   
+                        }  
+                    }            
+        } 
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnviarComentario;
@@ -457,7 +630,6 @@ public class Articulos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
