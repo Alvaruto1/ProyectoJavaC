@@ -97,7 +97,7 @@ public class IniciarSesion extends javax.swing.JFrame {
         lblAlias = new javax.swing.JLabel();
         txtAlias = new javax.swing.JTextField();
         lblContrasenia = new javax.swing.JLabel();
-        txtContrasenia = new javax.swing.JTextField();
+        txtContrasenia = new javax.swing.JPasswordField();
         jPanel6 = new javax.swing.JPanel();
         repInfBtn = new javax.swing.JButton();
         panicoBtn = new javax.swing.JButton();
@@ -201,6 +201,7 @@ public class IniciarSesion extends javax.swing.JFrame {
         lblAlias.setForeground(new java.awt.Color(255, 255, 255));
         lblAlias.setText("Alias:");
 
+        txtAlias.setBackground(new java.awt.Color(153, 255, 102));
         txtAlias.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtAlias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,7 +213,7 @@ public class IniciarSesion extends javax.swing.JFrame {
         lblContrasenia.setForeground(new java.awt.Color(255, 255, 255));
         lblContrasenia.setText("Contraseña:");
 
-        txtContrasenia.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtContrasenia.setBackground(new java.awt.Color(153, 255, 102));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -227,7 +228,7 @@ public class IniciarSesion extends javax.swing.JFrame {
                         .addComponent(txtAlias, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addComponent(lblContrasenia)
-                        .addGap(12, 12, 12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -250,7 +251,7 @@ public class IniciarSesion extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblContrasenia)
                     .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
                 .addComponent(iniSeBtn)
                 .addGap(47, 47, 47)
                 .addComponent(regisBtn)
@@ -355,11 +356,14 @@ public class IniciarSesion extends javax.swing.JFrame {
 
     private void iniSeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniSeBtnActionPerformed
         
-        if(programa.autenticarUsuario(txtAlias.getText(), txtContrasenia.getText())){
+        if(programa.autenticarUsuario(txtAlias.getText(), new String (txtContrasenia.getPassword()))){
             JOptionPane.showMessageDialog(this, programa.obtenerAlias()+ " ha iniciado sesion" );
+            menu.setVisible(true);
+            this.setVisible(false);
         }
         else{
-            JOptionPane.showMessageDialog(this,"Por favor verifique sus datos de ingreso");            
+            JOptionPane.showMessageDialog(this,"Por favor verifique sus datos de ingreso");    
+            
         }
         txtAlias.setText("");
         txtContrasenia.setText("");
@@ -414,6 +418,6 @@ public class IniciarSesion extends javax.swing.JFrame {
     private javax.swing.JButton regisBtn;
     private javax.swing.JButton repInfBtn;
     private javax.swing.JTextField txtAlias;
-    private javax.swing.JTextField txtContrasenia;
+    private javax.swing.JPasswordField txtContrasenia;
     // End of variables declaration//GEN-END:variables
 }
