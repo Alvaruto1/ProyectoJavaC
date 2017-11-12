@@ -35,6 +35,7 @@ public class Quices extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         cerrarVentanaSecundaria();
     }
+    
     /**
      * oculta la ventana secundaria y muestra el menu principal
      */
@@ -82,8 +83,8 @@ public class Quices extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        btnCalificar = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        btnEnviarRespuestas = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         btnRepInf = new javax.swing.JButton();
         btnPanico = new javax.swing.JButton();
@@ -161,9 +162,23 @@ public class Quices extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(131, 184, 61));
 
+        btnCalificar.setBackground(new java.awt.Color(131, 184, 61));
+        btnCalificar.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        btnCalificar.setForeground(new java.awt.Color(16, 67, 16));
+        btnCalificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/enviarSugerencia.png"))); // NOI18N
+        btnCalificar.setText("Calificar");
+        btnCalificar.setDoubleBuffered(true);
+        btnCalificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCalificar.setPreferredSize(new java.awt.Dimension(180, 100));
+        btnCalificar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnCalificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalificarActionPerformed(evt);
+            }
+        });
+
         jPanel5.setBackground(new java.awt.Color(51, 153, 0));
-        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel5.setAutoscrolls(true);
+        jPanel5.setBorder(new javax.swing.border.MatteBorder(null));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -173,35 +188,17 @@ public class Quices extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 368, Short.MAX_VALUE)
+            .addGap(0, 349, Short.MAX_VALUE)
         );
-
-        btnEnviarRespuestas.setBackground(new java.awt.Color(131, 184, 61));
-        btnEnviarRespuestas.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        btnEnviarRespuestas.setForeground(new java.awt.Color(16, 67, 16));
-        btnEnviarRespuestas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/enviarSugerencia.png"))); // NOI18N
-        btnEnviarRespuestas.setText("Calificar");
-        btnEnviarRespuestas.setDoubleBuffered(true);
-        btnEnviarRespuestas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnEnviarRespuestas.setPreferredSize(new java.awt.Dimension(180, 100));
-        btnEnviarRespuestas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnEnviarRespuestas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEnviarRespuestasActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnCalificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(24, 24, 24))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnEnviarRespuestas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -209,8 +206,8 @@ public class Quices extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEnviarRespuestas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCalificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -299,7 +296,7 @@ public class Quices extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -315,9 +312,9 @@ public class Quices extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnRepInfActionPerformed
 
-    private void btnEnviarRespuestasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarRespuestasActionPerformed
+    private void btnCalificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalificarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEnviarRespuestasActionPerformed
+    }//GEN-LAST:event_btnCalificarActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         menu.setVisible(true);
@@ -327,7 +324,7 @@ public class Quices extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEnviarRespuestas;
+    private javax.swing.JButton btnCalificar;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnPanico;
     private javax.swing.JButton btnRepInf;
