@@ -14,7 +14,13 @@ public class ProgramaCNP {
     public ProgramaCNP() {
     }
 
+    
+    /**
+     * codigo de policia
+     */ 
+    private CodPol codigoPolicia = new CodPol();
     // vistas del programa Codigo de Polciia
+    
     
     /**
      * ventana correspondiente al registro del usuario
@@ -55,7 +61,7 @@ public class ProgramaCNP {
     /**
      * Ventana articulos
      */    
-    private Articulos ventanaArticulo = new Articulos();
+    private Articulos ventanaArticulo = new Articulos(this);
     /**
      * Ventana esoger tipo material didactico
      */    
@@ -63,13 +69,9 @@ public class ProgramaCNP {
     /**
      * Ventana material didactico
      */    
-    private MaterialDidactico ventanaDidactico = new MaterialDidactico();
+    private MaterialDidactico ventanaDidactico = new MaterialDidactico();    
     
     
-    /**
-     * codigo de policia
-     */ 
-    private CodPol codigoPolicia;
     /**
      * arreglo de usuarios
      */    
@@ -110,6 +112,10 @@ public class ProgramaCNP {
      * @return ruta de caricatura, boletin o leyenda
      */
     public String consultarNorma(String id , int opcion) {
+        if(codigoPolicia == null){
+            System.out.println("si es null");
+        }
+        
         return codigoPolicia.consultarNorma(id, opcion);        
     }
 
@@ -193,7 +199,7 @@ public class ProgramaCNP {
     /**
      * Inicializa las ventanas con sus respectivos parametros
      */
-    public void inicializarVentanas(){
+    public void inicializarVentanas(){        
         this.ventanaRegistro.inicioVentana(ventanaMenu, ventanaSesion, ventanaPanico, ventanaInfraccion, this);
         this.ventanaMenu.inicioVentana(ventanaSesion, ventanaRegistro, ventanaNorma, ventanaQuiz, ventanaSugerencia, ventanaInfraccion, ventanaPanico);
         this.ventanaSesion.inicioVentana(ventanaMenu, ventanaRegistro, ventanaInfraccion, ventanaPanico, this);
@@ -202,10 +208,11 @@ public class ProgramaCNP {
         this.ventanaNorma.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico,ventanaArticulo,ventanaEscogerDidactico);
         this.ventanaDidactico.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico, ventanaComentario, ventanaEscogerDidactico);
         this.ventanaEscogerDidactico.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico, ventanaDidactico, this);
-        this.ventanaArticulo.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, ventanaComentario, this);
+        this.ventanaArticulo.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, ventanaComentario);
         this.ventanaComentario.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, this);
         this.ventanaQuiz.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, this);
         this.ventanaSugerencia.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, this);
+        
     }
     
     /**

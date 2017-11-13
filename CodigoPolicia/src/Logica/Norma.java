@@ -54,7 +54,7 @@ public class Norma {
     /**
      * comentarios realizados por los usuarios sobre la norma
      */
-    private ArrayList <Comentario> comentarios;
+    private ArrayList <Comentario> comentarios = new ArrayList <Comentario>();
     
 /** retorna la descipcion de la norma
      * @return la descipcion de la norma
@@ -76,6 +76,21 @@ public class Norma {
     public String mostrarCaricatura() {
         return this.caricatura;
         
+    }
+    
+    /** retorna la ruta de la caricatura de la norma
+     * @return ruta de la caricatura de la norma
+     */
+    public String mostrarTitulo() {
+        return this.titulo;
+        
+    }
+    
+    /** retorna el tema de la norma
+     * @return tema de la norma
+     */
+    public String mostrarTema() {
+        return this.tema;        
     }
 
     /**  

@@ -235,13 +235,10 @@
                                       <Component id="cbxLibro" min="-2" pref="122" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="cbxTitulo" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="cbxArticulo1" min="-2" pref="180" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="cbxArticulo" min="-2" pref="180" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="cbxCapitulo" min="-2" pref="133" max="-2" attributes="0"/>
                                   <Component id="cbxTema" min="-2" pref="133" max="-2" attributes="0"/>
@@ -263,7 +260,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cbxArticulo1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxArticulo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cbxTema" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -314,13 +311,8 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="T&#xed;tulo 1"/>
-                    <StringItem index="1" value="T&#xed;tulo 2"/>
-                    <StringItem index="2" value="T&#xed;tulo 3"/>
-                    <StringItem index="3" value="T&#xed;ulo4"/>
-                  </StringArray>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { titulo.get(0).get(0), titulo.get(0).get(1)})" type="code"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
@@ -339,13 +331,8 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Cap&#xed;tulo 1"/>
-                    <StringItem index="1" value="Cap&#xed;tulo 2"/>
-                    <StringItem index="2" value="Cap&#xed;tulo 3"/>
-                    <StringItem index="3" value="Cap&#xed;tulo 4"/>
-                  </StringArray>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { capitulo.get(0).get(0).get(0), capitulo.get(0).get(0).get(1)})" type="code"/>
                 </Property>
               </Properties>
               <Events>
@@ -379,20 +366,18 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Tema 1"/>
-                    <StringItem index="1" value="Tema 2"/>
-                    <StringItem index="2" value="Tema 3"/>
-                    <StringItem index="3" value="Tema 4"/>
-                  </StringArray>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] {&quot;&#xc1;mbito de aplicaci&#xf3;n&quot;,&quot;Facultades de la Polic&#xed;a&quot;,&quot;Convivencia Ciudadana&quot;,&quot;Intimidad&quot;,&quot;Protecci&#xf3;n Infantil&quot;,&quot;Poblaci&#xf3;n vulnerable&quot;,&quot;Ciclistas&quot;,&quot;Espacio p&#xfa;blico&quot;,&quot;Actuaci&#xf3;n Fuerza p&#xfa;blica&quot;,&quot;Protecci&#xf3;n inmuebles&quot;,&quot;Actividad econ&#xf3;mica&quot;,&quot;Medio ambiente&quot;,&quot;Salud p&#xfa;blica&quot;,&quot;Protecci&#xf3;n animal&quot;,&quot;Multas&quot;})" type="code"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxTemaActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cbxArticulo1">
+            <Component class="javax.swing.JComboBox" name="cbxArticulo">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="99" red="33" type="rgb"/>
@@ -400,15 +385,13 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="1. T&#xed;tulo art&#xed;culo"/>
-                    <StringItem index="1" value="2. T&#xed;tulo art&#xed;culo"/>
-                    <StringItem index="2" value="3. T&#xed;tulo art&#xed;culo"/>
-                    <StringItem index="3" value="4. T&#xed;tulo art&#xed;culo"/>
-                  </StringArray>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] {&quot;Ar1&quot;+&quot; &quot;+articulo[0][0][0][0], &quot;Ar2&quot;+&quot; &quot;+articulo[0][0][0][1], &quot;Ar3&quot;+&quot; &quot;+articulo[0][0][0][2], &quot;Ar4&quot;+&quot; &quot;+articulo[0][0][0][3] })" type="code"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxArticuloActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -486,7 +469,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextArea2">
+                <Component class="javax.swing.JTextArea" name="aTxtLeyenda">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -495,6 +478,7 @@
                     <Property name="columns" type="int" value="20"/>
                     <Property name="lineWrap" type="boolean" value="true"/>
                     <Property name="rows" type="int" value="5"/>
+                    <Property name="text" type="java.lang.String" value="Las disposiciones previstas en este C&#xf3;digo son de car&#xe1;cter preventivo y buscan establecer las condiciones para la convivencia en el territorio nacional al propiciar el cumplimiento de los deberes y obligaciones de las personas naturales y jur&#xed;dicas, as&#xed; como determinar el ejercicio del poder, la funci&#xf3;n y la actividad de Polic&#xed;a, de conformidad con la Constituci&#xf3;n Pol&#xed;tica y el ordenamiento jur&#xed;dico vigente. "/>
                   </Properties>
                 </Component>
               </SubComponents>
