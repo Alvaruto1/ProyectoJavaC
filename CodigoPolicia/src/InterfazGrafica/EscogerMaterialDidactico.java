@@ -222,6 +222,7 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
 
         rbtnCaricatura.setBackground(new java.awt.Color(51, 153, 0));
         rbtnCaricatura.setForeground(new java.awt.Color(255, 255, 255));
+        rbtnCaricatura.setSelected(true);
         rbtnCaricatura.setText("Caricatura");
         rbtnCaricatura.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
