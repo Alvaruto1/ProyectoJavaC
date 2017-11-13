@@ -78,13 +78,14 @@ public class ReportarInfraccion extends javax.swing.JFrame {
         btnEnviarComentario = new javax.swing.JButton();
         cbxTema = new javax.swing.JComboBox<>();
         cbxArticulo1 = new javax.swing.JComboBox<>();
-        btnEnviarReporteInfraccion = new javax.swing.JButton();
+        btnInfraccionesFrecuentes = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         btnEnviarComentario1 = new javax.swing.JButton();
         btnEnviarComentario2 = new javax.swing.JButton();
+        btnEnviarReporteInfraccion = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         btnRepInf = new javax.swing.JButton();
         btnPanico = new javax.swing.JButton();
@@ -192,18 +193,18 @@ public class ReportarInfraccion extends javax.swing.JFrame {
         cbxArticulo1.setForeground(new java.awt.Color(255, 255, 255));
         cbxArticulo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Título artículo", "2. Título artículo", "3. Título artículo", "4. Título artículo" }));
 
-        btnEnviarReporteInfraccion.setBackground(new java.awt.Color(131, 184, 61));
-        btnEnviarReporteInfraccion.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        btnEnviarReporteInfraccion.setForeground(new java.awt.Color(16, 67, 16));
-        btnEnviarReporteInfraccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/enviarSugerencia.png"))); // NOI18N
-        btnEnviarReporteInfraccion.setText("Enviar Reporte");
-        btnEnviarReporteInfraccion.setDoubleBuffered(true);
-        btnEnviarReporteInfraccion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnEnviarReporteInfraccion.setPreferredSize(new java.awt.Dimension(180, 100));
-        btnEnviarReporteInfraccion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnEnviarReporteInfraccion.addActionListener(new java.awt.event.ActionListener() {
+        btnInfraccionesFrecuentes.setBackground(new java.awt.Color(131, 184, 61));
+        btnInfraccionesFrecuentes.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        btnInfraccionesFrecuentes.setForeground(new java.awt.Color(16, 67, 16));
+        btnInfraccionesFrecuentes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/infracciones.png"))); // NOI18N
+        btnInfraccionesFrecuentes.setText("Ver Infracciones");
+        btnInfraccionesFrecuentes.setDoubleBuffered(true);
+        btnInfraccionesFrecuentes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnInfraccionesFrecuentes.setPreferredSize(new java.awt.Dimension(180, 100));
+        btnInfraccionesFrecuentes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnInfraccionesFrecuentes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEnviarReporteInfraccionActionPerformed(evt);
+                btnInfraccionesFrecuentesActionPerformed(evt);
             }
         });
 
@@ -231,21 +232,35 @@ public class ReportarInfraccion extends javax.swing.JFrame {
         btnEnviarComentario2.setMaximumSize(new java.awt.Dimension(75, 80));
         btnEnviarComentario2.setMinimumSize(new java.awt.Dimension(75, 80));
 
+        btnEnviarReporteInfraccion.setBackground(new java.awt.Color(131, 184, 61));
+        btnEnviarReporteInfraccion.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        btnEnviarReporteInfraccion.setForeground(new java.awt.Color(16, 67, 16));
+        btnEnviarReporteInfraccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/enviarSugerencia.png"))); // NOI18N
+        btnEnviarReporteInfraccion.setText("Enviar Reporte");
+        btnEnviarReporteInfraccion.setDoubleBuffered(true);
+        btnEnviarReporteInfraccion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEnviarReporteInfraccion.setPreferredSize(new java.awt.Dimension(180, 100));
+        btnEnviarReporteInfraccion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEnviarReporteInfraccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviarReporteInfraccionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnEnviarReporteInfraccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addComponent(cbxLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -258,13 +273,17 @@ public class ReportarInfraccion extends javax.swing.JFrame {
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cbxCapitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cbxTema, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jScrollPane2)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(btnEnviarComentario1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnEnviarComentario2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnEnviarComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnEnviarComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(btnInfraccionesFrecuentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnEnviarReporteInfraccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())))
         );
         jPanel4Layout.setVerticalGroup(
@@ -284,16 +303,17 @@ public class ReportarInfraccion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEnviarComentario2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEnviarComentario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)
-                        .addComponent(btnEnviarReporteInfraccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnEnviarComentario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnEnviarComentario2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEnviarComentario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEnviarComentario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnInfraccionesFrecuentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEnviarReporteInfraccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jPanel6.setBackground(new java.awt.Color(0, 51, 0));
@@ -400,14 +420,18 @@ public class ReportarInfraccion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxCapituloActionPerformed
 
-    private void btnEnviarReporteInfraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarReporteInfraccionActionPerformed
+    private void btnInfraccionesFrecuentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfraccionesFrecuentesActionPerformed
         
-    }//GEN-LAST:event_btnEnviarReporteInfraccionActionPerformed
+    }//GEN-LAST:event_btnInfraccionesFrecuentesActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuActionPerformed
+
+    private void btnEnviarReporteInfraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarReporteInfraccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEnviarReporteInfraccionActionPerformed
 
     
 
@@ -416,6 +440,7 @@ public class ReportarInfraccion extends javax.swing.JFrame {
     private javax.swing.JButton btnEnviarComentario1;
     private javax.swing.JButton btnEnviarComentario2;
     private javax.swing.JButton btnEnviarReporteInfraccion;
+    private javax.swing.JButton btnInfraccionesFrecuentes;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnPanico;
     private javax.swing.JButton btnRepInf;

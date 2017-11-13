@@ -110,6 +110,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         sugerenciasBtn = new javax.swing.JButton();
         inicSesiBtn = new javax.swing.JButton();
         registrarBtn = new javax.swing.JButton();
+        btnUbicacionCAI = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         repInfBtn = new javax.swing.JButton();
         panicoBtn = new javax.swing.JButton();
@@ -265,30 +266,47 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnUbicacionCAI.setBackground(new java.awt.Color(131, 184, 61));
+        btnUbicacionCAI.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        btnUbicacionCAI.setForeground(new java.awt.Color(16, 67, 16));
+        btnUbicacionCAI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/activarUbicacion.png"))); // NOI18N
+        btnUbicacionCAI.setText("Ubicación CAI");
+        btnUbicacionCAI.setDoubleBuffered(true);
+        btnUbicacionCAI.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnUbicacionCAI.setPreferredSize(new java.awt.Dimension(180, 100));
+        btnUbicacionCAI.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnUbicacionCAI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUbicacionCAIActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(normaBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lecQuizBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(sugerenciasBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+            .addComponent(sugerenciasBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(registrarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(117, 117, 117)
                 .addComponent(inicSesiBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(btnUbicacionCAI, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
                 .addComponent(normaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lecQuizBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(sugerenciasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnUbicacionCAI, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sugerenciasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inicSesiBtn)
                     .addComponent(registrarBtn))
@@ -424,9 +442,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_registrarBtnMouseClicked
 
+    private void btnUbicacionCAIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbicacionCAIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUbicacionCAIActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnUbicacionCAI;
     private javax.swing.JButton inicSesiBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
