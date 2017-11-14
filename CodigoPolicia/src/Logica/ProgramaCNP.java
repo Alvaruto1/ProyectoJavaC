@@ -2,6 +2,7 @@ package Logica;
 import InterfazGrafica.*;
 
 import java.util.*;
+import javax.swing.JOptionPane;
 
 /**
  * 
@@ -37,7 +38,7 @@ public class ProgramaCNP {
     /**
      * ventana correspondiente a las sugerencias
      */
-    private Sugerencias ventanaSugerencia = new Sugerencias();
+    private Sugerencias ventanaSugerencia = new Sugerencias(this);
     /**
      * ventana correspondiente a los comentarios
      */
@@ -88,7 +89,7 @@ public class ProgramaCNP {
     /**
      * correo al que se le envia
      */
-    private String emailPCNP;
+    private String emailPCNP = "codP@gmail.com";
     /**
      * @param args[]     
      */
@@ -188,6 +189,19 @@ public class ProgramaCNP {
     }
     
     /**
+     * envia un sugerencia sobre el programa
+     * @param comentario
+     * @param correo
+     * @return 
+     */
+    public boolean enviarSugerencia(String comentario, String correo){
+        Sugerencia suge = new Sugerencia();
+        suge.hacerSugerencia(comentario, correo);
+        JavaMail javaMail = new JavaMail(emailPCNP,"contracorreo",comentario,emailPCNP, "Sugerencia: "+correo+"("+suge.getFecha()+")");
+        return javaMail.enviarCorreo();      
+    }
+    
+    /**
      * inicia el programa de Codigo de Policia
      */
     public void iniciarProgramaCNP(){
@@ -211,7 +225,7 @@ public class ProgramaCNP {
         this.ventanaArticulo.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, ventanaComentario);
         this.ventanaComentario.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, this);
         this.ventanaQuiz.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, this);
-        this.ventanaSugerencia.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, this);
+        this.ventanaSugerencia.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion);
         
     }
     

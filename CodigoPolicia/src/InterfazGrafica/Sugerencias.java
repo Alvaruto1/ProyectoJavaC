@@ -4,6 +4,7 @@ import Logica.ProgramaCNP;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,7 +31,8 @@ public class Sugerencias extends javax.swing.JFrame {
     /**
      * Constructor
      */
-    public Sugerencias() {        
+    public Sugerencias(ProgramaCNP p) {    
+        programa = p;
         initComponents();
         this.setLocationRelativeTo(null);
         cerrarVentanaSecundaria();
@@ -61,11 +63,10 @@ public class Sugerencias extends javax.swing.JFrame {
      * inicia la ventana con sus respectivos parametros
      * @param menu ventana principal     
      * @param panico     
-     * @param r ventana infraccion    
-     * @param p programa codigo policia
+     * @param r ventana infraccion  
      */
-    public void inicioVentana(MenuPrincipal menu, Panico panico, ReportarInfraccion r, ProgramaCNP p){        
-        this.programa = p;        
+    public void inicioVentana(MenuPrincipal menu, Panico panico, ReportarInfraccion r){        
+             
         this.menu = menu;
         this.panico = panico;
         this.infraccion = r;
@@ -87,8 +88,8 @@ public class Sugerencias extends javax.swing.JFrame {
         btnEnviarSugerencia = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
+        txtSugerencia = new javax.swing.JTextArea();
+        txtCorreo = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         btnRepInf = new javax.swing.JButton();
         btnPanico = new javax.swing.JButton();
@@ -191,13 +192,13 @@ public class Sugerencias extends javax.swing.JFrame {
 
         jScrollPane1.setBackground(new java.awt.Color(153, 255, 102));
 
-        jTextArea1.setBackground(new java.awt.Color(153, 255, 102));
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtSugerencia.setBackground(new java.awt.Color(153, 255, 102));
+        txtSugerencia.setColumns(20);
+        txtSugerencia.setLineWrap(true);
+        txtSugerencia.setRows(5);
+        jScrollPane1.setViewportView(txtSugerencia);
 
-        jTextField1.setBackground(new java.awt.Color(153, 255, 102));
+        txtCorreo.setBackground(new java.awt.Color(153, 255, 102));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -215,7 +216,7 @@ public class Sugerencias extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField1)
+                            .addComponent(txtCorreo)
                             .addComponent(jScrollPane1))
                         .addGap(24, 24, 24))))
         );
@@ -229,7 +230,7 @@ public class Sugerencias extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(btnEnviarSugerencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -337,7 +338,14 @@ public class Sugerencias extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRepInfActionPerformed
 
     private void btnEnviarSugerenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarSugerenciaActionPerformed
-        // TODO add your handling code here:
+        if(programa.enviarSugerencia(txtSugerencia.getText(), txtCorreo.getText())){
+            JOptionPane.showMessageDialog(this,"Su sugerencia se ha enviado correctamente","Estado mensaje",JOptionPane.INFORMATION_MESSAGE);
+            txtSugerencia.setText("");
+            txtCorreo.setText("");
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"No se ha podido enviar, intentelo mas tarde","Estado mensaje",JOptionPane.WARNING_MESSAGE);            
+        }
     }//GEN-LAST:event_btnEnviarSugerenciaActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
@@ -364,8 +372,8 @@ public class Sugerencias extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblUsuario;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextArea txtSugerencia;
     // End of variables declaration//GEN-END:variables
 }
