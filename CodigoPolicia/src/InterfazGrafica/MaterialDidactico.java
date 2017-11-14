@@ -1,9 +1,18 @@
 package InterfazGrafica;
 
+import Logica.CodPol;
 import Logica.ProgramaCNP;
+import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -29,13 +38,17 @@ public class MaterialDidactico extends javax.swing.JFrame {
     /**
      * Ventana de escoger material didactico
      */    
-    private EscogerMaterialDidactico escoger; 
+    private EscogerMaterialDidactico escoger;
+    /**
+     * programa codigo de policia
+     */
+    private ProgramaCNP programa;
     
     /**
      * constructor
      */
-    public MaterialDidactico() {
-        
+    public MaterialDidactico(ProgramaCNP p) {
+        programa = p;
         initComponents();
         this.setLocationRelativeTo(null);
         cerrarVentanaSecundaria();
@@ -99,7 +112,7 @@ public class MaterialDidactico extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel4 = new javax.swing.JLabel();
+        lblArticulo = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         btnRepInf = new javax.swing.JButton();
         btnPanico = new javax.swing.JButton();
@@ -109,6 +122,11 @@ public class MaterialDidactico extends javax.swing.JFrame {
         setBackground(new java.awt.Color(153, 255, 51));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 704));
@@ -200,7 +218,11 @@ public class MaterialDidactico extends javax.swing.JFrame {
         btnEnviarComentario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Enviar.png"))); // NOI18N
 
         lblMaterialDidactico.setBackground(new java.awt.Color(255, 255, 255));
-        lblMaterialDidactico.setText("Espacio donde estará el material didáctico.");
+        lblMaterialDidactico.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMaterialDidacticoMouseClicked(evt);
+            }
+        });
 
         btnVerComentarios.setBackground(new java.awt.Color(131, 184, 61));
         btnVerComentarios.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
@@ -225,9 +247,9 @@ public class MaterialDidactico extends javax.swing.JFrame {
         jSeparator1.setBackground(new java.awt.Color(0, 102, 0));
         jSeparator1.setForeground(new java.awt.Color(51, 255, 51));
 
-        jLabel4.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(16, 67, 16));
-        jLabel4.setText("Artículo 1. Nombre del articulo");
+        lblArticulo.setFont(new java.awt.Font("Arial Black", 1, 10)); // NOI18N
+        lblArticulo.setForeground(new java.awt.Color(16, 67, 16));
+        lblArticulo.setText("Artículo 1. Nombre del articulo");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -257,16 +279,16 @@ public class MaterialDidactico extends javax.swing.JFrame {
                         .addComponent(jSeparator1)
                         .addContainerGap())
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(lblArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addComponent(lblArticulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblMaterialDidactico, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                .addComponent(lblMaterialDidactico, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -398,6 +420,36 @@ public class MaterialDidactico extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnVerComentariosActionPerformed
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        mostrarMaterial();
+    }//GEN-LAST:event_formWindowActivated
+
+    private void lblMaterialDidacticoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMaterialDidacticoMouseClicked
+        ImageIcon icon = new ImageIcon(programa.consultarNorma(EscogerMaterialDidactico.id, EscogerMaterialDidactico.tipoDidactico));
+        JLabel imagen= new JLabel(icon);
+        JScrollPane panel = new JScrollPane(imagen);        
+        panel.setPreferredSize(new Dimension(900, 600));               
+        JOptionPane.showMessageDialog(this,panel,"Material Didactico Articulo "+EscogerMaterialDidactico.id,JOptionPane.PLAIN_MESSAGE,null);        
+    }//GEN-LAST:event_lblMaterialDidacticoMouseClicked
+    
+    /**
+     * redimensiona imagen del material idactico y lo muestra en pantalla
+     */
+    private void mostrarMaterial(){
+        lblArticulo.setText("Articulo "+EscogerMaterialDidactico.id+". "+programa.consultarNorma(EscogerMaterialDidactico.id, CodPol.TITULO));
+        ImageIcon icon = new ImageIcon(programa.consultarNorma(EscogerMaterialDidactico.id, EscogerMaterialDidactico.tipoDidactico));
+        Image imagen = icon.getImage();
+        if(EscogerMaterialDidactico.tipoDidactico == CodPol.BOLETIN){
+            imagen=imagen.getScaledInstance(120,-1,Image.SCALE_DEFAULT);
+        }
+        else{
+            imagen=imagen.getScaledInstance(250,-1,Image.SCALE_DEFAULT);
+        }
+        
+        icon = new ImageIcon(imagen);        
+        lblMaterialDidactico.setIcon(icon);
+        lblMaterialDidactico.setHorizontalAlignment(JLabel.CENTER);
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -410,7 +462,6 @@ public class MaterialDidactico extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -421,6 +472,7 @@ public class MaterialDidactico extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lblArticulo;
     private javax.swing.JLabel lblMaterialDidactico;
     private javax.swing.JLabel lblUsuario;
     // End of variables declaration//GEN-END:variables

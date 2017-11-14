@@ -17,8 +17,8 @@ public class Norma {
     public Norma(String id, String texto, String tema, String titulo) {        
         this.id = id;
         this.texto = texto;
-        this.caricatura = "/src/caricaturas/caricatura"+id+".pdf";
-        this.boletin = "/src/boletines/boletin"+id+".pdf";
+        this.caricatura = "src/caricaturas/"+id+".jpg";
+        this.boletin = "src/boletines/"+id+".jpg";
         this.tema = tema;   
         this.titulo = titulo;
     }

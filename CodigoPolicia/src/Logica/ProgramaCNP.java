@@ -65,11 +65,11 @@ public class ProgramaCNP {
     /**
      * Ventana esoger tipo material didactico
      */    
-    private EscogerMaterialDidactico ventanaEscogerDidactico = new EscogerMaterialDidactico();
+    private EscogerMaterialDidactico ventanaEscogerDidactico = new EscogerMaterialDidactico(this);
     /**
      * Ventana material didactico
      */    
-    private MaterialDidactico ventanaDidactico = new MaterialDidactico();    
+    private MaterialDidactico ventanaDidactico = new MaterialDidactico(this);    
     
     
     /**
@@ -207,7 +207,7 @@ public class ProgramaCNP {
         this.ventanaPanico.inicioVentana(ventanaMenu, ventanaInfraccion);
         this.ventanaNorma.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico,ventanaArticulo,ventanaEscogerDidactico);
         this.ventanaDidactico.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico, ventanaComentario, ventanaEscogerDidactico);
-        this.ventanaEscogerDidactico.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico, ventanaDidactico, this);
+        this.ventanaEscogerDidactico.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico, ventanaDidactico);
         this.ventanaArticulo.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, ventanaComentario);
         this.ventanaComentario.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, this);
         this.ventanaQuiz.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, this);
