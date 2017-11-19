@@ -89,7 +89,7 @@ public class ProgramaCNP {
     /**
      * correo al que se le envia
      */
-    private String emailPCNP = "codP@gmail.com";
+    private String emailPCNP = "appcodigopolicia@gmail.com";
     /**
      * @param args[]     
      */
@@ -112,10 +112,7 @@ public class ProgramaCNP {
      * @param opcion caricatur, boletin o leyenda
      * @return ruta de caricatura, boletin o leyenda
      */
-    public String consultarNorma(String id , int opcion) {
-        if(codigoPolicia == null){
-            System.out.println("si es null");
-        }
+    public String consultarNorma(String id , int opcion) {        
         
         return codigoPolicia.consultarNorma(id, opcion);        
     }
@@ -207,7 +204,7 @@ public class ProgramaCNP {
     public boolean enviarSugerencia(String comentario, String correo){
         Sugerencia suge = new Sugerencia();
         suge.hacerSugerencia(comentario, correo);
-        JavaMail javaMail = new JavaMail(emailPCNP,"contracorreo",comentario,emailPCNP, "Sugerencia: "+correo+"("+suge.getFecha()+")");
+        JavaMail javaMail = new JavaMail(emailPCNP,"appcodigopolicia.com",comentario,emailPCNP, "Sugerencia: "+correo+"("+suge.getFecha()+")");
         return javaMail.enviarCorreo();      
     }
     
