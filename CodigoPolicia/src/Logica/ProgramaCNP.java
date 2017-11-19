@@ -249,6 +249,16 @@ public class ProgramaCNP {
         ventanaRegistro.actualizarSesion(usuarioAlias);
         ventanaSesion.actualizarSesion(usuarioAlias);
         ventanaMenu.actualizarSesion(usuarioAlias);
+        ventanaInfraccion.actualizarSesion(usuarioAlias);
+        ventanaPanico.actualizarSesion(usuarioAlias);
+        ventanaNorma.actualizarSesion(usuarioAlias);
+        ventanaDidactico.actualizarSesion(usuarioAlias);
+        ventanaEscogerDidactico.actualizarSesion(usuarioAlias);
+        ventanaArticulo.actualizarSesion(usuarioAlias);
+        ventanaComentario.actualizarSesion(usuarioAlias);
+        ventanaQuiz.actualizarSesion(usuarioAlias);
+        ventanaSugerencia.actualizarSesion(usuarioAlias);
+        
         
     }
     

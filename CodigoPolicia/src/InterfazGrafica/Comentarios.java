@@ -555,14 +555,14 @@ public class Comentarios extends javax.swing.JFrame {
         obtenerArticuloVentanaAnterios();
        
         
-        /*if("Invitado".equals(programa.obtenerAlias())){
+        if("Invitado".equals(programa.obtenerAlias())){
             txtComentario.setEnabled(false);
             btnEnviarComentario.setEnabled(false);
         }
         else{
             txtComentario.setEnabled(true);
             btnEnviarComentario.setEnabled(true);
-        }        */
+        }        
     }//GEN-LAST:event_formWindowActivated
     
     /**

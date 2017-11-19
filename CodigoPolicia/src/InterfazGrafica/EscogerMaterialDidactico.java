@@ -63,6 +63,9 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
         groupbtnEscogerMD.add(rbtnCaricatura);
         this.setLocationRelativeTo(null);
         cerrarVentanaSecundaria();
+        habilitarComponentes(false);
+        btnVerMaterialDidactico.setEnabled(false);
+        
         
     }
     
@@ -235,7 +238,6 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
 
         rbtnBoletin.setBackground(new java.awt.Color(51, 153, 0));
         rbtnBoletin.setForeground(new java.awt.Color(255, 255, 255));
-        rbtnBoletin.setSelected(true);
         rbtnBoletin.setText("Boletín");
         rbtnBoletin.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         rbtnBoletin.addActionListener(new java.awt.event.ActionListener() {
@@ -491,8 +493,12 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
     private void cbxTemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTemaActionPerformed
         cbxArticulo.removeAllItems();
         for(int i=0;i<243;i++){
+            
             if(programa.consultarNorma(""+i,CodPol.TEMA).equals(cbxTema.getSelectedItem())){
-                cbxArticulo.addItem("Ar"+i+" "+programa.consultarNorma(""+i, CodPol.TITULO));
+                File f = new File(programa.consultarNorma(""+(i),EscogerMaterialDidactico.tipoDidactico));                                
+                if(f.exists()){
+                    cbxArticulo.addItem("Ar"+i+" "+programa.consultarNorma(""+i, CodPol.TITULO));
+                }    
             }
         }
     }//GEN-LAST:event_cbxTemaActionPerformed
@@ -504,6 +510,7 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
     private void rbtnCaricaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnCaricaturaActionPerformed
         filtroArticulo();
         filtrarLibro();
+        habilitarComponentes(true);
         
         
     }//GEN-LAST:event_rbtnCaricaturaActionPerformed
@@ -511,7 +518,7 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
     private void rbtnBoletinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnBoletinActionPerformed
         filtroArticulo();
         filtrarLibro();
-        
+        habilitarComponentes(true);
     }//GEN-LAST:event_rbtnBoletinActionPerformed
 
     
@@ -520,12 +527,20 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
      */
     private void filtroArticulo(){
         for(int k=0; k<243;k++){            
-            if(("Ar"+(k+1)+" "+programa.consultarNorma((k+1)+"",CodPol.TITULO)).equals(cbxArticulo.getSelectedItem())){
-                           
+            if(("Ar"+(k+1)+" "+programa.consultarNorma((k+1)+"",CodPol.TITULO)).equals(cbxArticulo.getSelectedItem())){                           
                 cambiarIdDidactico(""+(k+1),devuelveSelecRadio());                
                 break;
             }
                            
+        }        
+        //si el filtro en articulo es nulo entonces deshabilita el boton de ver didactico
+        if(cbxArticulo.getSelectedItem()==null){
+                    
+            btnVerMaterialDidactico.setEnabled(false);
+            System.out.println("entra");
+        }
+        else{
+            btnVerMaterialDidactico.setEnabled(true);
         }
     }
     /**
@@ -586,11 +601,20 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
         } 
     }
     
+    /**
+     * cambia el id y tipo didactico segun esocgido
+     * @param id norma
+     * @param op tipo de didactico
+     */
     private void cambiarIdDidactico(String id, int op){
         EscogerMaterialDidactico.id = id;
         EscogerMaterialDidactico.tipoDidactico = op;
     }
     
+    /**
+     * devuelve el radio button selecionado
+     * @return radio buton
+     */
     private int devuelveSelecRadio(){
         if(rbtnBoletin.isSelected()){
             return CodPol.BOLETIN;
@@ -598,6 +622,18 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
         else{
             return CodPol.CARICATURA;
         }
+    }
+    
+    /**
+     * habilita o deshabilita las componentes de eleccios o de filtros
+     * @param estado 
+     */
+    private void habilitarComponentes(boolean estado){
+        cbxArticulo.setEnabled(estado);
+        cbxCapitulo.setEnabled(estado);
+        cbxTitulo.setEnabled(estado);
+        cbxTema.setEnabled(estado);
+        cbxLibro.setEnabled(estado);        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -123,7 +123,7 @@ public class Articulos extends javax.swing.JFrame {
         cbxArticulo = new javax.swing.JComboBox<>();
         btnVerComentarios = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtComentarios = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -139,6 +139,11 @@ public class Articulos extends javax.swing.JFrame {
         setBackground(new java.awt.Color(153, 255, 51));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 704));
@@ -240,6 +245,11 @@ public class Articulos extends javax.swing.JFrame {
         btnEnviarComentario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Enviar.png"))); // NOI18N
         btnEnviarComentario.setMaximumSize(new java.awt.Dimension(75, 80));
         btnEnviarComentario.setMinimumSize(new java.awt.Dimension(75, 80));
+        btnEnviarComentario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviarComentarioActionPerformed(evt);
+            }
+        });
 
         cbxTema.setBackground(new java.awt.Color(51, 153, 0));
         cbxTema.setForeground(new java.awt.Color(255, 255, 255));
@@ -274,11 +284,11 @@ public class Articulos extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setBackground(new java.awt.Color(153, 255, 102));
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtComentarios.setBackground(new java.awt.Color(153, 255, 102));
+        txtComentarios.setColumns(20);
+        txtComentarios.setLineWrap(true);
+        txtComentarios.setRows(5);
+        jScrollPane1.setViewportView(txtComentarios);
 
         jLabel4.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(16, 67, 16));
@@ -506,6 +516,22 @@ public class Articulos extends javax.swing.JFrame {
             }
         }       
     }//GEN-LAST:event_cbxTemaActionPerformed
+
+    private void btnEnviarComentarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarComentarioActionPerformed
+        programa.comentarNorma(txtComentarios.getText(), idNorma);         
+        txtComentarios.setText("");
+    }//GEN-LAST:event_btnEnviarComentarioActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        if("Invitado".equals(programa.obtenerAlias())){
+            txtComentarios.setEnabled(false);
+            btnEnviarComentario.setEnabled(false);
+        }
+        else{
+            txtComentarios.setEnabled(true);
+            btnEnviarComentario.setEnabled(true);
+        } 
+    }//GEN-LAST:event_formWindowActivated
     
     /**
      * filtra por articulo
@@ -619,8 +645,8 @@ public class Articulos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblArticulo;
     private javax.swing.JLabel lblUsuario;
+    private javax.swing.JTextArea txtComentarios;
     // End of variables declaration//GEN-END:variables
 }

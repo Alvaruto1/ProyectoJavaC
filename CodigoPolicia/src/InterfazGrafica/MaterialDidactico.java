@@ -54,6 +54,7 @@ public class MaterialDidactico extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         cerrarVentanaSecundaria();
+        
     }
     
     /**
@@ -112,7 +113,7 @@ public class MaterialDidactico extends javax.swing.JFrame {
         lblMaterialDidactico = new javax.swing.JLabel();
         btnVerComentarios = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtComentarios = new javax.swing.JTextArea();
         jSeparator1 = new javax.swing.JSeparator();
         lblArticulo = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -218,6 +219,11 @@ public class MaterialDidactico extends javax.swing.JFrame {
 
         btnEnviarComentario.setBackground(new java.awt.Color(0, 102, 0));
         btnEnviarComentario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Enviar.png"))); // NOI18N
+        btnEnviarComentario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviarComentarioActionPerformed(evt);
+            }
+        });
 
         lblMaterialDidactico.setBackground(new java.awt.Color(255, 255, 255));
         lblMaterialDidactico.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -241,10 +247,10 @@ public class MaterialDidactico extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setBackground(new java.awt.Color(153, 255, 102));
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtComentarios.setBackground(new java.awt.Color(153, 255, 102));
+        txtComentarios.setColumns(20);
+        txtComentarios.setRows(5);
+        jScrollPane1.setViewportView(txtComentarios);
 
         jSeparator1.setBackground(new java.awt.Color(0, 102, 0));
         jSeparator1.setForeground(new java.awt.Color(51, 255, 51));
@@ -428,6 +434,15 @@ public class MaterialDidactico extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         mostrarMaterial();
+        idNorma=EscogerMaterialDidactico.id;
+        if("Invitado".equals(programa.obtenerAlias())){
+            txtComentarios.setEnabled(false);
+            btnEnviarComentario.setEnabled(false);
+        }
+        else{
+            txtComentarios.setEnabled(true);
+            btnEnviarComentario.setEnabled(true);
+        } 
     }//GEN-LAST:event_formWindowActivated
 
     private void lblMaterialDidacticoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMaterialDidacticoMouseClicked
@@ -437,6 +452,11 @@ public class MaterialDidactico extends javax.swing.JFrame {
         panel.setPreferredSize(new Dimension(900, 600));               
         JOptionPane.showMessageDialog(this,panel,"Material Didactico Articulo "+EscogerMaterialDidactico.id,JOptionPane.PLAIN_MESSAGE,null);        
     }//GEN-LAST:event_lblMaterialDidacticoMouseClicked
+
+    private void btnEnviarComentarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarComentarioActionPerformed
+        programa.comentarNorma(txtComentarios.getText(), idNorma);         
+        txtComentarios.setText("");
+    }//GEN-LAST:event_btnEnviarComentarioActionPerformed
     
     /**
      * redimensiona imagen del material idactico y lo muestra en pantalla
@@ -483,9 +503,9 @@ public class MaterialDidactico extends javax.swing.JFrame {
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblArticulo;
     private javax.swing.JLabel lblMaterialDidactico;
     private javax.swing.JLabel lblUsuario;
+    private javax.swing.JTextArea txtComentarios;
     // End of variables declaration//GEN-END:variables
 }
