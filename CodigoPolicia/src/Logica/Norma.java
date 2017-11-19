@@ -114,9 +114,14 @@ public class Norma {
      */
     public void registrarComentario(String t, String email) {
         Comentario c = new Comentario();
-        c.registrarComentario(t,email); 
-        comentarios.add(c);             
+        c.registrarComentario(t,email);        
+        comentarios.add(c);       
+        
     }
+
+    public ArrayList<Comentario> getComentarios() {
+        return comentarios;
+    }    
 
     
 

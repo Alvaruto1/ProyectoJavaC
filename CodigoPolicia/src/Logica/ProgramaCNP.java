@@ -42,7 +42,7 @@ public class ProgramaCNP {
     /**
      * ventana correspondiente a los comentarios
      */
-    private Comentarios ventanaComentario = new Comentarios();
+    private Comentarios ventanaComentario = new Comentarios(this);
     /**
      * ventana correspondiente al quiz
      */
@@ -182,11 +182,21 @@ public class ProgramaCNP {
         String email="";
         for(Usuario u: usuarios){
             if(u.obtenerAlias().equals(this.usuarioAlias)){
-                 email = u.obtenerEmail();
+                 email = u.obtenerEmail();                 
             }
-        }        
+        }    
+        
         codigoPolicia.registrarComentario(comentario, email , idNorma);
     }
+    
+    /**
+     * obtiene los coemntarios de la norma
+     * @param id de la norma
+     * @return retorna un arreglo de coemntarios
+     */
+    public ArrayList<Comentario> obtenerComentarios(String id) {
+        return codigoPolicia.devolverNorma(id).getComentarios();
+    } 
     
     /**
      * envia un sugerencia sobre el programa
@@ -200,6 +210,8 @@ public class ProgramaCNP {
         JavaMail javaMail = new JavaMail(emailPCNP,"contracorreo",comentario,emailPCNP, "Sugerencia: "+correo+"("+suge.getFecha()+")");
         return javaMail.enviarCorreo();      
     }
+    
+    
     
     /**
      * inicia el programa de Codigo de Policia
@@ -223,7 +235,7 @@ public class ProgramaCNP {
         this.ventanaDidactico.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico, ventanaComentario, ventanaEscogerDidactico);
         this.ventanaEscogerDidactico.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico, ventanaDidactico);
         this.ventanaArticulo.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, ventanaComentario);
-        this.ventanaComentario.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, this);
+        this.ventanaComentario.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion);
         this.ventanaQuiz.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, this);
         this.ventanaSugerencia.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion);
         

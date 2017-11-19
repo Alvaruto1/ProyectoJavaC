@@ -1,14 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package InterfazGrafica;
 
+import Logica.CodPol;
+import Logica.Comentario;
+import Logica.InicializarDatos;
 import Logica.ProgramaCNP;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.border.Border;
 
 /**
  *
@@ -31,14 +41,33 @@ public class Comentarios extends javax.swing.JFrame {
      * programa de codigo policia
      */    
     private ProgramaCNP programa;
+    /**
+     * id de la norma actual
+     */
+    private String idNorma = "1";
+    
     
     /**
-     * Creates new form MenuPrincipal
+     * Titulos Libro/ Titulo/ Capitulo /Articulo
      */
-    public Comentarios() {        
+    private ArrayList <String> libro = new ArrayList <String>();
+    private ArrayList <ArrayList<String>> titulo = new ArrayList <ArrayList<String>>();
+    private ArrayList <ArrayList<ArrayList<String>>> capitulo = new ArrayList <ArrayList<ArrayList<String>>>();
+    //private ArrayList <ArrayList<ArrayList<ArrayList<String>>>> articulo = new ArrayList <ArrayList<ArrayList<ArrayList<String>>>>();
+    private String[][][][] articulo = new String[3][15][5][243]; 
+    
+    
+    /**
+     * Cosntructorl
+     */
+    public Comentarios(ProgramaCNP p) { 
+        this.programa = p;
+        inicializarArticulo();
         initComponents();
         this.setLocationRelativeTo(null);
         cerrarVentanaSecundaria();
+        
+        
     }
     
     /**
@@ -55,6 +84,14 @@ public class Comentarios extends javax.swing.JFrame {
     }
     
     /**
+     * Iniciliza la matriz de articulos, y coloca valores de filtros
+     */
+    public void inicializarArticulo(){
+        new InicializarDatos().inicializarFiltros(programa, articulo, capitulo, titulo, libro);
+    }    
+   
+    
+    /**
      * actualiza el nombre del usuario en la ventana
      * @param t nombre del usuario
      */
@@ -66,11 +103,9 @@ public class Comentarios extends javax.swing.JFrame {
      * inicia la ventana con sus respectivos parametros
      * @param menu ventana principal     
      * @param panico     
-     * @param r ventana infraccion    
-     * @param p programa codigo policia
+     * @param r ventana infraccion
      */
-    public void inicioVentana(MenuPrincipal menu, Panico panico, ReportarInfraccion r, ProgramaCNP p){
-        this.programa = p;        
+    public void inicioVentana(MenuPrincipal menu, Panico panico, ReportarInfraccion r){             
         this.menu = menu;
         this.panico = panico;
         this.infraccion = r;
@@ -89,20 +124,20 @@ public class Comentarios extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        btnEnviarComentario = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtComentario = new javax.swing.JTextArea();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        lblArticulo = new javax.swing.JLabel();
         cbxLibro = new javax.swing.JComboBox<>();
         cbxTitulo = new javax.swing.JComboBox<>();
         cbxCapitulo = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
-        btnEnviarComentario = new javax.swing.JButton();
         cbxTema = new javax.swing.JComboBox<>();
-        cbxArticulo1 = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabel4 = new javax.swing.JLabel();
+        cbxArticulo = new javax.swing.JComboBox<>();
+        pSCOmentarios = new javax.swing.JScrollPane();
+        pComentarios = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         btnRepInf = new javax.swing.JButton();
         btnPanico = new javax.swing.JButton();
@@ -112,6 +147,11 @@ public class Comentarios extends javax.swing.JFrame {
         setBackground(new java.awt.Color(153, 255, 51));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 704));
@@ -180,50 +220,23 @@ public class Comentarios extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(131, 184, 61));
 
-        cbxLibro.setBackground(new java.awt.Color(51, 153, 0));
-        cbxLibro.setForeground(new java.awt.Color(255, 255, 255));
-        cbxLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libro 1", "Libro 2", "Libro 3", "Libro 4" }));
-
-        cbxTitulo.setBackground(new java.awt.Color(51, 153, 0));
-        cbxTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        cbxTitulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Título 1", "Título 2", "Título 3", "Tíulo4" }));
-
-        cbxCapitulo.setBackground(new java.awt.Color(51, 153, 0));
-        cbxCapitulo.setForeground(new java.awt.Color(255, 255, 255));
-        cbxCapitulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Capítulo 1", "Capítulo 2", "Capítulo 3", "Capítulo 4" }));
-        cbxCapitulo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxCapituloActionPerformed(evt);
-            }
-        });
-
         jLabel5.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(16, 67, 16));
         jLabel5.setText("Enviar Comentario ");
 
         btnEnviarComentario.setBackground(new java.awt.Color(0, 102, 0));
         btnEnviarComentario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Enviar.png"))); // NOI18N
+        btnEnviarComentario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviarComentarioActionPerformed(evt);
+            }
+        });
 
-        cbxTema.setBackground(new java.awt.Color(51, 153, 0));
-        cbxTema.setForeground(new java.awt.Color(255, 255, 255));
-        cbxTema.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tema 1", "Tema 2", "Tema 3", "Tema 4" }));
-
-        cbxArticulo1.setBackground(new java.awt.Color(51, 153, 0));
-        cbxArticulo1.setForeground(new java.awt.Color(255, 255, 255));
-        cbxArticulo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Título artículo", "2. Título artículo", "3. Título artículo", "4. Título artículo" }));
-
-        jTextArea1.setEditable(false);
-        jTextArea1.setBackground(new java.awt.Color(153, 255, 102));
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jTextArea2.setBackground(new java.awt.Color(153, 255, 102));
-        jTextArea2.setColumns(20);
-        jTextArea2.setLineWrap(true);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        txtComentario.setBackground(new java.awt.Color(153, 255, 102));
+        txtComentario.setColumns(20);
+        txtComentario.setLineWrap(true);
+        txtComentario.setRows(5);
+        jScrollPane2.setViewportView(txtComentario);
 
         jSeparator1.setBackground(new java.awt.Color(0, 102, 0));
         jSeparator1.setForeground(new java.awt.Color(51, 255, 51));
@@ -233,10 +246,77 @@ public class Comentarios extends javax.swing.JFrame {
         jSeparator2.setForeground(new java.awt.Color(51, 255, 51));
         jSeparator2.setToolTipText("");
 
-        jLabel4.setBackground(new java.awt.Color(16, 67, 16));
-        jLabel4.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(16, 67, 16));
-        jLabel4.setText("Articulo 1. Nombre del articulo");
+        lblArticulo.setBackground(new java.awt.Color(16, 67, 16));
+        lblArticulo.setFont(new java.awt.Font("Arial Black", 1, 10)); // NOI18N
+        lblArticulo.setForeground(new java.awt.Color(16, 67, 16));
+        lblArticulo.setText("ART. 1. OBJETO.");
+
+        cbxLibro.setBackground(new java.awt.Color(51, 153, 0));
+        cbxLibro.setForeground(new java.awt.Color(255, 255, 255));
+        cbxLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { libro.get(0), libro.get(1), libro.get(2)}));
+        cbxLibro.setName(""); // NOI18N
+        cbxLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxLibroActionPerformed(evt);
+            }
+        });
+
+        cbxTitulo.setBackground(new java.awt.Color(51, 153, 0));
+        cbxTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        cbxTitulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { titulo.get(0).get(0), titulo.get(0).get(1)}));
+        cbxTitulo.setToolTipText("");
+        cbxTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxTituloActionPerformed(evt);
+            }
+        });
+
+        cbxCapitulo.setBackground(new java.awt.Color(51, 153, 0));
+        cbxCapitulo.setForeground(new java.awt.Color(255, 255, 255));
+        cbxCapitulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { capitulo.get(0).get(0).get(0), capitulo.get(0).get(0).get(1)}));
+        cbxCapitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxCapituloActionPerformed(evt);
+            }
+        });
+
+        cbxTema.setBackground(new java.awt.Color(51, 153, 0));
+        cbxTema.setForeground(new java.awt.Color(255, 255, 255));
+        cbxTema.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Ámbito de aplicación","Facultades de la Policía","Convivencia Ciudadana","Intimidad","Protección Infantil","Población vulnerable","Ciclistas","Espacio público","Actuación Fuerza pública","Protección inmuebles","Actividad económica","Medio ambiente","Salud pública","Protección animal","Multas"}));
+        cbxTema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxTemaActionPerformed(evt);
+            }
+        });
+
+        cbxArticulo.setBackground(new java.awt.Color(51, 153, 0));
+        cbxArticulo.setForeground(new java.awt.Color(255, 255, 255));
+        cbxArticulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Ar1"+" "+articulo[0][0][0][0], "Ar2"+" "+articulo[0][0][0][1], "Ar3"+" "+articulo[0][0][0][2], "Ar4"+" "+articulo[0][0][0][3] }));
+        cbxArticulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxArticuloActionPerformed(evt);
+            }
+        });
+
+        pSCOmentarios.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        pSCOmentarios.setHorizontalScrollBar(null);
+        pSCOmentarios.setPreferredSize(new java.awt.Dimension(367, 226));
+        pSCOmentarios.setVerticalScrollBar(jScrollBar1);
+
+        pComentarios.setBackground(new java.awt.Color(153, 255, 102));
+
+        javax.swing.GroupLayout pComentariosLayout = new javax.swing.GroupLayout(pComentarios);
+        pComentarios.setLayout(pComentariosLayout);
+        pComentariosLayout.setHorizontalGroup(
+            pComentariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 367, Short.MAX_VALUE)
+        );
+        pComentariosLayout.setVerticalGroup(
+            pComentariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 226, Short.MAX_VALUE)
+        );
+
+        pSCOmentarios.setViewportView(pComentarios);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -255,29 +335,28 @@ public class Comentarios extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1)
-                    .addComponent(jSeparator2))
-                .addContainerGap())
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator2)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(cbxLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cbxTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cbxArticulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                                .addComponent(cbxTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbxArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbxCapitulo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbxTema, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(cbxCapitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxTema, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(lblArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(pSCOmentarios, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(17, 17, 17)))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,15 +368,13 @@ public class Comentarios extends javax.swing.JFrame {
                     .addComponent(cbxCapitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxTema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxArticulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxTema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(lblArticulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 247, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(jLabel5)
@@ -306,6 +383,11 @@ public class Comentarios extends javax.swing.JFrame {
                     .addComponent(btnEnviarComentario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(127, 127, 127)
+                    .addComponent(pSCOmentarios, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                    .addGap(128, 128, 128)))
         );
 
         jPanel6.setBackground(new java.awt.Color(0, 51, 0));
@@ -409,15 +491,186 @@ public class Comentarios extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnRepInfActionPerformed
 
-    private void cbxCapituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCapituloActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxCapituloActionPerformed
-
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuActionPerformed
 
+    private void cbxLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxLibroActionPerformed
+        filtrarLibro();
+    }//GEN-LAST:event_cbxLibroActionPerformed
+
+    private void cbxTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTituloActionPerformed
+        filtrarTitulo(cbxLibro.getSelectedIndex());
+    }//GEN-LAST:event_cbxTituloActionPerformed
+
+    private void cbxCapituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCapituloActionPerformed
+        filtrarCapitulo(cbxLibro.getSelectedIndex(),cbxTitulo.getSelectedIndex());
+    }//GEN-LAST:event_cbxCapituloActionPerformed
+
+    private void cbxTemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTemaActionPerformed
+        cbxArticulo.removeAllItems();
+        for(int i=0;i<243;i++){
+            if(programa.consultarNorma(""+i,CodPol.TEMA).equals(cbxTema.getSelectedItem())){
+                cbxArticulo.addItem("Ar"+i+" "+programa.consultarNorma(""+i, CodPol.TITULO));
+            }
+        }
+    }//GEN-LAST:event_cbxTemaActionPerformed
+
+    private void cbxArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxArticuloActionPerformed
+        filtroArticulo();
+    }//GEN-LAST:event_cbxArticuloActionPerformed
+
+    private void btnEnviarComentarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarComentarioActionPerformed
+        programa.comentarNorma(txtComentario.getText(), idNorma);
+        colocarComentarios(idNorma);        
+        
+    }//GEN-LAST:event_btnEnviarComentarioActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        /*if("Invitado".equals(programa.obtenerAlias())){
+            txtComentario.setEnabled(false);
+            btnEnviarComentario.setEnabled(false);
+        }
+        else{
+            txtComentario.setEnabled(true);
+            btnEnviarComentario.setEnabled(true);
+        }*/
+    }//GEN-LAST:event_formWindowActivated
+    
+    /**
+     * filtra por articulo
+     */
+    private void filtroArticulo(){
+        for(int k=0; k<243;k++){            
+            if(("Ar"+(k+1)+" "+programa.consultarNorma((k+1)+"",CodPol.TITULO)).equals(cbxArticulo.getSelectedItem())){
+                idNorma=""+(k+1);                
+                mostrarLeyendaNorma(""+(k+1));
+                colocarComentarios(""+(k+1));    
+                
+                
+                
+                break;
+            }
+                           
+        }
+    }
+    /**
+     * filtra por libro por titulo
+     */
+    private void filtrarLibro(){
+        for(int i=0; i<libro.size();i++){
+            if(cbxLibro.getSelectedIndex()==i){
+                cbxTitulo.removeAllItems();
+                for(String a: titulo.get(i)){
+                    cbxTitulo.addItem(a);                   
+                }
+                filtrarTitulo(i);      
+                
+            }            
+        }
+    }
+    /**
+     * filtra dependiendo del libro titulo capitulo
+     * @param i numero del libro
+     */
+    private void filtrarTitulo(int i){
+        for(int j=0; j<titulo.get(i).size();j++){
+                    if(cbxTitulo.getSelectedIndex()==j){
+                        cbxCapitulo.removeAllItems();
+                        for(String a: capitulo.get(i).get(j)){
+                            cbxCapitulo.addItem(a);                   
+                        }  
+                        filtrarCapitulo(i, j);
+                    }            
+        } 
+    }
+    
+    /**
+     * filtra por libro, titulo, capitulo 
+     * @param i
+     * @param p 
+     */
+    private void filtrarCapitulo(int i,int p){
+        
+       int cont=0;
+        for(int j=0; j<capitulo.get(i).get(p).size();j++){
+                    if(cbxCapitulo.getSelectedIndex()==j){
+                        cbxArticulo.removeAllItems();
+                        for(int k=0; k<243;k++){
+                            if(!"".equals(articulo[i][p][j][k])){
+                                cbxArticulo.addItem("Ar"+(k+1)+" "+articulo[i][p][j][k]);
+                                if(cont<1){
+                                    mostrarLeyendaNorma(""+(k+1));
+                                    colocarComentarios(""+(k+1));
+                                    cont++;
+                                }
+                                
+                            }                   
+                        }  
+                    }            
+        } 
+    }
+    
+    private void mostrarLeyendaNorma(String id){
+        //aTxtLeyenda.setText(programa.consultarNorma(id, CodPol.LEYENDA));
+        lblArticulo.setText("ART. "+id+". "+programa.consultarNorma(id, CodPol.TITULO));
+    }
+    
+    private void colocarComentarios(String id){
+       ArrayList<Comentario> c =programa.obtenerComentarios(id);
+       
+       for(Comentario d: c){
+           System.out.println(d.getTexto()+"-"+d.getFecha());
+       }
+       pComentarios.removeAll();
+       
+       for(Comentario com: c){  
+           
+           JLabel l=new JLabel();           
+           l.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.green,2,true), com.getEmail()));            
+           String t;
+           t="<HTML>"+separarTextoLineas(com.getTexto(), 59);
+           t+="<br><br>"+com.getFecha()+"</HTML>";           
+           l.setText(t);             
+           pComentarios.setLayout(new BoxLayout(pComentarios,BoxLayout.Y_AXIS));           
+           
+           pComentarios.add(l);
+           pComentarios.updateUI();
+           
+       }
+    }
+    
+    /**
+     * separa textos de mayor a n caractares de tal manera que queden por linea como mucho n caracteres
+     * @param t texto
+     * @param n numero de caracteres por linea
+     * @return 
+     */
+    private String separarTextoLineas(String t, int n){
+        ArrayList <String> textos = new ArrayList <>();
+        String aux=t,aux1="";
+        boolean estado=true;
+        
+        while(estado){
+            if(aux.length()<=n){
+                textos.add(aux);
+                estado=false;
+            }
+            else{
+                textos.add(aux.substring(0,n));
+                aux=aux.substring(n);
+                estado=true;
+            }
+                       
+        }
+        
+        for(String s: textos){
+            aux1+="<br>"+s;                       
+        }
+         return aux1;
+        
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -426,7 +679,7 @@ public class Comentarios extends javax.swing.JFrame {
     private javax.swing.JButton btnPanico;
     private javax.swing.JButton btnRepInf;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> cbxArticulo1;
+    private javax.swing.JComboBox<String> cbxArticulo;
     private javax.swing.JComboBox<String> cbxCapitulo;
     private javax.swing.JComboBox<String> cbxLibro;
     private javax.swing.JComboBox<String> cbxTema;
@@ -434,7 +687,6 @@ public class Comentarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -442,12 +694,13 @@ public class Comentarios extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollBar jScrollBar1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JLabel lblArticulo;
     private javax.swing.JLabel lblUsuario;
+    private javax.swing.JPanel pComentarios;
+    private javax.swing.JScrollPane pSCOmentarios;
+    private javax.swing.JTextArea txtComentario;
     // End of variables declaration//GEN-END:variables
 }

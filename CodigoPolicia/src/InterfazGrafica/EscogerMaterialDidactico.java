@@ -1,6 +1,7 @@
 package InterfazGrafica;
 
 import Logica.CodPol;
+import Logica.InicializarDatos;
 import Logica.ProgramaCNP;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -48,8 +49,7 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
      */
     private ArrayList <String> libro = new ArrayList <String>();
     private ArrayList <ArrayList<String>> titulo = new ArrayList <ArrayList<String>>();
-    private ArrayList <ArrayList<ArrayList<String>>> capitulo = new ArrayList <ArrayList<ArrayList<String>>>();
-    //private ArrayList <ArrayList<ArrayList<ArrayList<String>>>> articulo = new ArrayList <ArrayList<ArrayList<ArrayList<String>>>>();
+    private ArrayList <ArrayList<ArrayList<String>>> capitulo = new ArrayList <ArrayList<ArrayList<String>>>();    
     private String[][][][] articulo = new String[3][15][5][243]; 
     
     /**
@@ -66,196 +66,11 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
         
     }
     
-       /**
+     /**
      * Iniciliza la matriz de articulos, y coloca valores de filtros
      */
     public void inicializarArticulo(){
-        for(int i=0;i<3;i++){
-            for(int j=0;j<15;j++){
-                for(int k=0;k<5;k++){
-                    for(int l=0;l<243;l++){
-                        articulo[i][j][k][l]="";            
-                     }            
-                }                          
-            }
-        }
-       //libros
-        libro.add("LIBRO I DISPOSICIONES GENERALES ");
-        libro.add("LIBRO II DE LA LIBERTAD, LOS DERECHOS Y DEBERES DE LAS PERSONAS EN MATERIA DE CONVIVENCIA");
-        libro.add("LIBRO III MEDIOS DE POLICÍA, MEDIDAS CORRECTIVAS, AUTORIDADES DE POLICÍA Y COMPETENCIAS, PROCEDIMIENTOS, MECANISMOS ALTERNATIVOS DE SOLUCIÓN DE DESACUERDOS O CONFLICTOS");
-       //titulos
-        //titulos libro 1
-        ArrayList <String> libro1Titulo = new ArrayList<String>();
-        libro1Titulo.add("TÍTULO I OBJETO DEL CÓDIGO, ÁMBITO DE APLICACIÓN Y AUTONOMÍA BASES DE LA CONVIVENCIA ");
-        libro1Titulo.add("TÍTULO IIPODER, FUNCIÓN Y ACTIVIDAD DE POLICÍA");
-        //titulos libro 2
-        ArrayList <String> libro2Titulo = new ArrayList<String>();
-        libro2Titulo.add("TÍTULO IDEL CONTENIDO DEL LIBRO");
-        libro2Titulo.add("TÍTULO IIDE LOS COMPORTAMIENTOS CONTRARIOS A LA CONVIVENCIA");
-        libro2Titulo.add("TÍTULO IIIDEL DERECHO DE LAS PERSONAS A LA SEGURIDAD Y A LA DE SUS BIENES");
-        libro2Titulo.add("TÍTULO IVDE LA TRANQUILIDAD Y LAS RELACIONES RESPETUOSAS");
-        libro2Titulo.add("TÍTULO VDE LAS RELACIONES RESPETUOSAS CON GRUPOS ESPECÍFICOS DE LA SOCIEDAD");
-        libro2Titulo.add("TÍTULO VIDEL DERECHO DE REUNIÓN");
-        libro2Titulo.add("TÍTULO VIIDE LA PROTECCIÓN DE BIENES INMUEBLES");
-        libro2Titulo.add("TÍTULO VIIIDE LA ACTIVIDAD ECONÓMICA");
-        libro2Titulo.add("TÍTULO IXDEL AMBIENTE");
-        libro2Titulo.add("TÍTULO XMINERÍA");
-        libro2Titulo.add("TÍTULO XISALUD PÚBLICA");
-        libro2Titulo.add("TÍTULO XIIDEL PATRIMONIO CULTURAL Y SU CONSERVACIÓN");
-        libro2Titulo.add("TÍTULO XIIIDE LA RELACIÓN CON LOS ANIMALES");
-        libro2Titulo.add("TÍTULO XIVDEL URBANISMO");
-        libro2Titulo.add("TÍTULO XVDE LA LIBERTAD DE MOVILIDAD Y CIRCULACIÓN");
-        //titulos libro 3
-        ArrayList <String> libro3Titulo = new ArrayList<String>();
-        libro3Titulo.add("TÍTULO IMEDIOS DE POLICÍA Y MEDIDAS CORRECTIVAS");
-        libro3Titulo.add("TÍTULO IIAUTORIDADES DE POLICÍA Y COMPETENCIAS");
-        libro3Titulo.add("TÍTULO IIIPROCESO ÚNICO DE POLICÍA");
-        
-        titulo.add(libro1Titulo);
-        titulo.add(libro2Titulo);
-        titulo.add(libro3Titulo);
-       //capitulos        
-        ArrayList <String> libro1Titulo1Capitulo = new ArrayList<String>();
-        libro1Titulo1Capitulo.add("CAPÍTULO I OBJETO DEL CÓDIGO, ÁMBITO DE APLICACIÓN Y AUTONOMÍA ");
-        libro1Titulo1Capitulo.add("CAPÍTULO IIBASES DE LA CONVIVENCIA Y SEGURIDAD CIUDADANA");
-        ArrayList <String> libro1Titulo2Capitulo = new ArrayList<String>();
-        libro1Titulo2Capitulo.add("CAPÍTULO IPODER DE POLICÍA");
-        libro1Titulo2Capitulo.add("CAPÍTULO IIFUNCIÓN Y ACTIVIDAD DE POLICÍA");
-        libro1Titulo2Capitulo.add("CAPÍTULO IIICONCRECIÓN DE LA ORDEN DE POLICÍA");
-        ArrayList <String> libro2Titulo1Capitulo = new ArrayList<String>();
-        libro2Titulo1Capitulo.add("CAPÍTULO IÚNICOASPECTOS GENERALES");
-        ArrayList <String> libro2Titulo2Capitulo = new ArrayList<String>();
-        libro2Titulo2Capitulo.add("CAPÍTULO IIÚNICO");
-        ArrayList <String> libro2Titulo3Capitulo = new ArrayList<String>();
-        libro2Titulo3Capitulo.add("CAPÍTULO IVIDA E INTEGRIDAD DE LAS PERSONAS");
-        libro2Titulo3Capitulo.add("CAPÍTULO IIDE LA SEGURIDAD EN LOS SERVICIOS PÚBLICOS");
-        libro2Titulo3Capitulo.add("CAPÍTULO IIIARTÍCULOS PIROTÉCNICOS Y SUSTANCIAS PELIGROSAS");
-        ArrayList <String> libro2Titulo4Capitulo = new ArrayList<String>();
-        libro2Titulo4Capitulo.add("CAPÍTULO IPRIVACIDAD DE LAS PERSONAS");
-        libro2Titulo4Capitulo.add("CAPÍTULO IIDE LOS ESTABLECIMIENTOS EDUCATIVOS");
-        ArrayList <String> libro2Titulo5Capitulo = new ArrayList<String>();
-        libro2Titulo5Capitulo.add("CAPÍTULO INIÑOS, NIÑAS Y ADOLESCENTES");
-        libro2Titulo5Capitulo.add("CAPÍTULO IIGRUPOS DE ESPECIAL PROTECCIÓN CONSTITUCIONAL");
-        libro2Titulo5Capitulo.add("CAPÍTULO IIIEJERCICIO DE LA PROSTITUCIÓN");
-        ArrayList <String> libro2Titulo6Capitulo = new ArrayList<String>();
-        libro2Titulo6Capitulo.add("CAPÍTULO ICLASIFICACIÓN Y REGLAMENTACIÓN");
-        libro2Titulo6Capitulo.add("CAPÍTULO IIEXPRESIONES O MANIFESTACIONES EN EL ESPACIO PÚBLICO");
-        libro2Titulo6Capitulo.add("CAPÍTULO IIIACTIVIDADES QUE INVOLUCRAN AGLOMERACIONES DE PÚBLICO NO COMPLEJAS");
-        libro2Titulo6Capitulo.add("CAPÍTULO IVACTIVIDADES QUE INVOLUCRAN AGLOMERACIONES DE PÚBLICO COMPLEJAS");
-        ArrayList <String> libro2Titulo7Capitulo = new ArrayList<String>();
-        libro2Titulo7Capitulo.add("CAPÍTULO IDE LA POSESIÓN, LA TENENCIA Y LAS SERVIDUMBRES");
-        ArrayList <String> libro2Titulo8Capitulo = new ArrayList<String>();
-        libro2Titulo8Capitulo.add("CAPÍTULO IDE LA ACTIVIDAD ECONÓMICA Y SU REGLAMENTACIÓN");
-        libro2Titulo8Capitulo.add("CAPÍTULO IIESTACIONAMIENTOS O PARQUEADEROS");
-        libro2Titulo8Capitulo.add("CAPÍTULO IIICOMPORTAMIENTOS QUE AFECTAN LA ACTIVIDAD ECONÓMICA");
-        libro2Titulo8Capitulo.add("CAPÍTULO IVDE LA SEGURIDAD DE LOS EQUIPOS TERMINALES MÓVILES Y/O TARJETAS SIMCARD (IMSI)");
-        ArrayList <String> libro2Titulo9Capitulo = new ArrayList<String>();
-        libro2Titulo9Capitulo.add("CAPÍTULO IAMBIENTE");
-        libro2Titulo9Capitulo.add("CAPÍTULO IIRECURSO HÍDRICO, FAUNA, FLORA Y AIRE");
-        libro2Titulo9Capitulo.add("CAPÍTULO IIISISTEMA NACIONAL DE ÁREAS PROTEGIDAS (SINAP)");
-        ArrayList <String> libro2Titulo10Capitulo = new ArrayList<String>();
-        libro2Titulo10Capitulo.add("CAPÍTULO IMEDIDAS PARA EL CONTROL DE LA EXPLOTACIÓN Y APROVECHAMIENTO ILÍCITA DE MINERALES");
-        ArrayList <String> libro2Titulo11Capitulo = new ArrayList<String>();
-        libro2Titulo11Capitulo.add("CAPÍTULO IDE LA SALUD PÚBLICA");
-        libro2Titulo11Capitulo.add("CAPÍTULO IILIMPIEZA Y RECOLECCIÓN DE RESIDUOS Y DE ESCOMBROS");
-        ArrayList <String> libro2Titulo12Capitulo = new ArrayList<String>();
-        libro2Titulo12Capitulo.add("CAPÍTULO IPROTECCIÓN DE LOS BIENES DEL PATRIMONIO CULTURAL Y ARQUEOLÓGICO");
-        ArrayList <String> libro2Titulo13Capitulo = new ArrayList<String>();
-        libro2Titulo13Capitulo.add("CAPÍTULO IDEL RESPETO Y CUIDADO DE LOS ANIMALES");
-        libro2Titulo13Capitulo.add("CAPÍTULO IIANIMALES DOMÉSTICOS O MASCOTAS");
-        libro2Titulo13Capitulo.add("CAPÍTULO IIIDE LA CONVIVENCIA DE LAS PERSONAS CON ANIMALES");
-        libro2Titulo13Capitulo.add("CAPÍTULO IVEJEMPLARES CANINOS POTENCIALMENTE PELIGROSOS");
-        ArrayList <String> libro2Titulo14Capitulo = new ArrayList<String>();
-        libro2Titulo14Capitulo.add("CAPÍTULO ICOMPORTAMIENTOS QUE AFECTAN LA INTEGRIDAD URBANÍSTICA");
-        libro2Titulo14Capitulo.add("CAPÍTULO IIDEL CUIDADO E INTEGRIDAD DEL ESPACIO PÚBLICO");
-        ArrayList <String> libro2Titulo15Capitulo = new ArrayList<String>();
-        libro2Titulo15Capitulo.add("CAPÍTULO ICIRCULACIÓN Y DERECHO DE VÍA");
-        libro2Titulo15Capitulo.add("CAPÍTULO IIDE LA MOVILIDAD DE LOS PEATONES Y EN BICICLETA");
-        libro2Titulo15Capitulo.add("CAPÍTULO IIICONVIVENCIA EN LOS SISTEMAS DE TRANSPORTE MOTORIZADOS");
-        ArrayList <String> libro3Titulo1Capitulo = new ArrayList<String>();
-        libro3Titulo1Capitulo.add("CAPÍTULO IMEDIOS DE POLICÍA");
-        libro3Titulo1Capitulo.add("CAPÍTULO IIMEDIDAS CORRECTIVAS");
-        ArrayList <String> libro3Titulo2Capitulo = new ArrayList<String>();
-        libro3Titulo2Capitulo.add("CAPÍTULO IAUTORIDADES DE POLICÍA");
-        ArrayList <String> libro3Titulo3Capitulo = new ArrayList<String>();
-        libro3Titulo3Capitulo.add("CAPÍTULO IPROCESO ÚNICO DE POLICÍA");
-        libro3Titulo3Capitulo.add("CAPÍTULO IIPROCESO VERBAL INMEDIATO");
-        libro3Titulo3Capitulo.add("CAPÍTULO IIIPROCESO VERBAL ABREVIADO");
-        libro3Titulo3Capitulo.add("CAPÍTULO IVMECANISMOS ALTERNATIVOS DE SOLUCIÓN DE DESACUERDOS Y CONFLICTOS");
-        libro3Titulo3Capitulo.add("CAPÍTULO VDISPOSICIONES FINALES, VIGENCIA DEL CÓDIGO, NORMAS COMPLEMENTARIAS Y DEROGATORIAS");
-        
-        capitulo.add(new ArrayList<ArrayList<String>>() {{add(libro1Titulo1Capitulo);add(libro1Titulo2Capitulo);}});
-        capitulo.add(new ArrayList<ArrayList<String>>() {{add(libro2Titulo1Capitulo);add(libro2Titulo2Capitulo);add(libro2Titulo3Capitulo);add(libro2Titulo4Capitulo);add(libro2Titulo5Capitulo);add(libro2Titulo6Capitulo);
-            add(libro2Titulo7Capitulo);add(libro2Titulo8Capitulo);add(libro2Titulo9Capitulo);add(libro2Titulo10Capitulo);add(libro2Titulo11Capitulo);add(libro2Titulo12Capitulo);
-            add(libro2Titulo13Capitulo);add(libro2Titulo14Capitulo);add(libro2Titulo15Capitulo);}});
-        capitulo.add(new ArrayList<ArrayList<String>>() {{add(libro3Titulo1Capitulo); add(libro3Titulo2Capitulo);add(libro3Titulo3Capitulo);}});
-        
-        int cont=0;
-        for(int i=0;i<libro.size();i++){
-            for(int j=0;j<titulo.get(i).size();j++){
-                for(int k=0;k<capitulo.get(i).get(j).size();k++){
-                    cont++;
-                    switch(cont){
-                        case  1:for(int p=1;p<=4;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  2:for(int p=5;p<=10;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  3:for(int p=11;p<=15;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  4:for(int p=16;p<=22;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  5:for(int p=23;p<=23;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  6:for(int p=24;p<=25;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  7:for(int p=26;p<=26;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  8:for(int p=27;p<=27;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  9:for(int p=28;p<=28;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  10:for(int p=29;p<=30;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  11:for(int p=31;p<=33;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  12:for(int p=34;p<=35;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  13:for(int p=36;p<=39;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  14:for(int p=40;p<=41;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  15:for(int p=42;p<=46;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  16:for(int p=47;p<=52;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  17:for(int p=53;p<=57;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  18:for(int p=58;p<=59;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  19:for(int p=60;p<=75;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  20:for(int p=76;p<=82;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  21:for(int p=83;p<=88;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  22:for(int p=89;p<=90;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  23:for(int p=91;p<=94;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  24:for(int p=95;p<=95;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  25:for(int p=96;p<=99;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  26:for(int p=100;p<=102;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  27:for(int p=103;p<=103;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  28:for(int p=104;p<=108;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  29:for(int p=109;p<=110;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  30:for(int p=111;p<=111;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  31:for(int p=112;p<=115;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  32:for(int p=116;p<=116;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  33:for(int p=117;p<=123;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  34:for(int p=124;p<=125;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  35:for(int p=126;p<=134;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  36:for(int p=135;p<=138;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  37:for(int p=139;p<=140;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  38:for(int p=141;p<=141;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  39:for(int p=142;p<=145;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  40:for(int p=146;p<=148;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  41:for(int p=149;p<=171;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  42:for(int p=172;p<=197;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  43:for(int p=198;p<=212;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  44:for(int p=213;p<=221;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  45:for(int p=222;p<=222;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  46:for(int p=223;p<=230;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  47:for(int p=231;p<=234;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-                        case  48:for(int p=235;p<=243;p++){String t = programa.consultarNorma(""+p,CodPol.TITULO);articulo[i][j][k][p-1]=t;} break;
-
-                        
-                    }
-                }                
-            }
-        }
-             
-        
-        
-        
-        
-                
+        new InicializarDatos().inicializarFiltros(programa, articulo, capitulo, titulo, libro);          
     }
     /**
      * oculta la ventana secundaria y muestra el menu principal
