@@ -4,13 +4,9 @@ import Logica.CodPol;
 import Logica.Comentario;
 import Logica.InicializarDatos;
 import Logica.ProgramaCNP;
-import java.awt.BorderLayout;
+
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -18,13 +14,27 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.border.Border;
+
 
 /**
  *
  * @author alvar
  */
 public class Comentarios extends javax.swing.JFrame {
+    
+    /**
+     * valor ventana articulos
+     */
+    public static final int VEN_ARTICULOS = 0;
+    /**
+     * valor ventana didatico
+     */
+    public static final int VEN_DIDACTICO = 1;
+    /**
+     * ventana de la que viene
+     */
+    public static int ventanaAnterior;
+    
     /**
      * Ventana menu pricipal
      */    
@@ -38,13 +48,23 @@ public class Comentarios extends javax.swing.JFrame {
      */    
     private ReportarInfraccion infraccion;
     /**
-     * programa de codigo policia
+     * Ventana articulos
      */    
+    private Articulos articulos;
+    /**
+     * Ventana didactico
+     */    
+    private MaterialDidactico didactico;
+    /**
+     * programa de codigo policia
+     */ 
     private ProgramaCNP programa;
     /**
      * id de la norma actual
      */
     private String idNorma = "1";
+    
+    
     
     
     /**
@@ -65,8 +85,7 @@ public class Comentarios extends javax.swing.JFrame {
         inicializarArticulo();
         initComponents();
         this.setLocationRelativeTo(null);
-        cerrarVentanaSecundaria();
-        
+        cerrarVentanaSecundaria();        
         
     }
     
@@ -104,8 +123,12 @@ public class Comentarios extends javax.swing.JFrame {
      * @param menu ventana principal     
      * @param panico     
      * @param r ventana infraccion
+     * @param a ventana articulos
+     * @param d ventana didadtico
      */
-    public void inicioVentana(MenuPrincipal menu, Panico panico, ReportarInfraccion r){             
+    public void inicioVentana(MenuPrincipal menu, Panico panico, ReportarInfraccion r, Articulos a, MaterialDidactico d){             
+        this.didactico = d;       
+        this.articulos = a;
         this.menu = menu;
         this.panico = panico;
         this.infraccion = r;
@@ -523,11 +546,15 @@ public class Comentarios extends javax.swing.JFrame {
 
     private void btnEnviarComentarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarComentarioActionPerformed
         programa.comentarNorma(txtComentario.getText(), idNorma);
-        colocarComentarios(idNorma);        
+        colocarComentarios(idNorma);  
+        txtComentario.setText("");
         
     }//GEN-LAST:event_btnEnviarComentarioActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        obtenerArticuloVentanaAnterios();
+       
+        
         /*if("Invitado".equals(programa.obtenerAlias())){
             txtComentario.setEnabled(false);
             btnEnviarComentario.setEnabled(false);
@@ -535,7 +562,7 @@ public class Comentarios extends javax.swing.JFrame {
         else{
             txtComentario.setEnabled(true);
             btnEnviarComentario.setEnabled(true);
-        }*/
+        }        */
     }//GEN-LAST:event_formWindowActivated
     
     /**
@@ -547,7 +574,7 @@ public class Comentarios extends javax.swing.JFrame {
                 idNorma=""+(k+1);                
                 mostrarLeyendaNorma(""+(k+1));
                 colocarComentarios(""+(k+1));    
-                
+                pComentarios.updateUI();
                 
                 
                 break;
@@ -565,7 +592,8 @@ public class Comentarios extends javax.swing.JFrame {
                 for(String a: titulo.get(i)){
                     cbxTitulo.addItem(a);                   
                 }
-                filtrarTitulo(i);      
+                filtrarTitulo(i);    
+                pComentarios.updateUI();
                 
             }            
         }
@@ -618,11 +646,8 @@ public class Comentarios extends javax.swing.JFrame {
     }
     
     private void colocarComentarios(String id){
-       ArrayList<Comentario> c =programa.obtenerComentarios(id);
+       ArrayList<Comentario> c =programa.obtenerComentarios(id);     
        
-       for(Comentario d: c){
-           System.out.println(d.getTexto()+"-"+d.getFecha());
-       }
        pComentarios.removeAll();
        
        for(Comentario com: c){  
@@ -671,6 +696,40 @@ public class Comentarios extends javax.swing.JFrame {
          return aux1;
         
     }
+    
+    /**
+     * obtiene id articulo de la ventana anterior y filtra apartir de este id 
+     */
+    private void obtenerArticuloVentanaAnterios(){
+        if(ventanaAnterior == VEN_ARTICULOS){
+            idNorma=articulos.getIdNorma(); 
+        }
+        else{
+            idNorma=didactico.getIdNorma();
+            System.out.println(idNorma);
+        }  
+        for(int i=0;i<3;i++){
+            for(int j=0;j<15;j++){
+                for(int k=0;k<5;k++){
+                    for(int l=0;l<243;l++){                       
+                        if(articulo[i][j][k][l].equals(programa.consultarNorma(idNorma, CodPol.TITULO))){                            
+                            String auxId=idNorma;
+                            cbxLibro.setSelectedIndex(i);
+                            filtrarLibro();
+                            cbxTitulo.setSelectedIndex(j);
+                            filtrarTitulo(i);
+                            cbxCapitulo.setSelectedIndex(k);
+                            filtrarCapitulo(i,j);                            
+                            cbxArticulo.setSelectedItem("Ar"+auxId+" "+programa.consultarNorma((auxId)+"",CodPol.TITULO));                            
+                            filtroArticulo();  
+                            break;
+                        }            
+                     }            
+                }                          
+            }
+        }
+    }
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -10,8 +10,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
 /**
@@ -43,6 +41,10 @@ public class MaterialDidactico extends javax.swing.JFrame {
      * programa codigo de policia
      */
     private ProgramaCNP programa;
+    /**
+     * id de la norma activa
+     */
+    private String idNorma="1";
     
     /**
      * constructor
@@ -418,6 +420,10 @@ public class MaterialDidactico extends javax.swing.JFrame {
     private void btnVerComentariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerComentariosActionPerformed
         comentario.setVisible(true);
         this.setVisible(false);
+        Comentarios.ventanaAnterior=Comentarios.VEN_DIDACTICO;
+        
+        idNorma=EscogerMaterialDidactico.id;
+        
     }//GEN-LAST:event_btnVerComentariosActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -451,6 +457,12 @@ public class MaterialDidactico extends javax.swing.JFrame {
         lblMaterialDidactico.setHorizontalAlignment(JLabel.CENTER);
     }
     
+    /*
+    getter Id norma
+    */
+    public String getIdNorma() {
+        return idNorma;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;

@@ -478,6 +478,7 @@ public class Articulos extends javax.swing.JFrame {
     private void btnVerComentariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerComentariosActionPerformed
         comentario.setVisible(true);
         this.setVisible(false);
+        Comentarios.ventanaAnterior=Comentarios.VEN_ARTICULOS;
     }//GEN-LAST:event_btnVerComentariosActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
@@ -514,6 +515,7 @@ public class Articulos extends javax.swing.JFrame {
             if(("Ar"+(k+1)+" "+programa.consultarNorma((k+1)+"",CodPol.TITULO)).equals(cbxArticulo.getSelectedItem())){
                                 
                 mostrarLeyendaNorma(""+(k+1));
+                idNorma=""+(k+1);
                 
                 break;
             }
@@ -567,6 +569,7 @@ public class Articulos extends javax.swing.JFrame {
                                 cbxArticulo.addItem("Ar"+(k+1)+" "+articulo[i][p][j][k]);
                                 if(cont<1){
                                     mostrarLeyendaNorma(""+(k+1));
+                                    idNorma=""+(k+1);
                                     cont++;
                                 }
                                 
@@ -579,6 +582,13 @@ public class Articulos extends javax.swing.JFrame {
     private void mostrarLeyendaNorma(String id){
         aTxtLeyenda.setText(programa.consultarNorma(id, CodPol.LEYENDA));
         lblArticulo.setText("ART. "+id+". "+programa.consultarNorma(id, CodPol.TITULO));
+    }
+    
+    /*
+    getter Id norma
+    */
+    public String getIdNorma() {
+        return idNorma;
     }
     
     
