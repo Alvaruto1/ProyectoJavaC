@@ -1,5 +1,4 @@
 package Logica;
-import InterfazGrafica.ReportarInfraccion;
 import java.util.Properties;
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
@@ -98,7 +97,7 @@ public class JavaMail {
         }
     }
     
-   public boolean enviarCorreoAdjunto(String ruta){
+   public boolean enviarCorreoAdjunto(String ruta1, String ruta2){
         // propiedades que funcionan clave: valor, las caules se pasan como parametros a sesion
         Properties props = new Properties();
         
@@ -119,14 +118,24 @@ public class JavaMail {
         try {
             BodyPart texto = new MimeBodyPart();
             texto.setText(mensaje);
-            
-            BodyPart adjunto = new MimeBodyPart();
-            adjunto.setDataHandler(new DataHandler(new FileDataSource((String)ruta)));
-            adjunto.setFileName(ruta);
             MimeMultipart multiParte = new MimeMultipart();
-
             multiParte.addBodyPart(texto);
-            multiParte.addBodyPart(adjunto);
+            if(!ruta1.equals("")){
+                BodyPart adjunto1 = new MimeBodyPart();
+                adjunto1.setDataHandler(new DataHandler(new FileDataSource((String)ruta1)));
+                adjunto1.setFileName("foto");  
+                multiParte.addBodyPart(adjunto1);
+                System.out.println("entra foto");
+            }
+            
+            if(!ruta2.equals("")){
+                BodyPart adjunto2 = new MimeBodyPart();
+                adjunto2.setDataHandler(new DataHandler(new FileDataSource((String)ruta2)));
+                adjunto2.setFileName("video");
+                multiParte.addBodyPart(adjunto2);
+                System.out.println("entra video");
+            }
+            
             
             
             Message message = new MimeMessage(sesion);

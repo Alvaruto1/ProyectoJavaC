@@ -235,12 +235,13 @@ public class ProgramaCNP {
     /**
      * envia reporte de infraccion
      * @param descripcion de la infraccion
-     * @param ruta de la evidencia
+     * @param ruta1 evidencia fotografica
+     * @param ruta2 evidencia video
      * @return 
      */
-    public boolean enviarReporte(String descripcion, String ruta){
+    public boolean enviarReporte(String descripcion, String ruta1, String ruta2){
         
-        if(ruta.equals("")){
+        if(ruta1.equals("") && ruta2.equals("")){
             for(Usuario u: usuarios){
                 if(u.obtenerAlias().equals(usuarioAlias)){
                     if(u.registrarDenuncia(descripcion,ventanaInfraccion.getIdNorma())){
@@ -254,9 +255,9 @@ public class ProgramaCNP {
         else{
             for(Usuario u: usuarios){
                 if(u.obtenerAlias().equals(usuarioAlias)){
-                    if(u.registrarDenuncia(ruta,ventanaInfraccion.getIdNorma())){
+                    if(u.registrarDenuncia(ruta1,ventanaInfraccion.getIdNorma())){
                         JavaMail javaMailAdjunto = new JavaMail(emailPCNP,"appcodigopolicia.com",descripcion,emailPCNP, ("Infracción del ar.: "+ventanaInfraccion.getIdNorma()+"-"+u.obtenerEmail()));
-                        return javaMailAdjunto.enviarCorreoAdjunto(ruta); 
+                        return javaMailAdjunto.enviarCorreoAdjunto(ruta1,ruta2); 
                     }                                
                 }
 

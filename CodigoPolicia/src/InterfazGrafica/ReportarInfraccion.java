@@ -37,12 +37,15 @@ public class ReportarInfraccion extends javax.swing.JFrame {
     /**
      * id de la norma activa
      */
-    private String idNorma="1";
-    
+    private String idNorma="1";    
     /**
-     * ruta de la prueba de la infracción
+     * ruta de la prueba fotografica
      */
-    private String rutaInfraccion = "";
+    private String rutaPruFoto = "";
+    /**
+     * ruta de la prueba video
+     */
+    private String rutaPruVideo = "";
     
     /**
      * Titulos Libro/ Titulo/ Capitulo /Articulo
@@ -131,6 +134,8 @@ public class ReportarInfraccion extends javax.swing.JFrame {
         cbxCapitulo = new javax.swing.JComboBox<>();
         cbxTema = new javax.swing.JComboBox<>();
         cbxArticulo = new javax.swing.JComboBox<>();
+        lblAdjuntoFoto = new javax.swing.JLabel();
+        lblAdjuntoVideo = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         btnRepInf = new javax.swing.JButton();
         btnPanico = new javax.swing.JButton();
@@ -328,6 +333,16 @@ public class ReportarInfraccion extends javax.swing.JFrame {
             }
         });
 
+        lblAdjuntoFoto.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        lblAdjuntoFoto.setForeground(new java.awt.Color(255, 0, 0));
+        lblAdjuntoFoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAdjuntoFoto.setText("Adjunto: 0");
+
+        lblAdjuntoVideo.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        lblAdjuntoVideo.setForeground(new java.awt.Color(255, 0, 0));
+        lblAdjuntoVideo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAdjuntoVideo.setText("Adjunto: 0");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -335,35 +350,39 @@ public class ReportarInfraccion extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(btnInfraccionesFrecuentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEnviarReporteInfraccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(btnAdjuntarFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnEnviarComentario2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnAdjuntarVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(btnInfraccionesFrecuentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnEnviarReporteInfraccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(cbxLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(cbxTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(cbxArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbxCapitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbxTema, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap())))
+                                .addComponent(cbxLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cbxTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbxArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbxCapitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxTema, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(lblAdjuntoFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnAdjuntarFoto, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnEnviarComentario2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnAdjuntarVideo, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                            .addComponent(lblAdjuntoVideo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -382,13 +401,17 @@ public class ReportarInfraccion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAdjuntoFoto)
+                    .addComponent(lblAdjuntoVideo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnEnviarComentario2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAdjuntarFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAdjuntarVideo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnInfraccionesFrecuentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEnviarReporteInfraccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -506,10 +529,13 @@ public class ReportarInfraccion extends javax.swing.JFrame {
 
     private void btnEnviarReporteInfraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarReporteInfraccionActionPerformed
         
-        if(programa.enviarReporte(txtDescripcion.getText(), rutaInfraccion)){
+        if(programa.enviarReporte(txtDescripcion.getText(),rutaPruFoto,rutaPruVideo)){
             JOptionPane.showMessageDialog(this,"El reporte de la infracción se ha enviado correctamente","Estado mensaje",JOptionPane.INFORMATION_MESSAGE);
             txtDescripcion.setText("");
-            rutaInfraccion ="";
+            rutaPruFoto="";
+            rutaPruVideo="";
+            lblAdjuntoVideo.setText("Adjunto: 0");
+            lblAdjuntoFoto.setText("Adjunto: 0");
         }
         else{
             JOptionPane.showMessageDialog(this,"No se ha podido enviar, intentelo mas tarde","Estado mensaje",JOptionPane.WARNING_MESSAGE);            
@@ -581,19 +607,30 @@ public class ReportarInfraccion extends javax.swing.JFrame {
     public String getRutaPrueba(){
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG y PNG","jpg","png");
         if(btnAdjuntarFoto.isFocusOwner()){
-            filtro = new FileNameExtensionFilter("JPG y PNG","jpg","png");           
+            filtro = new FileNameExtensionFilter("JPG y PNG","jpg","png"); 
+            JFileChooser fc = new JFileChooser("src/img/");
+            fc.setFileFilter(filtro);
+            int boton = fc.showOpenDialog(null);
+            if(boton == JFileChooser.APPROVE_OPTION){
+                this.rutaPruFoto=fc.getSelectedFile().getAbsolutePath(); 
+                lblAdjuntoFoto.setText("Adjunto: 1");
+            }        
+            return rutaPruFoto;
         }
         else if(btnAdjuntarVideo.isFocusOwner()){
-            filtro = new FileNameExtensionFilter("MP4 y AVI","mp4","avi");           
+            filtro = new FileNameExtensionFilter("MP4 y AVI","mp4","avi");
+            JFileChooser fc = new JFileChooser("src/img/");
+            fc.setFileFilter(filtro);
+            int boton = fc.showOpenDialog(null);
+            if(boton == JFileChooser.APPROVE_OPTION){
+                this.rutaPruVideo=fc.getSelectedFile().getAbsolutePath();
+                lblAdjuntoVideo.setText("Adjunto: 1");
+            }        
+            return rutaPruVideo;
         }
         
-        JFileChooser fc = new JFileChooser("src/img/");
-        fc.setFileFilter(filtro);
-        int boton = fc.showOpenDialog(null);
-        if(boton == JFileChooser.APPROVE_OPTION){
-            this.rutaInfraccion=fc.getSelectedFile().getAbsolutePath();                              
-        }        
-        return rutaInfraccion;
+              
+        return "";
     }
     
     /**
@@ -699,6 +736,8 @@ public class ReportarInfraccion extends javax.swing.JFrame {
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblAdjuntoFoto;
+    private javax.swing.JLabel lblAdjuntoVideo;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JTextArea txtDescripcion;
     // End of variables declaration//GEN-END:variables

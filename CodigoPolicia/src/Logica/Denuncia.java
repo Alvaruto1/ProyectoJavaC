@@ -34,6 +34,7 @@ public class Denuncia {
 
     /** registrar sugerencia
      * @param d descripcion de la infracción
+     * @param id # de articulo
      */
     public void hacerReporte(String d, String id) {       
         this.descripcion = d;
