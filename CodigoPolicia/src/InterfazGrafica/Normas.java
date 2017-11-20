@@ -214,8 +214,8 @@ public class Normas extends javax.swing.JFrame {
         btnDescargarPDF.setBackground(new java.awt.Color(131, 184, 61));
         btnDescargarPDF.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         btnDescargarPDF.setForeground(new java.awt.Color(16, 67, 16));
-        btnDescargarPDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Descarga.png"))); // NOI18N
-        btnDescargarPDF.setText("Descargar PDF");
+        btnDescargarPDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/visualizarCodigo.png"))); // NOI18N
+        btnDescargarPDF.setText("Visualizar Código");
         btnDescargarPDF.setDoubleBuffered(true);
         btnDescargarPDF.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDescargarPDF.setPreferredSize(new java.awt.Dimension(180, 100));
@@ -378,7 +378,7 @@ public class Normas extends javax.swing.JFrame {
         visualPanel.setPreferredSize(new Dimension(900, 600));
         panel.setPreferredSize(new Dimension(900, 600)); 
         panel.add(visualPanel);
-        JOptionPane.showMessageDialog(this,panel,"Codigo de policia",JOptionPane.PLAIN_MESSAGE,null);
+        JOptionPane.showMessageDialog(this,panel,"Código de Policia",JOptionPane.PLAIN_MESSAGE,null);
         
         
     }
