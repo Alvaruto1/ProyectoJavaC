@@ -58,7 +58,7 @@ public class ProgramaCNP {
     /**
      * ventana correspondiente al panico
      */
-    private Panico ventanaPanico = new Panico();
+    private Panico ventanaPanico = new Panico(this);
     /**
      * Ventana articulos
      */    
@@ -212,11 +212,59 @@ public class ProgramaCNP {
         return javaMail.enviarCorreo();      
     }
     
-    public boolean enviarReporte(String descripcion){
-        Denuncia denu = new Denuncia();
-        denu.hacerReporte(descripcion);
-        JavaMail javaMailAdjunto = new JavaMail(emailPCNP,"appcodigopolicia.com",descripcion,emailPCNP, ("Reporte Infracción de norma: "+ventanaInfraccion.getIdNorma()));
-        return javaMailAdjunto.enviarCorreoAdjunto(); 
+    /**
+     * envia un mensaje via twitter
+     * @param comentario
+     * @return estado de envio mensaje de panico
+     */
+    public boolean enviarPanico(String comentario){
+        for(Usuario u: usuarios){
+            if(u.obtenerAlias().equals(usuarioAlias)){
+                if(u.enviarPanico(comentario)){
+                    Twitter4J twitter = new Twitter4J();
+                    twitter.setTweet(comentario);
+                    return twitter.twittear();           
+                }
+                                
+            }
+        }
+        return false;
+    }
+    
+    
+    /**
+     * envia reporte de infraccion
+     * @param descripcion de la infraccion
+     * @param ruta de la evidencia
+     * @return 
+     */
+    public boolean enviarReporte(String descripcion, String ruta){
+        
+        if(ruta.equals("")){
+            for(Usuario u: usuarios){
+                if(u.obtenerAlias().equals(usuarioAlias)){
+                    if(u.registrarDenuncia(descripcion,ventanaInfraccion.getIdNorma())){
+                        JavaMail javaMailAdjunto = new JavaMail(emailPCNP,"appcodigopolicia.com",descripcion,emailPCNP, ("Infracción del ar.: "+ventanaInfraccion.getIdNorma()+"-"+u.obtenerEmail()));
+                        return javaMailAdjunto.enviarCorreo(); 
+                    }                                
+                }
+
+            }            
+        }
+        else{
+            for(Usuario u: usuarios){
+                if(u.obtenerAlias().equals(usuarioAlias)){
+                    if(u.registrarDenuncia(ruta,ventanaInfraccion.getIdNorma())){
+                        JavaMail javaMailAdjunto = new JavaMail(emailPCNP,"appcodigopolicia.com",descripcion,emailPCNP, ("Infracción del ar.: "+ventanaInfraccion.getIdNorma()+"-"+u.obtenerEmail()));
+                        return javaMailAdjunto.enviarCorreoAdjunto(ruta); 
+                    }                                
+                }
+
+            }            
+        }
+        
+        return false;      
+        
     }
     
     /**

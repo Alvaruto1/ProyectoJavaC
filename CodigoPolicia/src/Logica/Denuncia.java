@@ -26,34 +26,19 @@ public class Denuncia {
      * descricion de la infracción
      */
     private String descripcion;
-
-    /**
-     * email de quien hace el reporte
-     */
-    private String email;
     
     /**
      * Artículo de la infración
      */
-    private int id;
+    private String id;
 
     /** registrar sugerencia
-     * @param t descripcion de la infracción
-     * @return estado de hacer el reporte
+     * @param d descripcion de la infracción
      */
-    public boolean hacerReporte(String d) {
-        
-        //analisis descripción reporte
-        if(d.equals("") || d.charAt(0)==' '){
-            return false;                   
-        }
-        else{
-            this.descripcion = d;
-            this.fecha = new Date();   
-            this.email = email;
-            return true;
-        }
-                
+    public void hacerReporte(String d, String id) {       
+        this.descripcion = d;
+        this.fecha = new Date(); 
+        this.id = id;
     }
 
     public Date getFecha() {
@@ -72,13 +57,6 @@ public class Denuncia {
         this.descripcion = texto;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
     
     
 

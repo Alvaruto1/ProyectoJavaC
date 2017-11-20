@@ -38,6 +38,11 @@ public class Usuario {
     private int puntajeAcum;
     
     /**
+     * mensajes de panico enviados
+     */
+    private ArrayList <LPanico> mensajePanico = new ArrayList<>();
+    
+    /**
      * Denuncias realizados por los usuarios
      */
     private ArrayList <Denuncia> denuncias = new ArrayList <Denuncia>();
@@ -129,6 +134,22 @@ public class Usuario {
         
     }
     
+    /**
+     * crear mensaje panico
+     * @param mensaje de panico
+     * @return 
+     */
+    public boolean enviarPanico(String mensaje){
+        String t = mensaje;
+        if(t.equals("") && t.charAt(0)==' ' && t.length()>140){
+            return false;                   
+        }
+        else{
+            mensajePanico.add(new LPanico("@AppCodigoPolici De: " + email + ": " + mensaje));
+            return true;
+        }        
+    }
+    
     /** registra un comentario sobre la norma
      * @param t describcion comentario     
      * @param comentarios arreglo de comentarios de la norma
@@ -184,14 +205,12 @@ public class Usuario {
         // tamaño menor a 10 y mayor a 0
         if(a.length()>10 && a.length()!=0){
             estado = estado && false;
-            System.out.println("entra alias1");
         }
         String aux = a.trim();
         
         // no pueder ser vacia, ni el primer caracter pueder ser un espacio
         if(aux.equals("") || a.charAt(0)==' '){
-            estado = estado && false;
-            System.out.println("entra alias2");
+            estado = estado && false;            
         }
         
         // analisis email
@@ -200,7 +219,6 @@ public class Usuario {
         // no vacia, la primera no espacio, y no debeb tener espacios
         if(e.length()==0 || e.charAt(0)==' ' || !aux.equals(e)){
             estado = estado && false;
-            System.out.println("entra email1");
         }
         // verficar que halla un @ y un .
         for(int i=0;i<e.length();i++){
@@ -213,7 +231,6 @@ public class Usuario {
         }
         if(cont!=1||cont1!=1){
                 estado = estado && false;
-                System.out.println("entra email2");
         }
         
         // analisis contraseña
@@ -221,21 +238,29 @@ public class Usuario {
         //comprobar que no tenga espacios, que no sea vaci
         if (!c.trim().equals(c) || c.equals("")){            
             estado= estado && false;
-            System.out.println("entra contra1");
         }
         return estado;
         
     }
     
-    public void registrarDenuncia(String t) {
-    Denuncia c = new Denuncia();
-    c.hacerReporte(t);        
-    denuncias.add(c);       
+    public boolean registrarDenuncia(String t, String id) {
+        //analisis registroDenuncia
+        
+        if(t.equals("") && t.charAt(0)==' '){
+            return false;                   
+        }
+        else{
+            Denuncia c = new Denuncia();
+            c.hacerReporte(t,id);
+            denuncias.add(c);
+            return true;
+        } 
+               
         
     }
     
     public ArrayList<Denuncia> getDenuncias() {
         return denuncias;
-    }    
+    }   
 
 }

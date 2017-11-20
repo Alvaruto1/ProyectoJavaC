@@ -5,6 +5,7 @@ import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
 import javax.mail.BodyPart;
 import javax.mail.Message;
+import javax.mail.MessagingException;
 
 import javax.mail.Session;
 import javax.mail.PasswordAuthentication;
@@ -37,10 +38,7 @@ public class JavaMail {
      */
     private String asunto = "";
     
-    /**
-     * ventana correspondiente al reporte infracciones
-     */
-    private ReportarInfraccion ventanaInfraccion;
+    
     
     /**
      * constructor de la clase
@@ -100,7 +98,7 @@ public class JavaMail {
         }
     }
     
-   public boolean enviarCorreoAdjunto(){
+   public boolean enviarCorreoAdjunto(String ruta){
         // propiedades que funcionan clave: valor, las caules se pasan como parametros a sesion
         Properties props = new Properties();
         
@@ -123,12 +121,13 @@ public class JavaMail {
             texto.setText(mensaje);
             
             BodyPart adjunto = new MimeBodyPart();
-            adjunto.setDataHandler(new DataHandler(new FileDataSource((String)ventanaInfraccion.getRutaPrueba())));
-            adjunto.setFileName(ventanaInfraccion.getRutaPrueba());
+            adjunto.setDataHandler(new DataHandler(new FileDataSource((String)ruta)));
+            adjunto.setFileName(ruta);
             MimeMultipart multiParte = new MimeMultipart();
 
             multiParte.addBodyPart(texto);
             multiParte.addBodyPart(adjunto);
+            
             
             Message message = new MimeMessage(sesion);
             message.setFrom(new InternetAddress(usuario));
@@ -139,7 +138,7 @@ public class JavaMail {
             Transport.send(message);
             return true;
                    
-        }catch (Exception e){
+        }catch (MessagingException e){
             System.out.println("Error: "+ e.getMessage());
             return false;
         
