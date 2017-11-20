@@ -22,7 +22,7 @@ public class CodPol {
     /**
      * ruta del pdf
      */
-    private String rutaPdf;
+    private String rutaPdf = "src/codigoPDF/codPN.pdf";
     
     /**
      * cosntante de verificacion si es boletin de la norma

@@ -50,7 +50,7 @@ public class ProgramaCNP {
     /**
      * ventana correspondiente a las normas
      */
-    private Normas ventanaNorma = new Normas();
+    private Normas ventanaNorma = new Normas(this);
     /**
      * ventana correspondiente al reporte infracciones
      */

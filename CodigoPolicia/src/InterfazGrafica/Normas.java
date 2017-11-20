@@ -1,9 +1,14 @@
 package InterfazGrafica;
 
 import Logica.ProgramaCNP;
+import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import org.icepdf.ri.common.SwingController;
+import org.icepdf.ri.common.SwingViewBuilder;
 
 /**
  *
@@ -35,11 +40,17 @@ public class Normas extends javax.swing.JFrame {
      * Ventana material didactico
      */    
     private EscogerMaterialDidactico escogerDidactico;
+     /**
+     * programa cdigo de policia
+     */    
+    private ProgramaCNP programa;
+    
     
     /**
      * COnstructor
      */
-    public Normas() {        
+    public Normas(ProgramaCNP programa) {  
+        this.programa = programa;
         initComponents();
         this.setLocationRelativeTo(null);
         cerrarVentanaSecundaria();
@@ -337,7 +348,7 @@ public class Normas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnArticulosActionPerformed
 
     private void btnDescargarPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescargarPDFActionPerformed
-        // TODO add your handling code here:
+        visualizarCodPDF();
     }//GEN-LAST:event_btnDescargarPDFActionPerformed
 
     private void btnPanicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPanicoActionPerformed
@@ -355,6 +366,22 @@ public class Normas extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuActionPerformed
 
+    private void visualizarCodPDF(){
+        SwingController controlador = new SwingController();        
+        SwingViewBuilder fabrica = new SwingViewBuilder(controlador);
+        JPanel visualPanel = fabrica.buildViewerPanel();
+        
+        controlador.getDocumentViewController().setAnnotationCallback(
+                new org.icepdf.ri.common.MyAnnotationCallback(controlador.getDocumentViewController()));
+        controlador.openDocument(programa.consultarTodo());
+        JPanel panel = new JPanel();
+        visualPanel.setPreferredSize(new Dimension(900, 600));
+        panel.setPreferredSize(new Dimension(900, 600)); 
+        panel.add(visualPanel);
+        JOptionPane.showMessageDialog(this,panel,"Codigo de policia",JOptionPane.PLAIN_MESSAGE,null);
+        
+        
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
