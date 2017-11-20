@@ -580,6 +580,13 @@ public class ReportarInfraccion extends javax.swing.JFrame {
      */
     public String getRutaPrueba(){
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG y PNG","jpg","png");
+        if(btnAdjuntarFoto.isFocusOwner()){
+            filtro = new FileNameExtensionFilter("JPG y PNG","jpg","png");           
+        }
+        else if(btnAdjuntarVideo.isFocusOwner()){
+            filtro = new FileNameExtensionFilter("MP4 y AVI","mp4","avi");           
+        }
+        
         JFileChooser fc = new JFileChooser("src/img/");
         fc.setFileFilter(filtro);
         int boton = fc.showOpenDialog(null);
