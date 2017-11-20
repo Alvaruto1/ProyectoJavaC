@@ -54,7 +54,7 @@ public class ProgramaCNP {
     /**
      * ventana correspondiente al reporte infracciones
      */
-    private ReportarInfraccion ventanaInfraccion = new ReportarInfraccion();
+    private ReportarInfraccion ventanaInfraccion = new ReportarInfraccion(this);
     /**
      * ventana correspondiente al panico
      */
@@ -90,6 +90,10 @@ public class ProgramaCNP {
      * correo al que se le envia
      */
     private String emailPCNP = "appcodigopolicia@gmail.com";
+    /**
+     * Correo de la policia
+     */
+    private String emailPolicia = "policianacionalcolomPOO@gmail.com";
     /**
      * @param args[]     
      */
@@ -208,7 +212,12 @@ public class ProgramaCNP {
         return javaMail.enviarCorreo();      
     }
     
-    
+    public boolean enviarReporte(String descripcion){
+        Denuncia denu = new Denuncia();
+        denu.hacerReporte(descripcion);
+        JavaMail javaMailAdjunto = new JavaMail(emailPCNP,"appcodigopolicia.com",descripcion,emailPCNP, ("Reporte Infracción de norma: "+ventanaInfraccion.getIdNorma()));
+        return javaMailAdjunto.enviarCorreoAdjunto(); 
+    }
     
     /**
      * inicia el programa de Codigo de Policia

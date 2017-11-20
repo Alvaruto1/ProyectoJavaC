@@ -1,12 +1,18 @@
 package Logica;
+import InterfazGrafica.ReportarInfraccion;
 import java.util.Properties;
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
 import javax.mail.Message;
 
 import javax.mail.Session;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 public class JavaMail {
     
@@ -30,6 +36,11 @@ public class JavaMail {
      * asunto del correo
      */
     private String asunto = "";
+    
+    /**
+     * ventana correspondiente al reporte infracciones
+     */
+    private ReportarInfraccion ventanaInfraccion;
     
     /**
      * constructor de la clase
@@ -89,6 +100,54 @@ public class JavaMail {
         }
     }
     
-   
+   public boolean enviarCorreoAdjunto(){
+        // propiedades que funcionan clave: valor, las caules se pasan como parametros a sesion
+        Properties props = new Properties();
+        
+        props.setProperty("mail.smtp.auth", "true");
+        props.setProperty("mail.smtp.host", "smtp.gmail.com");
+        props.setProperty("mail.smtp.port", "25");
+        props.setProperty("mail.smtp.starttls.enable", "true"); // seguirdad habilitada
+        
+        // auqtenticacion del usuario con su contrasenia
+        Session sesion = Session.getInstance(props, new javax.mail.Authenticator(){
+            protected PasswordAuthentication getPasswordAuthentication(){
+                return new PasswordAuthentication(usuario, contrasenia);
+            }           
+                        
+        });
+        
+        //envio del mensaje 
+        try {
+            BodyPart texto = new MimeBodyPart();
+            texto.setText(mensaje);
+            
+            BodyPart adjunto = new MimeBodyPart();
+            adjunto.setDataHandler(new DataHandler(new FileDataSource((String)ventanaInfraccion.getRutaPrueba())));
+            adjunto.setFileName(ventanaInfraccion.getRutaPrueba());
+            MimeMultipart multiParte = new MimeMultipart();
+
+            multiParte.addBodyPart(texto);
+            multiParte.addBodyPart(adjunto);
+            
+            Message message = new MimeMessage(sesion);
+            message.setFrom(new InternetAddress(usuario));
+            message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(destinatario));
+            message.setSubject(asunto);
+            message.setContent(multiParte);
+            
+            Transport.send(message);
+            return true;
+                   
+        }catch (Exception e){
+            System.out.println("Error: "+ e.getMessage());
+            return false;
+        
+                    
+            
+        }
+        
     
-}
+        
+    }
+   }

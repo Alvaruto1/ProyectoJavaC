@@ -36,6 +36,11 @@ public class Usuario {
      * puntaje acumulado segun quices realizados
      */
     private int puntajeAcum;
+    
+    /**
+     * Denuncias realizados por los usuarios
+     */
+    private ArrayList <Denuncia> denuncias = new ArrayList <Denuncia>();
 
     /**
      * @param alias nombre unico del usuario
@@ -221,5 +226,16 @@ public class Usuario {
         return estado;
         
     }
+    
+    public void registrarDenuncia(String t) {
+    Denuncia c = new Denuncia();
+    c.hacerReporte(t);        
+    denuncias.add(c);       
+        
+    }
+    
+    public ArrayList<Denuncia> getDenuncias() {
+        return denuncias;
+    }    
 
 }

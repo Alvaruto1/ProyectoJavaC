@@ -4,6 +4,18 @@ import Logica.ProgramaCNP;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
+import Logica.CodPol;
+import Logica.InicializarDatos;
+import Logica.ProgramaCNP;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -18,14 +30,53 @@ public class ReportarInfraccion extends javax.swing.JFrame {
      * Ventana del panico
      */    
     private Panico panico;
+    
+    /**
+     * Ventana Infracciones Frecuentes
+     */    
+    private InfraccionesFrecuentes infracciones;
+    /**
+     * programa de codigo policia
+     */    
+    private ProgramaCNP programa;
+    /**
+     * id de la norma activa
+     */
+    private String idNorma="1";
+    
+    /**
+     * ruta de la prueba de la infracción
+     */
+    private String rutaInfraccion = "";
+    
+    /**
+     * Titulos Libro/ Titulo/ Capitulo /Articulo
+     */
+    private ArrayList <String> libro = new ArrayList <String>();
+    private ArrayList <ArrayList<String>> titulo = new ArrayList <ArrayList<String>>();
+    private ArrayList <ArrayList<ArrayList<String>>> capitulo = new ArrayList <ArrayList<ArrayList<String>>>();
+    //private ArrayList <ArrayList<ArrayList<ArrayList<String>>>> articulo = new ArrayList <ArrayList<ArrayList<ArrayList<String>>>>();
+    private String[][][][] articulo = new String[3][15][5][243]; 
   
     /**
      * Constructor
      */
-    public ReportarInfraccion() {        
+    public ReportarInfraccion(ProgramaCNP p) {    
+        this.programa = p;
         initComponents();
         this.setLocationRelativeTo(null);
         cerrarVentanaSecundaria();
+    }
+
+    public ReportarInfraccion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    /**
+     * Iniciliza la matriz de articulos, y coloca valores de filtros
+     */
+    public void inicializarArticulo(){
+        new InicializarDatos().inicializarFiltros(programa, articulo, capitulo, titulo, libro);         
     }
     
     /**
@@ -75,15 +126,15 @@ public class ReportarInfraccion extends javax.swing.JFrame {
         cbxLibro = new javax.swing.JComboBox<>();
         cbxTitulo = new javax.swing.JComboBox<>();
         cbxCapitulo = new javax.swing.JComboBox<>();
-        btnEnviarComentario = new javax.swing.JButton();
+        btnAdjuntarVideo = new javax.swing.JButton();
         cbxTema = new javax.swing.JComboBox<>();
-        cbxArticulo1 = new javax.swing.JComboBox<>();
+        cbxArticulo = new javax.swing.JComboBox<>();
         btnInfraccionesFrecuentes = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        txtDescripcion = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
-        btnEnviarComentario1 = new javax.swing.JButton();
+        btnAdjuntarFoto = new javax.swing.JButton();
         btnEnviarComentario2 = new javax.swing.JButton();
         btnEnviarReporteInfraccion = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
@@ -165,33 +216,53 @@ public class ReportarInfraccion extends javax.swing.JFrame {
 
         cbxLibro.setBackground(new java.awt.Color(51, 153, 0));
         cbxLibro.setForeground(new java.awt.Color(255, 255, 255));
-        cbxLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libro 1", "Libro 2", "Libro 3", "Libro 4" }));
+        cbxLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxLibroActionPerformed(evt);
+            }
+        });
 
         cbxTitulo.setBackground(new java.awt.Color(51, 153, 0));
         cbxTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        cbxTitulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Título 1", "Título 2", "Título 3", "Tíulo4" }));
+        cbxTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxTituloActionPerformed(evt);
+            }
+        });
 
         cbxCapitulo.setBackground(new java.awt.Color(51, 153, 0));
         cbxCapitulo.setForeground(new java.awt.Color(255, 255, 255));
-        cbxCapitulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Capítulo 1", "Capítulo 2", "Capítulo 3", "Capítulo 4" }));
         cbxCapitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxCapituloActionPerformed(evt);
             }
         });
 
-        btnEnviarComentario.setBackground(new java.awt.Color(0, 102, 0));
-        btnEnviarComentario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adjuntarVideo.png"))); // NOI18N
-        btnEnviarComentario.setMaximumSize(new java.awt.Dimension(75, 80));
-        btnEnviarComentario.setMinimumSize(new java.awt.Dimension(75, 80));
+        btnAdjuntarVideo.setBackground(new java.awt.Color(0, 102, 0));
+        btnAdjuntarVideo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adjuntarVideo.png"))); // NOI18N
+        btnAdjuntarVideo.setMaximumSize(new java.awt.Dimension(75, 80));
+        btnAdjuntarVideo.setMinimumSize(new java.awt.Dimension(75, 80));
+        btnAdjuntarVideo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdjuntarVideoActionPerformed(evt);
+            }
+        });
 
         cbxTema.setBackground(new java.awt.Color(51, 153, 0));
         cbxTema.setForeground(new java.awt.Color(255, 255, 255));
-        cbxTema.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tema 1", "Tema 2", "Tema 3", "Tema 4" }));
+        cbxTema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxTemaActionPerformed(evt);
+            }
+        });
 
-        cbxArticulo1.setBackground(new java.awt.Color(51, 153, 0));
-        cbxArticulo1.setForeground(new java.awt.Color(255, 255, 255));
-        cbxArticulo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Título artículo", "2. Título artículo", "3. Título artículo", "4. Título artículo" }));
+        cbxArticulo.setBackground(new java.awt.Color(51, 153, 0));
+        cbxArticulo.setForeground(new java.awt.Color(255, 255, 255));
+        cbxArticulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxArticuloActionPerformed(evt);
+            }
+        });
 
         btnInfraccionesFrecuentes.setBackground(new java.awt.Color(131, 184, 61));
         btnInfraccionesFrecuentes.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
@@ -211,21 +282,25 @@ public class ReportarInfraccion extends javax.swing.JFrame {
         jSeparator1.setBackground(new java.awt.Color(0, 102, 0));
         jSeparator1.setForeground(new java.awt.Color(51, 255, 51));
 
-        jTextArea2.setEditable(false);
-        jTextArea2.setBackground(new java.awt.Color(153, 255, 102));
-        jTextArea2.setColumns(20);
-        jTextArea2.setLineWrap(true);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        txtDescripcion.setBackground(new java.awt.Color(153, 255, 102));
+        txtDescripcion.setColumns(20);
+        txtDescripcion.setLineWrap(true);
+        txtDescripcion.setRows(5);
+        jScrollPane2.setViewportView(txtDescripcion);
 
         jLabel5.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(16, 67, 16));
         jLabel5.setText("Descripción Infracción:");
 
-        btnEnviarComentario1.setBackground(new java.awt.Color(0, 102, 0));
-        btnEnviarComentario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adjuntarFoto.png"))); // NOI18N
-        btnEnviarComentario1.setMaximumSize(new java.awt.Dimension(75, 80));
-        btnEnviarComentario1.setMinimumSize(new java.awt.Dimension(75, 80));
+        btnAdjuntarFoto.setBackground(new java.awt.Color(0, 102, 0));
+        btnAdjuntarFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adjuntarFoto.png"))); // NOI18N
+        btnAdjuntarFoto.setMaximumSize(new java.awt.Dimension(75, 80));
+        btnAdjuntarFoto.setMinimumSize(new java.awt.Dimension(75, 80));
+        btnAdjuntarFoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdjuntarFotoActionPerformed(evt);
+            }
+        });
 
         btnEnviarComentario2.setBackground(new java.awt.Color(0, 102, 0));
         btnEnviarComentario2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adjuntarUbicacion.png"))); // NOI18N
@@ -268,18 +343,18 @@ public class ReportarInfraccion extends javax.swing.JFrame {
                                         .addComponent(cbxTitulo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(12, 12, 12))
                                     .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(cbxArticulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cbxArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cbxCapitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cbxTema, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(btnEnviarComentario1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAdjuntarFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnEnviarComentario2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnEnviarComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnAdjuntarVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(btnInfraccionesFrecuentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -296,7 +371,7 @@ public class ReportarInfraccion extends javax.swing.JFrame {
                     .addComponent(cbxCapitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxArticulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbxTema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -307,8 +382,8 @@ public class ReportarInfraccion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnEnviarComentario2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEnviarComentario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEnviarComentario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAdjuntarFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAdjuntarVideo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnInfraccionesFrecuentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -417,7 +492,7 @@ public class ReportarInfraccion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRepInfActionPerformed
 
     private void cbxCapituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCapituloActionPerformed
-        // TODO add your handling code here:
+        filtrarCapitulo(cbxLibro.getSelectedIndex(),cbxTitulo.getSelectedIndex());
     }//GEN-LAST:event_cbxCapituloActionPerformed
 
     private void btnInfraccionesFrecuentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfraccionesFrecuentesActionPerformed
@@ -430,21 +505,156 @@ public class ReportarInfraccion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnEnviarReporteInfraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarReporteInfraccionActionPerformed
-        // TODO add your handling code here:
+         if(programa.enviarReporte(txtDescripcion.getText())){
+            JOptionPane.showMessageDialog(this,"El reporte de la infracción se ha enviado correctamente","Estado mensaje",JOptionPane.INFORMATION_MESSAGE);
+            txtDescripcion.setText("");
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"No se ha podido enviar, intentelo mas tarde","Estado mensaje",JOptionPane.WARNING_MESSAGE);            
+        }
     }//GEN-LAST:event_btnEnviarReporteInfraccionActionPerformed
 
+    private void cbxLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxLibroActionPerformed
+        filtrarLibro();
+    }//GEN-LAST:event_cbxLibroActionPerformed
+
+    private void cbxTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTituloActionPerformed
+        filtrarTitulo(cbxLibro.getSelectedIndex());
+    }//GEN-LAST:event_cbxTituloActionPerformed
+
+    private void cbxArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxArticuloActionPerformed
+        filtroArticulo();
+    }//GEN-LAST:event_cbxArticuloActionPerformed
+
+    private void cbxTemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTemaActionPerformed
+        cbxArticulo.removeAllItems();
+        for(int i=0;i<243;i++){
+            if(programa.consultarNorma(""+i,CodPol.TEMA).equals(cbxTema.getSelectedItem())){
+                cbxArticulo.addItem("Ar"+i+" "+programa.consultarNorma(""+i, CodPol.TITULO));
+            }
+        }       
+    }//GEN-LAST:event_cbxTemaActionPerformed
+
+    private void btnAdjuntarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdjuntarFotoActionPerformed
+            getRutaPrueba();
+    }//GEN-LAST:event_btnAdjuntarFotoActionPerformed
+
+    private void btnAdjuntarVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdjuntarVideoActionPerformed
+        getRutaPrueba();
+    }//GEN-LAST:event_btnAdjuntarVideoActionPerformed
     
+    public String getRutaPrueba(){
+    FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG y PNG","jpg","png");
+    File archivo = new File("src/img/"+"infraccion1"+".jpg");
+    if (archivo.exists()){
+        this.rutaInfraccion="src/img/"+"infracion1"+".jpg";
+        System.out.println("Entra");
+            }
+    else{
+    JFileChooser fc = new JFileChooser("src/img/");
+                fc.setFileFilter(filtro);
+                int boton = fc.showOpenDialog(null);
+                if (boton == JFileChooser.APPROVE_OPTION){
+                    this.rutaInfraccion=fc.getSelectedFile().getAbsolutePath();
+                    System.out.println(rutaInfraccion);
+                    
+                }
+                else{
+                    this.rutaInfraccion="src/img/"+"infracciones"+".jpg";
+                }
+                
+            }
+    System.out.println(rutaInfraccion);
+    return rutaInfraccion;
+    }
+    
+    /**
+     * filtra por articulo
+     */
+    private void filtroArticulo(){
+        for(int k=0; k<243;k++){            
+            if(("Ar"+(k+1)+" "+programa.consultarNorma((k+1)+"",CodPol.TITULO)).equals(cbxArticulo.getSelectedItem())){
+                                
+                idNorma=""+(k+1);
+                
+                break;
+            }
+                           
+        }
+    }
+    /**
+     * filtra por libro por titulo
+     */
+    private void filtrarLibro(){
+        for(int i=0; i<libro.size();i++){
+            if(cbxLibro.getSelectedIndex()==i){
+                cbxTitulo.removeAllItems();
+                for(String a: titulo.get(i)){
+                    cbxTitulo.addItem(a);                   
+                }
+                filtrarTitulo(i);      
+                
+            }            
+        }
+    }
+    /**
+     * filtra dependiendo del libro titulo capitulo
+     * @param i numero del libro
+     */
+    private void filtrarTitulo(int i){
+        for(int j=0; j<titulo.get(i).size();j++){
+                    if(cbxTitulo.getSelectedIndex()==j){
+                        cbxCapitulo.removeAllItems();
+                        for(String a: capitulo.get(i).get(j)){
+                            cbxCapitulo.addItem(a);                   
+                        }  
+                        filtrarCapitulo(i, j);
+                    }            
+        } 
+    }
+    
+    /**
+     * filtra por libro, titulo, capitulo 
+     * @param i
+     * @param p 
+     */
+    private void filtrarCapitulo(int i,int p){
+        
+       int cont=0;
+        for(int j=0; j<capitulo.get(i).get(p).size();j++){
+                    if(cbxCapitulo.getSelectedIndex()==j){
+                        cbxArticulo.removeAllItems();
+                        for(int k=0; k<243;k++){
+                            if(!"".equals(articulo[i][p][j][k])){
+                                cbxArticulo.addItem("Ar"+(k+1)+" "+articulo[i][p][j][k]);
+                                if(cont<1){
+                                    idNorma=""+(k+1);
+                                    cont++;
+                                }
+                                
+                            }                   
+                        }  
+                    }            
+        } 
+    }
+    
+    /*
+    getter Id norma
+    */
+    public String getIdNorma() {
+        return idNorma;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEnviarComentario;
-    private javax.swing.JButton btnEnviarComentario1;
+    private javax.swing.JButton btnAdjuntarFoto;
+    private javax.swing.JButton btnAdjuntarVideo;
     private javax.swing.JButton btnEnviarComentario2;
     private javax.swing.JButton btnEnviarReporteInfraccion;
     private javax.swing.JButton btnInfraccionesFrecuentes;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnPanico;
     private javax.swing.JButton btnRepInf;
-    private javax.swing.JComboBox<String> cbxArticulo1;
+    private javax.swing.JComboBox<String> cbxArticulo;
     private javax.swing.JComboBox<String> cbxCapitulo;
     private javax.swing.JComboBox<String> cbxLibro;
     private javax.swing.JComboBox<String> cbxTema;
@@ -461,7 +671,7 @@ public class ReportarInfraccion extends javax.swing.JFrame {
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JLabel lblUsuario;
+    private javax.swing.JTextArea txtDescripcion;
     // End of variables declaration//GEN-END:variables
 }
