@@ -655,7 +655,7 @@ public class Comentarios extends javax.swing.JFrame {
            JLabel l=new JLabel();           
            l.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.green,2,true), com.getEmail()));            
            String t;
-           t="<HTML>"+separarTextoLineas(com.getTexto(), 59);
+           t="<HTML>"+separarTextoLineas(com.getTexto(), 50);
            t+="<br><br>"+com.getFecha()+"</HTML>";           
            l.setText(t);             
            pComentarios.setLayout(new BoxLayout(pComentarios,BoxLayout.Y_AXIS));           

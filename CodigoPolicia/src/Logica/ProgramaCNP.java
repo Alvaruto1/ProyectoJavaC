@@ -77,6 +77,10 @@ public class ProgramaCNP {
      * arreglo de usuarios
      */    
     private ArrayList <Usuario> usuarios = new ArrayList <Usuario>();
+
+    public ArrayList<Usuario> getUsuarios() {
+        return usuarios;
+    }
     /**
      * estado si se encuentra loggeado o no un usuario
      */
@@ -269,12 +273,21 @@ public class ProgramaCNP {
     }
     
     /**
+     * crear quiz
+     * @return quiz creado
+     */
+    public Quiz hacerQuiz(){
+        return new Quiz();
+    }
+    
+    /**
      * inicia el programa de Codigo de Policia
      */
     public void iniciarProgramaCNP(){
         inicializarVentanas();
         ventanaMenu.setVisible(true);
     }
+    
     
     
     /**

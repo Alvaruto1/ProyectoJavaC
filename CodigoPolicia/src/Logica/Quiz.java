@@ -16,27 +16,50 @@ public class Quiz {
     /**
      * base de preguntas
      */
-    private ArrayList <String> basePreguntas;
+    private ArrayList <String> basePreguntas = new ArrayList<String>();
 
     /**
      * base de respuestas
      */
-    private ArrayList <String> baseRespuestas;
+    private ArrayList <String[]> baseRespuestas = new ArrayList<String[]>();
     
     /**
      * preguntas del quiz
      */
-    private ArrayList <String> preguntas;
+    private ArrayList <String> preguntas = new ArrayList<String>();
 
     /**
      * respuestas del quiz
      */
-    private ArrayList <String> respuestas;
+    private ArrayList <String[]> respuestas = new ArrayList<String[]>();;
 
     /**
      * puntaje obtenido al realizar el quiz
      */
     private int puntaje;
+
+    /**
+     * obtener preguntas del quiz
+     * @return preguntas
+     */
+    public ArrayList<String> getPreguntas() {
+        return preguntas;
+    }
+    /**
+     * obtner respuestas del quiz
+     * @return respuestas
+     */
+    public ArrayList<String[]> getRespuestas() {
+        return respuestas;
+    }
+    
+    /**
+     * obtener puntaje del quiz
+     * @return puntaje
+     */
+    public int getPuntaje() {
+        return puntaje;
+    }
 
     /**
      * alias de quien realizo el quiz
@@ -68,7 +91,7 @@ public class Quiz {
     public void calificar(ArrayList <String> r) {
         int calificacion=0;
         for(int i=0; i<5; i++){
-            if(r.get(i).equals(respuestas.get(i))){
+            if(r.get(i).equals(respuestas.get(i)[0])){
                 calificacion++;
             }
         }
@@ -77,6 +100,7 @@ public class Quiz {
 
     /**
      * actualiza puntaje de usuario
+     * @param u usuario
      */
     public void actualizarPuntaje(Usuario u) {
         u.actualizarPuntaje(this.puntaje);
@@ -88,9 +112,12 @@ public class Quiz {
      */
     private void establecerBasePregRes(){
         //adicionar preguntas y respuestas
-        basePreguntas.add("Pregunta 1");
-        baseRespuestas.add("Respuesta 1");
+        new InicializarDatos().inicializarBasePreguntasRespuestas(basePreguntas, baseRespuestas);
+        
+    
     }
+    
+    
     
 
 }

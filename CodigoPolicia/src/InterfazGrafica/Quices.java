@@ -1,9 +1,22 @@
 package InterfazGrafica;
 
+import Logica.Comentario;
 import Logica.ProgramaCNP;
+import Logica.Quiz;
+import Logica.Usuario;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.Random;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -27,6 +40,9 @@ public class Quices extends javax.swing.JFrame {
      */    
     private ProgramaCNP programa;
     
+    private Quiz quiz;
+    
+    private ArrayList <JComboBox> combo = new ArrayList <JComboBox>();
     /**
      * Constructor
      */
@@ -84,7 +100,8 @@ public class Quices extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         btnCalificar = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
+        pSCOmentarios = new javax.swing.JScrollPane();
+        pComentarios = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         btnRepInf = new javax.swing.JButton();
         btnPanico = new javax.swing.JButton();
@@ -94,6 +111,11 @@ public class Quices extends javax.swing.JFrame {
         setBackground(new java.awt.Color(153, 255, 51));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 704));
@@ -177,19 +199,25 @@ public class Quices extends javax.swing.JFrame {
             }
         });
 
-        jPanel5.setBackground(new java.awt.Color(51, 153, 0));
-        jPanel5.setBorder(new javax.swing.border.MatteBorder(null));
+        pSCOmentarios.setBackground(new java.awt.Color(153, 255, 102));
+        pSCOmentarios.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        pSCOmentarios.setHorizontalScrollBar(null);
+        pSCOmentarios.setPreferredSize(new java.awt.Dimension(367, 226));
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        pComentarios.setBackground(new java.awt.Color(153, 255, 102));
+
+        javax.swing.GroupLayout pComentariosLayout = new javax.swing.GroupLayout(pComentarios);
+        pComentarios.setLayout(pComentariosLayout);
+        pComentariosLayout.setHorizontalGroup(
+            pComentariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 367, Short.MAX_VALUE)
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 349, Short.MAX_VALUE)
+        pComentariosLayout.setVerticalGroup(
+            pComentariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 360, Short.MAX_VALUE)
         );
+
+        pSCOmentarios.setViewportView(pComentarios);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -197,16 +225,16 @@ public class Quices extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btnCalificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(17, 17, 17)
+                .addComponent(pSCOmentarios, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(pSCOmentarios, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCalificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -313,7 +341,9 @@ public class Quices extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRepInfActionPerformed
 
     private void btnCalificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalificarActionPerformed
-        // TODO add your handling code here:
+        calificarQuiz();
+        menu.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnCalificarActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
@@ -321,6 +351,102 @@ public class Quices extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuActionPerformed
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        pComentarios.removeAll();
+        hacerQuiz();
+        if("Invitado".equals(programa.obtenerAlias())){
+            pComentarios.setEnabled(false);
+            btnCalificar.setEnabled(false);
+        }
+        else{
+            pComentarios.setEnabled(true);
+            btnCalificar.setEnabled(true);
+        } 
+        
+    }//GEN-LAST:event_formWindowActivated
+    
+    private void calificarQuiz(){
+        ArrayList <String> respuestas = new ArrayList<>() ;
+        for(JComboBox c: combo){
+            respuestas.add(c.getSelectedItem().toString());
+        }
+        quiz.calificar(respuestas);
+        for(Usuario u: programa.getUsuarios()){
+            if(u.obtenerAlias().equals(programa.obtenerAlias())){
+                quiz.actualizarPuntaje(u);
+                JOptionPane.showMessageDialog(this,"Ud obtuvo una calificacion de "+quiz.getPuntaje(),"Calificación Quiz",JOptionPane.PLAIN_MESSAGE,null);
+                JOptionPane.showMessageDialog(this,"Su puntaje acumulado es de "+u.obtenerPuntaje(),"Puntaje acumulado",JOptionPane.PLAIN_MESSAGE,null);
+                break;
+            }
+        }
+        
+    }    
+    
+    /**
+     * Realizar quiz
+     */
+    private void hacerQuiz(){
+        combo.clear();
+        quiz = programa.hacerQuiz();
+        quiz.hacerPreguntas();
+        ArrayList <String>preguntas = quiz.getPreguntas();
+        ArrayList <String[]> respuestas = quiz.getRespuestas();
+        for(int i=0; i<5;i++){ 
+           
+           JPanel l = new JPanel();
+           l.setLayout(new BoxLayout(l, BoxLayout.Y_AXIS));
+           l.setBackground(new Color(153,255,102));
+           String t ="<HTML>"+separarTextoLineas(preguntas.get(i),90)+"</HTML>";
+           JLabel eti = new JLabel(t);  
+           
+           l.add(eti);
+           
+           eti.setAlignmentX(BOTTOM_ALIGNMENT);
+           
+           
+           l.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.green,2,true),"pregunta "+(i+1)));  
+           combo.add(new JComboBox(respuestas.get(i)));
+           combo.get(i).setSelectedIndex(new Random().nextInt(2));
+           for(int j=0;j<3;j++){               
+               l.add(combo.get(i));
+           }                       
+           pComentarios.setLayout(new BoxLayout(pComentarios,BoxLayout.Y_AXIS));  
+           pComentarios.add(l);
+           pComentarios.updateUI();
+           
+       }
+    }
+    
+    /**
+     * separa textos de mayor a n caractares de tal manera que queden por linea como mucho n caracteres
+     * @param t texto
+     * @param n numero de caracteres por linea
+     * @return 
+     */
+    private String separarTextoLineas(String t, int n){
+        ArrayList <String> textos = new ArrayList <>();
+        String aux=t,aux1="";
+        boolean estado=true;
+        
+        while(estado){
+            if(aux.length()<=n){
+                textos.add(aux);
+                estado=false;
+            }
+            else{
+                textos.add(aux.substring(0,n));
+                aux=aux.substring(n);
+                estado=true;
+            }
+                       
+        }
+        
+        for(String s: textos){
+            aux1+="<br>"+s;                       
+        }
+         return aux1;
+        
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -335,9 +461,10 @@ public class Quices extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JLabel lblUsuario;
+    private javax.swing.JPanel pComentarios;
+    private javax.swing.JScrollPane pSCOmentarios;
     // End of variables declaration//GEN-END:variables
 }

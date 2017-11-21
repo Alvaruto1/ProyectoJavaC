@@ -453,4 +453,85 @@ public class InicializarDatos {
         normas.add(new Norma("242","El presente Código deroga todas las disposiciones que le sean contrarias, en especial el Decreto-ley 1355 de 1970, la Ley 1356 de 2009 excepto los artículos 4 y del 218A al 218L; el Decreto número 522 de 1971; la Ley 232 de 1995; el artículo 108 de la Ley 388 de 1997; los artículos 1 y 2 de la Ley 810 de 2003; artículo 12 numeral 2, artículo 17, 18,21, 22, 23, 24, 25, 26, 27, 28, 29, 31, 33, 35 y 36 del Decreto número 2876 de 1984; artículo 26y último inciso o párrafo del artículo 10 de la Ley 679 de 2001, en razón a que se aplicará el proceso verbal abreviado establecido en el presente Código; artículos 5, 6, 7 y 12 de la Ley 1259 de 2008; Ley 746 de julio 19 de 2002; artículo 24, 29 e inciso final del artículo 31 de la Ley 1335 de 2009; y los artículos 12 y 13 de la Ley 140 de 1994.Este Código no modifica ni deroga ninguna norma del *Código Penal.","N.D","DEROGATORIAS."));
         normas.add(new Norma("243","La presente ley regirá seis (6) meses después de su promulgación.","N.D","VIGENCIA."));
     }
+
+    public void inicializarBasePreguntasRespuestas(ArrayList<String> basePreguntas, ArrayList<String[]> baseRespuestas){
+        
+        //preguntas
+        basePreguntas.add("¿La policia nacional está autorizada a ingresar a un inmueble sin orden escríta?");
+        basePreguntas.add("¿En que circunstancias la policia está autorizada a ingresar a verificar los intrumentos del comercio?");
+        basePreguntas.add("¿Es permitido el ingreso a menores de edad a establecimientos de comercio privados en donde se consuman bebidas embriagantes?");
+        basePreguntas.add("¿si un establecimiento de internet se encuentra un menor de edad viendo pornografía, la policia podrá ir a retirarlo?");
+        basePreguntas.add("Al momento de proteger el espacio público como los monumentos hitóricos, ¿Tiene la policia las mismas limitaciones que con las propiedades privadas?");
+        basePreguntas.add("¿Cuándo ocurra ocupación indebida del espacio público la policia podrá desalojar a los ocupantes de ese espacio inmediatamente?");
+        basePreguntas.add("¿En la realización de espectáculos, quién está obligado a exigir las normas de seguridad pertinentes y la salubridad e integrida de las personas?");
+        basePreguntas.add("¿La policia nacional podrá verificar si los asistentes a cualquier evento llevan su respectiva boleta o credencial, es decir, actuar como personal de logística?");
+        basePreguntas.add("¿Los menores de edad podrán ingresar a cualquier espectáculo abierto al público?");
+        basePreguntas.add("¿Qué ocurre cuando se cancela un espectaculo sin razones de mérito o por incumplimiento en horarios?");
+        basePreguntas.add("¿Están prohibidos los artículos pirotécticos sin importar el caso?");
+        basePreguntas.add("¿La policia podrá ingresar a las salas de cine con el fin de verificar si la edad de los asistentes corresponde a la autorizada para la pelicula?");
+        basePreguntas.add("¿Podemos hacer uso del espacio público libremente y sin limitaciones?");
+        basePreguntas.add("¿Está a libertad de cada municipio hacer lo que a bien le parezca con los animales que deambulan en la calle?");
+        basePreguntas.add("¿A los animales que deambulan en la calle y son potencialmente peligrosos se les debe sacrificar?");
+        basePreguntas.add("¿Es carcelable el ejercicio de la prostitución en colombia?");
+        basePreguntas.add("¿Las personas que ejerzan la prostitución podrán hacerlo sin control?");
+        basePreguntas.add("¿En el caso de una declaración de calamidad pública, los gobernantes podrán ordenar la demolición inmediata de edificios u obras cuando sea necesario?");
+        basePreguntas.add("¿Si ocurre una riña en espacio público, la autoridad policial podrá retener a la parsona el tiempo que sea necesario?");
+        basePreguntas.add("¿Si una persona deambula por las calles en estado de embriaguez, podrá ser conducida a una estación de policia?");
+        basePreguntas.add("¿Fumar en sitios públicos o abiertos al público acarrea el desplazamiento a la estación de policia más cercana?");
+        basePreguntas.add("¿Superar las vallas u obstáculos colocados por la autoridad competente con el fin de impedir el paso a la zona se considera una violación al código nacional de policia?");
+        basePreguntas.add("¿Cuándo se realice un espectáculo y no cumpla con los requisitos exigidos en el código de policia y convivencia se podrá cancelar el evento?");
+        basePreguntas.add("¿Si en un procedimiento policial son requeridos los documentos de la persona con el fin de verificar su identidad y antecedentes, se niega a presentar su documentación que pasará?");
+        basePreguntas.add("¿Con un mandato firmado por la autoridad pública la policia nacional podrá entrar a un recinto que se considera privado?");
+        basePreguntas.add("¿Qué ocurre en el caso en que estando en un espacio privado una persona, necesite socorro?");
+        basePreguntas.add("¿En el desarrollo de su función policial, está permitido la requisa a personas?");
+        basePreguntas.add("¿La policia podrá emplear la fuerza para hacer cumplir las desiciones judiciales?");
+        basePreguntas.add("¿Qué tipo de multa acarrea no recoger el excremento de su mascota o después de recogidos dejarlos abandonados en espacio público o áreas comunes?");
+        basePreguntas.add("¿Obstruir la ciclo ruta o carril exclusivo para las bicicletas es considerado una multa?");
+        basePreguntas.add("¿El irrespetar a la autoridad policial, constituye una multa tipo 2?");
+        basePreguntas.add("¿El consumo de bebidas alcohólicas o psicoactivas en lugares públicos por personas mayores de edad es considerada una falta al código nacional de policia?");
+        basePreguntas.add("¿Cuánto es el monto de dinero que puede acarrear una persona si se descubre haciendo sus necesidades fisiológicas en espacio público?");
+        basePreguntas.add("¿Evadir el pago de la tarifa, validación, tiquete o medios que utilicen los usuarios para acceder a la prestación del servicio esencial de transporte público, es constituido una infracción a las normas?");
+        basePreguntas.add("¿Si se comercializa con celulares sin la respectiva documentación cual es el proceso a seguir?");
+
+        //respuestas
+        baseRespuestas.add(new String[] {"Si el motivo está en el código, Sí","No","sí"});
+        baseRespuestas.add(new String[] {"En cualquier momento","Nunca","Cuando exista un delito"});
+        baseRespuestas.add(new String[] {"No","Sí","Si va con un adulto sí"});
+        baseRespuestas.add(new String[] {"No","Si está acompañado, No","Si lo podrán hacer"});
+        baseRespuestas.add(new String[] {"No, porque es público","Si, porque es propiedad","Según el caso"});
+        baseRespuestas.add(new String[] {"Sí, con un debido poceso","Sí","Nunca lo podrán hacer"});
+        baseRespuestas.add(new String[] {"La policia","Los organizadores","Un juez"});
+        baseRespuestas.add(new String[] {"Sí","No","Lo harán los organizadores"});
+        baseRespuestas.add(new String[] {"Sino atenta contra su integridad, Sí","Nunca ","Sí, porque es público"});
+        baseRespuestas.add(new String[] {"Se reprograma","Se pierde el dinero","Se improvisa"});
+        baseRespuestas.add(new String[] {"Solo los pueden usar expertos","Sí, están prohibidos","Solo los pueden usar adultos"});
+        baseRespuestas.add(new String[] {"Si, porque es su deber","No, porque es un recinto privado","Si el teatro lo autoriza, sí"});
+        baseRespuestas.add(new String[] {"No, porque debemos cuidarlo","Sí, porque es público","Sí, porque es de todos"});
+        baseRespuestas.add(new String[] {"No, deben seguir un proceso","Sí, porque es su autoridad","No, es autoridad de la policia"});
+        baseRespuestas.add(new String[] {"Deben llevarse a otro lugar","Según su actuar","Si serán sacrificados"});
+        baseRespuestas.add(new String[] {"si es conforme a la ley, No","Bajo ninguna circunstancia","Sí será carcelable"});
+        baseRespuestas.add(new String[] {"Sí, con carnet de salud","Sí, es su derecho","No, bajo ninguna circunstancia"});
+        baseRespuestas.add(new String[] {"Si lo podrán hacer","No se podrá hacer","Según desición de los habitantes"});
+        baseRespuestas.add(new String[] {"Sólo podrán ser 12 horas","Sólo podrán ser 24 horas","Si lo podrán hacer"});
+        baseRespuestas.add(new String[] {"Sí, por su seguridad","Sí, para ser judicializada","No se podrá hacer"});
+        baseRespuestas.add(new String[] {"Acarrea el retiro del lugar","Sí acarrea esto","No acarrea nada"});
+        baseRespuestas.add(new String[] {"Si se considera violación","Según las señalizaciones","No se considera violación"});
+        baseRespuestas.add(new String[] {"Si se podrá cancelar","No se podrá cancelar","Se hará como estaba planeado"});
+        baseRespuestas.add(new String[] {"Será llevada a la estación ","Será dejada en libertad","Será encarcelada"});
+        baseRespuestas.add(new String[] {"Sí lo podrá hacer","Bajo ninguna circunstancia","Solo si el dueño permite"});
+        baseRespuestas.add(new String[] {"Se ayudará sin permiso.","Tendrá que salir para ayudarla","No se podrá socorrer"});
+        baseRespuestas.add(new String[] {"Si está permitido","Solo si la persona permite","No está permitido"});
+        baseRespuestas.add(new String[] {"La policia podrá hacerlo","Bajo ninguna circunstancia","Solo si son agredidos"});
+        baseRespuestas.add(new String[] {"Multa tipo 1","Multa tipo 3","Multa tipo 2"});
+        baseRespuestas.add(new String[] {"Sí","No, porque es espacio público","No, porque no existe la norma"});
+        baseRespuestas.add(new String[] {"Sí, es tipo 2","No, es tipo 1","No, es tipo 4"});
+        baseRespuestas.add(new String[] {"Si es considerada falta","No es considerada una falta","Según el tipo de persona"});
+        baseRespuestas.add(new String[] {"$786.880.","879000","560000"});
+        baseRespuestas.add(new String[] {"Sí, atenta contra los demás","No, porque es público","Según la evación"});
+        baseRespuestas.add(new String[] {"Será cerrado el lugar","No pasará nada","Acarreará carcel"});
+
+        
+        
+    }
+
 }
