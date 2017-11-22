@@ -70,7 +70,11 @@ public class ProgramaCNP {
     /**
      * Ventana material didactico
      */    
-    private MaterialDidactico ventanaDidactico = new MaterialDidactico(this);    
+    private MaterialDidactico ventanaDidactico = new MaterialDidactico(this);
+    /**
+     * Ventana infracciones frecuentes
+     */    
+    private InfraccionesFrecuentes ventanaInfraccionesFrecuentes = new InfraccionesFrecuentes(this);     
     
     
     /**
@@ -125,6 +129,13 @@ public class ProgramaCNP {
         return codigoPolicia.consultarNorma(id, opcion);        
     }
 
+    /**
+     * obtener codigo de policia
+     * @return codigo de policia
+     */
+    public CodPol obtenerCodigoPolicia(){
+        return codigoPolicia;
+    }
     /**
      * registro de un usario
      * @param alias nombre del usuario
@@ -297,7 +308,7 @@ public class ProgramaCNP {
         this.ventanaRegistro.inicioVentana(ventanaMenu, ventanaSesion, ventanaPanico, ventanaInfraccion, this);
         this.ventanaMenu.inicioVentana(ventanaSesion, ventanaRegistro, ventanaNorma, ventanaQuiz, ventanaSugerencia, ventanaInfraccion, ventanaPanico);
         this.ventanaSesion.inicioVentana(ventanaMenu, ventanaRegistro, ventanaInfraccion, ventanaPanico, this);
-        this.ventanaInfraccion.inicioVentana(ventanaMenu,ventanaPanico);
+        this.ventanaInfraccion.inicioVentana(ventanaMenu,ventanaPanico,ventanaInfraccionesFrecuentes);
         this.ventanaPanico.inicioVentana(ventanaMenu, ventanaInfraccion);
         this.ventanaNorma.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico,ventanaArticulo,ventanaEscogerDidactico);
         this.ventanaDidactico.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico, ventanaComentario, ventanaEscogerDidactico);
@@ -306,7 +317,7 @@ public class ProgramaCNP {
         this.ventanaComentario.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, ventanaArticulo, ventanaDidactico);
         this.ventanaQuiz.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, this);
         this.ventanaSugerencia.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion);
-        
+        this.ventanaInfraccionesFrecuentes.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion,this);
     }
     
     /**

@@ -51,6 +51,20 @@ public class Norma {
      * precio o valor de la multa de la norma     
      */    
     private int consultas = 0;
+    
+    /**
+     * Acumulado de denuncias
+     */
+    private int acuDenuncias = 0;   
+
+    /**
+     * obtener numero de dencuncias de la norma
+     * @return numero de denuncias
+     */
+    public int getAcuDenuncias() {
+        return acuDenuncias;
+    }
+    
     /**
      * comentarios realizados por los usuarios sobre la norma
      */
@@ -122,7 +136,12 @@ public class Norma {
     public ArrayList<Comentario> getComentarios() {
         return comentarios;
     }    
-
     
-
+    /**
+     * acumula las denucnias
+     */
+    public void acumDenuncias (){
+        this.acuDenuncias +=1;        
+    }
+    
 }

@@ -101,8 +101,10 @@ public class ReportarInfraccion extends javax.swing.JFrame {
      * inicia la ventana con sus respectivos parametros
      * @param menu principal   
      * @param p ventana panico
+     * @param infa ventana infraqcciones frecuentes
      */
-    public void inicioVentana(MenuPrincipal menu, Panico p){              
+    public void inicioVentana(MenuPrincipal menu, Panico p, InfraccionesFrecuentes infa){ 
+        this.infracciones = infa;
         this.menu = menu;    
         this.panico = p;
     }
@@ -519,7 +521,8 @@ public class ReportarInfraccion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRepInfActionPerformed
 
     private void btnInfraccionesFrecuentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfraccionesFrecuentesActionPerformed
-        
+        infracciones.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnInfraccionesFrecuentesActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
@@ -529,6 +532,7 @@ public class ReportarInfraccion extends javax.swing.JFrame {
 
     private void btnEnviarReporteInfraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarReporteInfraccionActionPerformed
         
+        programa.obtenerCodigoPolicia().devolverNorma(idNorma).acumDenuncias();
         if(programa.enviarReporte(txtDescripcion.getText(),rutaPruFoto,rutaPruVideo)){
             JOptionPane.showMessageDialog(this,"El reporte de la infracción se ha enviado correctamente","Estado mensaje",JOptionPane.INFORMATION_MESSAGE);
             txtDescripcion.setText("");
@@ -540,6 +544,7 @@ public class ReportarInfraccion extends javax.swing.JFrame {
         else{
             JOptionPane.showMessageDialog(this,"No se ha podido enviar, intentelo mas tarde","Estado mensaje",JOptionPane.WARNING_MESSAGE);            
         }
+        
     }//GEN-LAST:event_btnEnviarReporteInfraccionActionPerformed
 
     private void btnAdjuntarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdjuntarFotoActionPerformed

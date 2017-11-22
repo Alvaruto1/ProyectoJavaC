@@ -121,4 +121,14 @@ public class CodPol {
         }
         return null;
     }
+    /**
+     * Metodo que devuelve todas las normas
+     * @return el conjunto de todas las normas
+     */
+    public ArrayList<Norma> getNormas() {
+        return normas;
+    }
+    
+    
+    
 }
