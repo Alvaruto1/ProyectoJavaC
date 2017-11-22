@@ -71,10 +71,7 @@ public class ProgramaCNP {
      * Ventana material didactico
      */    
     private MaterialDidactico ventanaDidactico = new MaterialDidactico(this);
-    /**
-     * Ventana infracciones frecuentes
-     */    
-    private InfraccionesFrecuentes ventanaInfraccionesFrecuentes = new InfraccionesFrecuentes(this);     
+   
     
     
     /**
@@ -308,7 +305,7 @@ public class ProgramaCNP {
         this.ventanaRegistro.inicioVentana(ventanaMenu, ventanaSesion, ventanaPanico, ventanaInfraccion, this);
         this.ventanaMenu.inicioVentana(ventanaSesion, ventanaRegistro, ventanaNorma, ventanaQuiz, ventanaSugerencia, ventanaInfraccion, ventanaPanico);
         this.ventanaSesion.inicioVentana(ventanaMenu, ventanaRegistro, ventanaInfraccion, ventanaPanico, this);
-        this.ventanaInfraccion.inicioVentana(ventanaMenu,ventanaPanico,ventanaInfraccionesFrecuentes);
+        this.ventanaInfraccion.inicioVentana(ventanaMenu,ventanaPanico);
         this.ventanaPanico.inicioVentana(ventanaMenu, ventanaInfraccion);
         this.ventanaNorma.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico,ventanaArticulo,ventanaEscogerDidactico);
         this.ventanaDidactico.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico, ventanaComentario, ventanaEscogerDidactico);
@@ -317,7 +314,7 @@ public class ProgramaCNP {
         this.ventanaComentario.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, ventanaArticulo, ventanaDidactico);
         this.ventanaQuiz.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, this);
         this.ventanaSugerencia.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion);
-        this.ventanaInfraccionesFrecuentes.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion,this);
+        
     }
     
     /**
@@ -337,6 +334,7 @@ public class ProgramaCNP {
         ventanaComentario.actualizarSesion(usuarioAlias);
         ventanaQuiz.actualizarSesion(usuarioAlias);
         ventanaSugerencia.actualizarSesion(usuarioAlias);
+        
         
         
     }

@@ -405,13 +405,17 @@ public class Quices extends javax.swing.JFrame {
            
            
            l.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.green,2,true),"pregunta "+(i+1)));  
-           combo.add(new JComboBox(respuestas.get(i)));
+           JComboBox com = new JComboBox(respuestas.get(i));
+           
+           combo.add(com);
+           
            combo.get(i).setSelectedIndex(new Random().nextInt(2));
            for(int j=0;j<3;j++){               
                l.add(combo.get(i));
            }                       
            pComentarios.setLayout(new BoxLayout(pComentarios,BoxLayout.Y_AXIS));  
            pComentarios.add(l);
+           
            pComentarios.updateUI();
            
        }

@@ -3,7 +3,10 @@ package InterfazGrafica;
 
 import Logica.CodPol;
 import Logica.InicializarDatos;
+import Logica.Norma;
 import Logica.ProgramaCNP;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -11,6 +14,10 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -26,10 +33,7 @@ public class ReportarInfraccion extends javax.swing.JFrame {
      */    
     private Panico panico;
     
-    /**
-     * Ventana Infracciones Frecuentes
-     */    
-    private InfraccionesFrecuentes infracciones;
+    
     /**
      * programa de codigo policia
      */    
@@ -101,10 +105,9 @@ public class ReportarInfraccion extends javax.swing.JFrame {
      * inicia la ventana con sus respectivos parametros
      * @param menu principal   
      * @param p ventana panico
-     * @param infa ventana infraqcciones frecuentes
      */
-    public void inicioVentana(MenuPrincipal menu, Panico p, InfraccionesFrecuentes infa){ 
-        this.infracciones = infa;
+    public void inicioVentana(MenuPrincipal menu, Panico p){ 
+        
         this.menu = menu;    
         this.panico = p;
     }
@@ -521,8 +524,7 @@ public class ReportarInfraccion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRepInfActionPerformed
 
     private void btnInfraccionesFrecuentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfraccionesFrecuentesActionPerformed
-        infracciones.setVisible(true);
-        this.setVisible(false);
+        hacerGrafica();
     }//GEN-LAST:event_btnInfraccionesFrecuentesActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
@@ -713,6 +715,48 @@ public class ReportarInfraccion extends javax.swing.JFrame {
     */
     public String getIdNorma() {
         return idNorma;
+    }
+    
+    private ArrayList <Norma> analizarInfraccionesFrecuentes(){
+        
+        ArrayList<Norma> infraccionesFrecuentes = new ArrayList<Norma>();
+        
+        ArrayList<Norma> normas = (ArrayList<Norma>) programa.obtenerCodigoPolicia().getNormas().clone();
+        
+        int cont=0,cont1=0;
+        
+        System.out.println("--------------------------------------------------");
+        while(cont1<6){
+            Norma aux = normas.get(0);
+            for(int i=0;i<normas.size();i++){
+                if(normas.get(i).getAcuDenuncias()>aux.getAcuDenuncias()){
+                    aux=normas.get(i);  
+                    cont=i;
+                }
+            }
+            infraccionesFrecuentes.add(normas.get(cont));
+            normas.remove(cont);
+            
+            System.out.println("Art"+infraccionesFrecuentes.get(cont1).getId()+"-"+infraccionesFrecuentes.get(cont1).getAcuDenuncias());
+            cont1++;
+        }
+        return infraccionesFrecuentes;
+    }
+    
+    
+    public void hacerGrafica(){        
+        DefaultPieDataset data = new DefaultPieDataset();
+        
+        ArrayList <Norma> infracFrecuente = analizarInfraccionesFrecuentes();
+        
+        for(Norma n: infracFrecuente){
+            data.setValue("Articulo #"+n.getId(),n.getAcuDenuncias());
+        }
+        JFreeChart grafica = ChartFactory.createPieChart3D("Infracciones frecuentes", data,true,true,false);
+        
+        ChartPanel contenedor = new ChartPanel(grafica);
+        JOptionPane.showMessageDialog(this,contenedor,"CÓDIGO NACIONAL DE POLICIA",JOptionPane.PLAIN_MESSAGE,null);      
+           
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
