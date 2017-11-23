@@ -1,6 +1,8 @@
 package Logica;
 
 import javax.swing.JOptionPane;
+import twitter4j.GeoLocation;
+import twitter4j.GeoQuery;
 import twitter4j.Paging;
 import twitter4j.Status;
 import twitter4j.Twitter;
@@ -21,7 +23,10 @@ public class Twitter4J {
      * configura parametros iniciakes de ka clase twitter
      * @throws TwitterException 
      */
-    public void configurar() throws TwitterException{
+    public void configurar(String lugar) throws TwitterException{
+        
+        
+        
         
         
         //se instnacia clase Tiwiter        
@@ -33,7 +38,7 @@ public class Twitter4J {
         
         //Se puede actuzalia "Que esta pasando a traves del metodo Twitter.updateStatus()
         
-        status = twitter.updateStatus(tweet);
+        status = twitter.updateStatus(tweet+" "+lugar);
         
     }
 
@@ -51,7 +56,7 @@ public class Twitter4J {
 
     
     
-    public boolean twittear(){
+    public boolean twittear(String lugar){
         try{
             // Si el numero de caracteres excede el maximo permitido (140) , entonces se lanza una excepcion
             if(tweet.length()>140){
@@ -59,7 +64,7 @@ public class Twitter4J {
             }
             try{
                 // se llama el metodo de configurar para actualizar el que esta pasando
-                configurar();
+                configurar(lugar);
                 //si tiene exito             
                 tweet ="";      
                 return true;

@@ -230,12 +230,17 @@ public class ProgramaCNP {
      * @return estado de envio mensaje de panico
      */
     public boolean enviarPanico(String comentario){
+        Geolocalizar geo = new Geolocalizar();
+        geo.capturarCoordenadas();
+        
+        
         for(Usuario u: usuarios){
             if(u.obtenerAlias().equals(usuarioAlias)){
                 if(u.enviarPanico(comentario)){
                     Twitter4J twitter = new Twitter4J();
                     twitter.setTweet(comentario);
-                    return twitter.twittear();           
+                    //System.out.println(geo.getLugar()+"-"+geo.getLatitud());
+                    return twitter.twittear(geo.getLugar());           
                 }
                                 
             }

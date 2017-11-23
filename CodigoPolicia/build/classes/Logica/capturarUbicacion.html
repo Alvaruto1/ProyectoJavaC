@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+	<title>geo localizacion</title>
+<script type="text/javascript">
+function loadLocation () {
+	//inicializamos la funcion y definimos  el tiempo maximo ,las funciones de error y exito.
+	navigator.geolocation.getCurrentPosition(viewMap,ViewError);
+        
+}
+
+//Funcion de exito
+function viewMap (position) {
+	
+	var lon = position.coords.longitude;	//guardamos la longitud
+	var lat = position.coords.latitude;		//guardamos la latitud	
+        escribirArchivo(lat,lon);
+        cerrar();
+}
+//Funcion cerrar ventana navegador
+function cerrar(){
+    ventana=window.self; 
+    ventana.opener=window.self;
+    
+    ventana.close();
+    
+}
+
+// escribir archivo datos latitud 
+function escribirArchivo(lat,lon){
+    
+    
+    var data = lat + " "+lon;
+    var filename = "coordenadas.txt";
+    var type = "text/plain;charset=utf-8";
+    var a = document.createElement("a"),
+    file = new Blob([data], {type: type});
+    
+    if (window.navigator.msSaveOrOpenBlob)
+        window.navigator.msSaveOrOpenBlob(file, filename);
+    else { // Others
+        var url = URL.createObjectURL(file);
+                    a.href = url;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    setTimeout(function() {
+                        document.body.removeChild(a);
+                        window.URL.revokeObjectURL(url);  
+                    }, 0); 
+         }
+}
+
+function ViewError (error) {
+        close();
+	alert('no se ha podiod capturar su ubicacion');        
+}	
+
+
+
+	</script>
+	
+</head>
+<body onload="loadLocation();">
+</body>
+</html>
