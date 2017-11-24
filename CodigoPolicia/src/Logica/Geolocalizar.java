@@ -4,16 +4,19 @@ import com.teamdev.jxmaps.GeocoderCallback;
 import com.teamdev.jxmaps.GeocoderRequest;
 import com.teamdev.jxmaps.GeocoderResult;
 import com.teamdev.jxmaps.GeocoderStatus;
-
 import com.teamdev.jxmaps.LatLng;
+
 import com.teamdev.jxmaps.swing.MapView;
 import com.teamdev.jxmaps.Map;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 /**
  *
@@ -117,8 +120,17 @@ public class Geolocalizar extends MapView {
      * captura las coordenadas del usuario
      * @return estado de obtencion de coodenadas
      */
-    public String capturarCoordenadas(){
-        abrirNavegador("file:///C:/Users/alvar/Documents/NetBeansProjects/PruebasWeb/src/pruebasweb/index1.html");        
+    public boolean capturarCoordenadas(){
+        
+        File file = new File("src/Logica/capturarUbicacion.html");
+        
+        try{
+            String h = "file://"+file.toURL().getPath();
+            abrirNavegador(h);
+        }catch(MalformedURLException e){
+            
+        }
+        
         buscarArchivo("coordenadas.txt",new File("C:/"));        
         File archivo = new File(rutaArchivo);        
         System.out.println(archivo.exists());        
@@ -135,41 +147,51 @@ public class Geolocalizar extends MapView {
                         longitud=linea.substring(i+1,linea.length());
                         System.out.println(longitud + " "+latitud);
                         archivo.delete();
-                        obtenerLugar();
-                        return "Su ubicacion se ha capturado correctamente";
+                        obtenerLugar();                        
+                        return true;
                                                 
                     }                                        
                 }
                 
             }catch(IOException e){
                 System.out.println("Error IOException");
-                return "No se ha podido capturar su ubicacion, intentelo d enuevo";
+                return false;
             }
-        }catch(Exception e){
-            return "No se ha podido capturar su ubicacion, intentelo d enuevo";
+        }catch(FileNotFoundException e){
+            return false;
         }
-        return "";  
+        return false;  
     }
     
     private void obtenerLugar(){
         Map map = getMap();
+        
         GeocoderRequest request = new GeocoderRequest();
         request.setAddress(latitud+" "+longitud);
-        getServices().getGeocoder().geocode(request, new GeocoderCallback(map) {
-            @Override
-            public void onComplete(GeocoderResult[] results, GeocoderStatus status) {
-                // Checking operation status
-                if ((status == GeocoderStatus.OK) && (results.length > 0)) {
-                    // Getting the first result
-                    GeocoderResult result = results[0];
-                    // Getting a location of the result
-                    //LatLng location = result.getGeometry().getLocation();
-                    setLugar(result.getFormattedAddress());
-                    //System.out.println(lugar);
-                    //System.out.println(result.getFormattedAddress()+" "+location.toString());
-                }
-            }
-        });
-        
+        int con = 0;
+        while(con<10){
+                getServices().getGeocoder().geocode(request, new GeocoderCallback(map) {
+                    @Override
+                    public void onComplete(GeocoderResult[] results, GeocoderStatus status) {
+                        // Checking operation status
+                        if ((status == GeocoderStatus.OK) && (results.length > 0)) {
+                            // Getting the first result
+                            GeocoderResult result = results[0];
+                            // Getting a location of the result
+                            LatLng location = result.getGeometry().getLocation();
+                            lugar=result.getFormattedAddress();
+                            System.out.println(result.getFormattedAddress()+" "+location.toString());
+                        }
+                    } 
+                    });
+                con++;
+        }
+        System.out.println(lugar+" 8544654465");
     }
+    
+    
+    
+    
+    
+    
 }

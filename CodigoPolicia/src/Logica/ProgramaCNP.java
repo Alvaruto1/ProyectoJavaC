@@ -230,16 +230,18 @@ public class ProgramaCNP {
      * @return estado de envio mensaje de panico
      */
     public boolean enviarPanico(String comentario){
+        
         Geolocalizar geo = new Geolocalizar();
-        geo.capturarCoordenadas();
+        if(!geo.capturarCoordenadas()){
+            JOptionPane.showMessageDialog(ventanaPanico,"No se ha podido obtener su ubicación, sin embargo se intentara enviar el mensaje","Estado mensaje",JOptionPane.WARNING_MESSAGE);
+        }
         
         
         for(Usuario u: usuarios){
             if(u.obtenerAlias().equals(usuarioAlias)){
                 if(u.enviarPanico(comentario)){
                     Twitter4J twitter = new Twitter4J();
-                    twitter.setTweet(comentario);
-                    //System.out.println(geo.getLugar()+"-"+geo.getLatitud());
+                    twitter.setTweet(comentario);                   
                     return twitter.twittear(geo.getLugar());           
                 }
                                 

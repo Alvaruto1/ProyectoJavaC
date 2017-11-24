@@ -6,7 +6,7 @@
 package InterfazGrafica;
 
 import Logica.ProgramaCNP;
-import java.awt.Color;
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -353,6 +353,7 @@ public class Panico extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnEnviarEmergenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarEmergenciaActionPerformed
+        
         if(programa.enviarPanico(txtMensaje.getText())){
            JOptionPane.showMessageDialog(this,"Su mensaje se ha enviado correctamente","Estado mensaje",JOptionPane.INFORMATION_MESSAGE);
            txtMensaje.setText("");
