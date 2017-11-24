@@ -322,7 +322,7 @@ public class MapaCais extends MapView{
         //numero posicion estaciones de policia
         int num[]={0,10,20,34,44,53,57,67,83,92,106,120,126,133,138,143,150,153,162};            
         for(int i=0;i<infoCais.size();i++){
-            System.out.println(Double.parseDouble(datosCais.get(i)[3]));  
+             
             marcaCais.get(i).setIcon(new Icon());
             marcaCais.get(i).setPosition(new LatLng(Double.parseDouble(datosCais.get(i)[4]),Double.parseDouble(datosCais.get(i)[3])));  
             

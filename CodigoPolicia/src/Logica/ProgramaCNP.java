@@ -111,15 +111,17 @@ public class ProgramaCNP {
     /**
      * latitud ubicacion usuario
      */
-    private double latitud=0;
+    private double latitud=0.0;
     /**
      * longitud ubicacion usuario
      */
+    private double longitud=0.0;
     /**
      * gelocalizacion del ususario
      */
     private Geolocalizar geo = new Geolocalizar();
-    private double longitud=0;
+    
+    
     /**
      * @param args[]     
      */       
@@ -127,6 +129,15 @@ public class ProgramaCNP {
         new ProgramaCNP().iniciarProgramaCNP();        
     }
 
+    public double getLatitud() {
+        return latitud;
+    }
+
+    public double getLongitud() {
+        return longitud;
+    }
+
+    
     /**
      * consulta el codigo completo pdf
      * @return ruta pdf codigo policia
@@ -326,10 +337,14 @@ public class ProgramaCNP {
         double lat = 4.5981206;
         double lon = -74.0760435;  
         
-        if(!(latitud==0&&longitud==0)){
+        if(latitud!=0||longitud!=0){
+            System.out.println("Entra por acacacac           ddddd");
             lat=latitud;
             lon=longitud;
         }
+        
+        
+        System.out.println(lat+"--"+lon);
         MapaCais mapaC= new MapaCais();
         mapaC.generarMapa(lat,lon);       
         return mapaC;
@@ -340,13 +355,17 @@ public class ProgramaCNP {
      * @param ventana ventana en donde se ejecuta la ubicacion
      * @return si se obtvo o no la ubicacion
      */
-    public boolean obtnerUbicacion(JFrame ventana){        
+    public boolean obtnerUbicacion(JFrame ventana){ 
+        
+        
         if(JOptionPane.OK_OPTION==JOptionPane.showConfirmDialog(ventana,"Desea compartir su ubicación","Confirmacion Ubicación",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE)){
             if(!geo.capturarCoordenadas()){
-                JOptionPane.showMessageDialog(ventana,"No se ha podido obtener su ubicación, sin embargo se intentara enviar el mensaje","Estado mensaje",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(ventana,"No se ha podido obtener su ubicación, intentelo mas tarde","Estado mensaje",JOptionPane.WARNING_MESSAGE);
                 return false;
             }
             else{
+                latitud=Double.parseDouble(geo.getLatitud());
+                longitud=Double.parseDouble(geo.getLongitud());
                 return true;
             }
         }

@@ -365,7 +365,9 @@ public class UbicacionCAI extends javax.swing.JFrame {
 
     private void btnActivarUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivarUbicacionActionPerformed
         pMapa.removeAll();
-        programa.obtnerUbicacion(this);  
+        programa.obtnerUbicacion(this);
+        System.out.println(programa);
+        
         MapView m=programa.obtenerMapaCais();
               
         pMapa.setLayout(new GridLayout());

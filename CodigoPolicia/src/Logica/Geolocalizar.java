@@ -101,8 +101,7 @@ public class Geolocalizar extends MapView {
      * @param directorio nombre del directorio en donde se va abuscar
      */
     private void buscarArchivo (String archivo,File directorio) {       
-        File[] list = directorio.listFiles();
-        System.out.println(list);
+        File[] list = directorio.listFiles();        
         if(list!=null){
             for (File fil : list){
                 if (fil.isDirectory()){
@@ -170,7 +169,7 @@ public class Geolocalizar extends MapView {
         GeocoderRequest request = new GeocoderRequest();
         request.setAddress(latitud+" "+longitud);
         int con = 0;
-        while(con<10){
+        while(con<11){
                 getServices().getGeocoder().geocode(request, new GeocoderCallback(map) {
                     @Override
                     public void onComplete(GeocoderResult[] results, GeocoderStatus status) {
@@ -186,8 +185,9 @@ public class Geolocalizar extends MapView {
                     } 
                     });
                 con++;
+                System.out.println(lugar+" 8544654465");
         }
-        System.out.println(lugar+" 8544654465");
+        
     }
     
     
