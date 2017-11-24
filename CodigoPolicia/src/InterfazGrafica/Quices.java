@@ -1,11 +1,11 @@
 package InterfazGrafica;
 
-import Logica.Comentario;
+
 import Logica.ProgramaCNP;
 import Logica.Quiz;
 import Logica.Usuario;
 import java.awt.Color;
-import java.awt.Dimension;
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;

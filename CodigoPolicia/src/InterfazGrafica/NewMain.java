@@ -5,6 +5,7 @@
  */
 package InterfazGrafica;
 
+import Logica.MapaCais;
 import Logica.Usuario;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -26,7 +27,7 @@ public class NewMain {
     MenuPrincipal ventana3= new MenuPrincipal();
     
     public NewMain(){
-        prueba();
+        prueba2();
     }
     
     /**
@@ -78,6 +79,18 @@ public class NewMain {
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setVisible(true);
         ventana.pack();
+        
+        
+    }
+    
+    public void prueba2(){
+        MapaCais map= new MapaCais();
+        map.generarMapa(4.6706622,-74.0527601);
+        JFrame ventana = new JFrame();
+        ventana.add(map);
+        ventana.setSize(400,400);
+        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventana.setVisible(true);
         
         
     }

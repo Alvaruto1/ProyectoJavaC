@@ -1,8 +1,6 @@
 package Logica;
 
-import javax.swing.JOptionPane;
-import twitter4j.GeoLocation;
-import twitter4j.GeoQuery;
+
 import twitter4j.Paging;
 import twitter4j.Status;
 import twitter4j.Twitter;
@@ -59,7 +57,7 @@ public class Twitter4J {
     public boolean twittear(String lugar){
         try{
             // Si el numero de caracteres excede el maximo permitido (140) , entonces se lanza una excepcion
-            if(tweet.length()>140){
+            if((tweet+lugar).length()>140){
                 throw new Exception("¡El máximo de caracteres permitidos es de 140!");
             }
             try{

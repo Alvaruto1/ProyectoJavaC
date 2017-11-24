@@ -5,10 +5,8 @@ import com.teamdev.jxmaps.GeocoderRequest;
 import com.teamdev.jxmaps.GeocoderResult;
 import com.teamdev.jxmaps.GeocoderStatus;
 import com.teamdev.jxmaps.LatLng;
-
 import com.teamdev.jxmaps.swing.MapView;
 import com.teamdev.jxmaps.Map;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,7 +14,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
+
 
 /**
  *
@@ -104,6 +102,7 @@ public class Geolocalizar extends MapView {
      */
     private void buscarArchivo (String archivo,File directorio) {       
         File[] list = directorio.listFiles();
+        System.out.println(list);
         if(list!=null){
             for (File fil : list){
                 if (fil.isDirectory()){
@@ -162,7 +161,9 @@ public class Geolocalizar extends MapView {
         }
         return false;  
     }
-    
+    /**
+     * Obtener el lugar o ubiciacion apartir de las coordenadas
+     */
     private void obtenerLugar(){
         Map map = getMap();
         

@@ -1,8 +1,13 @@
 package Logica;
 import InterfazGrafica.*;
+import com.teamdev.jxmaps.swing.MapView;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 
 import java.util.*;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  * 
@@ -71,6 +76,10 @@ public class ProgramaCNP {
      * Ventana material didactico
      */    
     private MaterialDidactico ventanaDidactico = new MaterialDidactico(this);
+    /**
+     * Ventana ubicacion
+     */    
+    private UbicacionCAI ventanaUbicacion = new UbicacionCAI(this);
    
     
     
@@ -100,9 +109,20 @@ public class ProgramaCNP {
      */
     private String emailPolicia = "policianacionalcolomPOO@gmail.com";
     /**
-     * @param args[]     
+     * latitud ubicacion usuario
      */
-    
+    private double latitud=0;
+    /**
+     * longitud ubicacion usuario
+     */
+    /**
+     * gelocalizacion del ususario
+     */
+    private Geolocalizar geo = new Geolocalizar();
+    private double longitud=0;
+    /**
+     * @param args[]     
+     */       
     public static void main(String args[]) {    
         new ProgramaCNP().iniciarProgramaCNP();        
     }
@@ -229,14 +249,8 @@ public class ProgramaCNP {
      * @param comentario
      * @return estado de envio mensaje de panico
      */
-    public boolean enviarPanico(String comentario){
-        
-        Geolocalizar geo = new Geolocalizar();
-        if(!geo.capturarCoordenadas()){
-            JOptionPane.showMessageDialog(ventanaPanico,"No se ha podido obtener su ubicación, sin embargo se intentara enviar el mensaje","Estado mensaje",JOptionPane.WARNING_MESSAGE);
-        }
-        
-        
+    public boolean enviarPanico(String comentario){   
+        obtnerUbicacion(ventanaPanico);
         for(Usuario u: usuarios){
             if(u.obtenerAlias().equals(usuarioAlias)){
                 if(u.enviarPanico(comentario)){
@@ -303,6 +317,44 @@ public class ProgramaCNP {
         ventanaMenu.setVisible(true);
     }
     
+    /**
+     * obtener mapa de cais ubicando ubicacion del usuario
+     * @return mapa
+     */
+    public MapView obtenerMapaCais(){
+        //posicion por defecto plaza de bolivar
+        double lat = 4.5981206;
+        double lon = -74.0760435;  
+        
+        if(!(latitud==0&&longitud==0)){
+            lat=latitud;
+            lon=longitud;
+        }
+        MapaCais mapaC= new MapaCais();
+        mapaC.generarMapa(lat,lon);       
+        return mapaC;
+    }
+    
+    /**
+     * obtener unciacion del usario
+     * @param ventana ventana en donde se ejecuta la ubicacion
+     * @return si se obtvo o no la ubicacion
+     */
+    public boolean obtnerUbicacion(JFrame ventana){        
+        if(JOptionPane.OK_OPTION==JOptionPane.showConfirmDialog(ventana,"Desea compartir su ubicación","Confirmacion Ubicación",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE)){
+            if(!geo.capturarCoordenadas()){
+                JOptionPane.showMessageDialog(ventana,"No se ha podido obtener su ubicación, sin embargo se intentara enviar el mensaje","Estado mensaje",JOptionPane.WARNING_MESSAGE);
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+        else{
+            return false;
+        }      
+    }
+    
     
     
     /**
@@ -310,7 +362,7 @@ public class ProgramaCNP {
      */
     public void inicializarVentanas(){        
         this.ventanaRegistro.inicioVentana(ventanaMenu, ventanaSesion, ventanaPanico, ventanaInfraccion, this);
-        this.ventanaMenu.inicioVentana(ventanaSesion, ventanaRegistro, ventanaNorma, ventanaQuiz, ventanaSugerencia, ventanaInfraccion, ventanaPanico);
+        this.ventanaMenu.inicioVentana(ventanaSesion, ventanaRegistro, ventanaNorma, ventanaQuiz, ventanaSugerencia, ventanaInfraccion, ventanaPanico, ventanaUbicacion);
         this.ventanaSesion.inicioVentana(ventanaMenu, ventanaRegistro, ventanaInfraccion, ventanaPanico, this);
         this.ventanaInfraccion.inicioVentana(ventanaMenu,ventanaPanico);
         this.ventanaPanico.inicioVentana(ventanaMenu, ventanaInfraccion);
@@ -321,7 +373,7 @@ public class ProgramaCNP {
         this.ventanaComentario.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, ventanaArticulo, ventanaDidactico);
         this.ventanaQuiz.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, this);
         this.ventanaSugerencia.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion);
-        
+        this.ventanaUbicacion.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion);
     }
     
     /**
@@ -341,7 +393,7 @@ public class ProgramaCNP {
         ventanaComentario.actualizarSesion(usuarioAlias);
         ventanaQuiz.actualizarSesion(usuarioAlias);
         ventanaSugerencia.actualizarSesion(usuarioAlias);
-        
+        ventanaUbicacion.actualizarSesion(usuarioAlias);
         
         
     }

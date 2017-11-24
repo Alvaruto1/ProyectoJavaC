@@ -40,6 +40,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
      * ventana panico
      */
     private Panico panico;
+    /**
+     * ventana ubicacion CAI
+     */
+    private UbicacionCAI ubicacion;
+    
+    
+
     
     
     
@@ -81,8 +88,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
      * inicia la ventana con sus respectivos parametros
      * @param venSesion ventana iniciar sesion
      * @param venRegistro ventana registro
+     * @param n ventana normas
+     * @param q ventana quiz
+     * @param s ventana sugerencias
+     * @param i ventena infraccion  
+     * @param p ventantana panico
+     * @param ubicacion vewntana ubicacion
      */
-    public void inicioVentana(IniciarSesion venSesion, Registro venRegistro, Normas n, Quices q, Sugerencias s, ReportarInfraccion i, Panico p){
+    public void inicioVentana(IniciarSesion venSesion, Registro venRegistro, Normas n, Quices q, Sugerencias s, ReportarInfraccion i, Panico p, UbicacionCAI ubicacion){
+        this.ubicacion = ubicacion;
         this.sesion = venSesion;
         this.registro = venRegistro;
         this.norma = n;
@@ -443,7 +457,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarBtnMouseClicked
 
     private void btnUbicacionCAIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbicacionCAIActionPerformed
-        // TODO add your handling code here:
+        ubicacion.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnUbicacionCAIActionPerformed
 
     
