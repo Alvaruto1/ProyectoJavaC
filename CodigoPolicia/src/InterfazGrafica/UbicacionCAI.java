@@ -8,14 +8,11 @@ package InterfazGrafica;
 import Logica.MapaCais;
 import Logica.ProgramaCNP;
 import com.teamdev.jxmaps.swing.MapView;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+
 
 /**
  *
@@ -365,7 +362,11 @@ public class UbicacionCAI extends javax.swing.JFrame {
 
     private void btnActivarUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivarUbicacionActionPerformed
         pMapa.removeAll();
-        programa.obtnerUbicacion(this);
+        
+        if(programa.obtnerUbicacion(this)){
+            lblDatosCAI.removeAll();
+            lblDatosCAI.setText(programa.actualizarCaiCercano());
+        }
         System.out.println(programa);
         
         MapView m=programa.obtenerMapaCais();
@@ -374,6 +375,7 @@ public class UbicacionCAI extends javax.swing.JFrame {
         
         pMapa.add(m);       
         pMapa.updateUI();
+        
     }//GEN-LAST:event_btnActivarUbicacionActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
@@ -388,7 +390,8 @@ public class UbicacionCAI extends javax.swing.JFrame {
         pMapa.setLayout(new GridLayout());
         
         pMapa.add(m);       
-        pMapa.updateUI();        
+        pMapa.updateUI();
+        
     }//GEN-LAST:event_formWindowActivated
 
     

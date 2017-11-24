@@ -117,9 +117,17 @@ public class ProgramaCNP {
      */
     private double longitud=0.0;
     /**
+     * posicion cai cercano
+     */
+    private int posCaiCercano=0;
+    /**
      * gelocalizacion del ususario
      */
     private Geolocalizar geo = new Geolocalizar();
+    /**
+     * mapa cais
+     */
+    private MapaCais mapaC= new MapaCais();
     
     
     /**
@@ -135,6 +143,10 @@ public class ProgramaCNP {
 
     public double getLongitud() {
         return longitud;
+    }
+
+    public int getPosCaiCercano() {
+        return posCaiCercano;
     }
 
     
@@ -341,12 +353,12 @@ public class ProgramaCNP {
             System.out.println("Entra por acacacac           ddddd");
             lat=latitud;
             lon=longitud;
-        }
-        
-        
+        } 
         System.out.println(lat+"--"+lon);
-        MapaCais mapaC= new MapaCais();
-        mapaC.generarMapa(lat,lon);       
+        
+        mapaC.generarMapa(lat,lon);  
+        posCaiCercano=mapaC.caiMasCercano(lat, lon);
+        
         return mapaC;
     }
     
@@ -355,9 +367,7 @@ public class ProgramaCNP {
      * @param ventana ventana en donde se ejecuta la ubicacion
      * @return si se obtvo o no la ubicacion
      */
-    public boolean obtnerUbicacion(JFrame ventana){ 
-        
-        
+    public boolean obtnerUbicacion(JFrame ventana){  
         if(JOptionPane.OK_OPTION==JOptionPane.showConfirmDialog(ventana,"Desea compartir su ubicación","Confirmacion Ubicación",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE)){
             if(!geo.capturarCoordenadas()){
                 JOptionPane.showMessageDialog(ventana,"No se ha podido obtener su ubicación, intentelo mas tarde","Estado mensaje",JOptionPane.WARNING_MESSAGE);
@@ -374,8 +384,21 @@ public class ProgramaCNP {
         }      
     }
     
-    
-    
+    /**
+     * actulizar dadtos cai cercano
+     * @return infromación
+     */
+    public String actualizarCaiCercano(){
+        String dir,tel,nombre,t;        
+        nombre=mapaC.getDatosCais().get(posCaiCercano)[0];
+        dir=mapaC.getDatosCais().get(posCaiCercano)[1];
+        tel=mapaC.getDatosCais().get(posCaiCercano)[2];
+        t="<HTML><B>"+nombre+"</B>"
+                +"<BR><I>DIRECCIÓN:</I> "+dir
+                +"<BR><I>TELEFONO:</I> "+tel+"</HTML>";
+        return t; 
+    }
+     
     /**
      * Inicializa las ventanas con sus respectivos parametros
      */
@@ -399,7 +422,6 @@ public class ProgramaCNP {
      * actualiza el nombre del usuario en cada ventana
      */
     public void actualizarSesion(){
-        
         ventanaRegistro.actualizarSesion(usuarioAlias);
         ventanaSesion.actualizarSesion(usuarioAlias);
         ventanaMenu.actualizarSesion(usuarioAlias);
@@ -413,8 +435,6 @@ public class ProgramaCNP {
         ventanaQuiz.actualizarSesion(usuarioAlias);
         ventanaSugerencia.actualizarSesion(usuarioAlias);
         ventanaUbicacion.actualizarSesion(usuarioAlias);
-        
-        
     }
     
     public String obtenerAlias(){

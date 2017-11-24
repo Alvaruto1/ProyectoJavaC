@@ -416,6 +416,27 @@ public class MapaCais extends MapView{
         map.setMapTypeId(new MapTypeId("Policia"));     
         
     }
+    
+    /**
+     * algoritmo cai mas cercano
+     * @param lat latitud ubicacion usuario
+     * @param lon longitud ubicacion usuario
+     * @return 
+     */
+    public int caiMasCercano(Double lat, Double lon){
+        double maxValor=0;
+        int maxPos=0;
+        ArrayList <Double> distancia= new ArrayList<>();
+        for(int i=0;i<datosCais.size();i++){
+            double dis = Math.sqrt(Math.pow(lat-Double.parseDouble(datosCais.get(i)[3]),2)+Math.pow(lon-Double.parseDouble(datosCais.get(i)[4]),2));
+            distancia.add(dis);
+            if(maxValor<distancia.get(i)){
+                maxValor=distancia.get(i);
+                maxPos=i;
+            }
+        }
+        return maxPos;   
+    }
             
         
     
