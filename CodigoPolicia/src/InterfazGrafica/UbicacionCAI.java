@@ -8,10 +8,12 @@ package InterfazGrafica;
 import Logica.MapaCais;
 import Logica.ProgramaCNP;
 import com.teamdev.jxmaps.swing.MapView;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -367,13 +369,12 @@ public class UbicacionCAI extends javax.swing.JFrame {
             lblDatosCAI.removeAll();
             lblDatosCAI.setText(programa.actualizarCaiCercano());
         }
-        System.out.println(programa);
+        
         
         MapView m=programa.obtenerMapaCais();
               
-        pMapa.setLayout(new GridLayout());
-        
-        pMapa.add(m);       
+        pMapa.setLayout(new GridLayout());        
+        pMapa.add(m);         
         pMapa.updateUI();
         
     }//GEN-LAST:event_btnActivarUbicacionActionPerformed

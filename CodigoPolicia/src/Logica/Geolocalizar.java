@@ -112,6 +112,7 @@ public class Geolocalizar extends MapView {
                 }
             } 
         }
+        
     }
     
     /**

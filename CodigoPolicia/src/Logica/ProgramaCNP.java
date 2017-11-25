@@ -109,6 +109,10 @@ public class ProgramaCNP {
      */
     private String emailPolicia = "policianacionalcolomPOO@gmail.com";
     /**
+     * lugar de ubicacion     
+     */
+    private String lugar="";
+    /**
      * latitud ubicacion usuario
      */
     private double latitud=0.0;
@@ -120,14 +124,8 @@ public class ProgramaCNP {
      * posicion cai cercano
      */
     private int posCaiCercano=0;
-    /**
-     * gelocalizacion del ususario
-     */
-    private Geolocalizar geo = new Geolocalizar();
-    /**
-     * mapa cais
-     */
-    private MapaCais mapaC= new MapaCais();
+   
+    
     
     
     /**
@@ -279,7 +277,7 @@ public class ProgramaCNP {
                 if(u.enviarPanico(comentario)){
                     Twitter4J twitter = new Twitter4J();
                     twitter.setTweet(comentario);                   
-                    return twitter.twittear(geo.getLugar());           
+                    return twitter.twittear(lugar);           
                 }
                                 
             }
@@ -345,6 +343,8 @@ public class ProgramaCNP {
      * @return mapa
      */
     public MapView obtenerMapaCais(){
+      
+        MapaCais mapaC= new MapaCais();
         //posicion por defecto plaza de bolivar
         double lat = 4.5981206;
         double lon = -74.0760435;  
@@ -367,15 +367,21 @@ public class ProgramaCNP {
      * @param ventana ventana en donde se ejecuta la ubicacion
      * @return si se obtvo o no la ubicacion
      */
-    public boolean obtnerUbicacion(JFrame ventana){  
+    public boolean obtnerUbicacion(JFrame ventana){ 
+        
+        Geolocalizar geo = new Geolocalizar();        
         if(JOptionPane.OK_OPTION==JOptionPane.showConfirmDialog(ventana,"Desea compartir su ubicación","Confirmacion Ubicación",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE)){
             if(!geo.capturarCoordenadas()){
                 JOptionPane.showMessageDialog(ventana,"No se ha podido obtener su ubicación, intentelo mas tarde","Estado mensaje",JOptionPane.WARNING_MESSAGE);
+                
                 return false;
             }
             else{
-                latitud=Double.parseDouble(geo.getLatitud());
+                latitud=Double.parseDouble(geo.getLatitud());                
                 longitud=Double.parseDouble(geo.getLongitud());
+                lugar=geo.getLugar();
+                
+                
                 return true;
             }
         }
@@ -390,9 +396,9 @@ public class ProgramaCNP {
      */
     public String actualizarCaiCercano(){
         String dir,tel,nombre,t;        
-        nombre=mapaC.getDatosCais().get(posCaiCercano)[0];
-        dir=mapaC.getDatosCais().get(posCaiCercano)[1];
-        tel=mapaC.getDatosCais().get(posCaiCercano)[2];
+        nombre=MapaCais.datosCais.get(posCaiCercano)[0];
+        dir=MapaCais.datosCais.get(posCaiCercano)[1];
+        tel=MapaCais.datosCais.get(posCaiCercano)[2];
         t="<HTML><B>"+nombre+"</B>"
                 +"<BR><I>DIRECCIÓN:</I> "+dir
                 +"<BR><I>TELEFONO:</I> "+tel+"</HTML>";

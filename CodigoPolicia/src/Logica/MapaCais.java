@@ -21,7 +21,7 @@ import com.teamdev.jxmaps.StyledMapType;
 import com.teamdev.jxmaps.swing.MapView;
 
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -40,7 +40,7 @@ public class MapaCais extends MapView{
     /**
      * arreglo datos por cai, nombre, dir, tel, coordenadas
      */
-    private ArrayList<String[]> datosCais = new ArrayList<String[]>();
+    public static ArrayList<String[]> datosCais = new ArrayList<String[]>();
     /**
      * marcador seleccionado
      */
