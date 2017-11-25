@@ -38,14 +38,20 @@ public class UbicacionCAI extends javax.swing.JFrame {
      */
     private ProgramaCNP programa;
     
+    private MapView m;
+    
     /**
      * Creates new form MenuPrincipal
      */
     public UbicacionCAI(ProgramaCNP programa) {
+        
         this.programa = programa;
         initComponents();
+        pMapa.setLayout(new GridLayout());
+        pMapa.removeAll();
         this.setLocationRelativeTo(null);
         cerrarVentanaSecundaria();
+        
     }
     /**
      * oculta la ventana secundaria y muestra el menu principal
@@ -79,6 +85,7 @@ public class UbicacionCAI extends javax.swing.JFrame {
         this.menu = menu;
         this.panico = panico;
         this.infraccion = r;
+        
     } 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -110,6 +117,9 @@ public class UbicacionCAI extends javax.swing.JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
@@ -184,9 +194,11 @@ public class UbicacionCAI extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(16, 67, 16));
-        jLabel4.setText("Datos CAI:");
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Datos CAI mas cercano:");
 
-        lblDatosCAI.setText("Aquí estarán los datos del CAI");
+        lblDatosCAI.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDatosCAI.setText("<HTML><B>CAI ROSARIO </B><BR><I>DIRECCIÓN:</I> AV JIMENEZ NO. 5-00 <BR><I>TELEFONO:</I>2860744 </HTML>");
 
         pMapa.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -208,13 +220,13 @@ public class UbicacionCAI extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblDatosCAI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(pMapa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDatosCAI, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(pMapa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -223,10 +235,10 @@ public class UbicacionCAI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(pMapa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDatosCAI, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(17, 17, 17))
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblDatosCAI, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13))
         );
 
         btnActivarUbicacion.setBackground(new java.awt.Color(131, 184, 61));
@@ -363,17 +375,16 @@ public class UbicacionCAI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRepInfActionPerformed
 
     private void btnActivarUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivarUbicacionActionPerformed
-        pMapa.removeAll();
+        
+        pMapa.removeAll();        
         
         if(programa.obtnerUbicacion(this)){
+            m=programa.obtenerMapaCais();
             lblDatosCAI.removeAll();
-            lblDatosCAI.setText(programa.actualizarCaiCercano());
-        }
-        
-        
-        MapView m=programa.obtenerMapaCais();
+            String t=programa.actualizarCaiCercano();            
+            lblDatosCAI.setText(t);
+        }           
               
-        pMapa.setLayout(new GridLayout());        
         pMapa.add(m);         
         pMapa.updateUI();
         
@@ -385,15 +396,18 @@ public class UbicacionCAI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        pMapa.removeAll();
-        MapView m=programa.obtenerMapaCais();
-              
-        pMapa.setLayout(new GridLayout());
         
-        pMapa.add(m);       
-        pMapa.updateUI();
+        
+        
+        
         
     }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        m=programa.obtenerMapaCais();                
+        pMapa.add(m);         
+        pMapa.updateUI();
+    }//GEN-LAST:event_formWindowOpened
 
     
 

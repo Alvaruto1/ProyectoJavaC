@@ -94,6 +94,7 @@ public class MapaCais extends MapView{
                     map.setOptions(options);
                     // Setting the map center
                     map.setCenter(new LatLng(latitud,longitud));
+                    
                     // Setting initial zoom value
                     map.setZoom(15.0);
                     // Creating a new marker object
@@ -135,7 +136,8 @@ public class MapaCais extends MapView{
      * inicializar maracdores e informacion de cais y estciones
      * @param map mapa
      */
-    private void colocarMarcadoresCais(Map map){       
+    private void colocarMarcadoresCais(Map map){  
+        datosCais.clear();
         //datos cais
         datosCais.add(new String[] {"ESTACIÓN DE POLICÍA USAQUÉN","CALLE 165 # 8A-43","678 4927-6781577","-74.0259314","4.7417851"});
         datosCais.add(new String[] {"CAI CONTADOR","CARRERA 19 # 136-31","626 4494","-74.0486111","4.7210093"});
@@ -368,7 +370,7 @@ public class MapaCais extends MapView{
                     infoCais.get(j).close();
                 }
             }
-            map.setZoom(20.0);
+            map.setZoom(16.0);
         }
         
     }
@@ -424,18 +426,21 @@ public class MapaCais extends MapView{
      * @return 
      */
     public int caiMasCercano(Double lat, Double lon){
-        double maxValor=0;
-        int maxPos=0;
-        ArrayList <Double> distancia= new ArrayList<>();
+        double minValor=1000000000;
+        int minPos=0;
+        
+        ArrayList <Double> distancia= new ArrayList<>();        
+        
         for(int i=0;i<datosCais.size();i++){
-            double dis = Math.sqrt(Math.pow(lat-Double.parseDouble(datosCais.get(i)[3]),2)+Math.pow(lon-Double.parseDouble(datosCais.get(i)[4]),2));
+        double dis = Math.sqrt(Math.pow(lat-Double.parseDouble(datosCais.get(i)[4]),2)+Math.pow(lon-Double.parseDouble(datosCais.get(i)[3]),2));
             distancia.add(dis);
-            if(maxValor<distancia.get(i)){
-                maxValor=distancia.get(i);
-                maxPos=i;
+            if(minValor>distancia.get(i)){
+                minValor=distancia.get(i);
+                minPos=i;
             }
         }
-        return maxPos;   
+        System.out.println(minPos+"*"+minValor+"*"+datosCais.size());
+        return minPos;   
     }
             
         

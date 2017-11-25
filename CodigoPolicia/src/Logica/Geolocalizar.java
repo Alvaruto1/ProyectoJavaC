@@ -113,6 +113,8 @@ public class Geolocalizar extends MapView {
             } 
         }
         
+        //rutaArchivo ="C:/Users/alvar/Downloads/coordenadas.txt";
+        
     }
     
     /**
@@ -143,8 +145,7 @@ public class Geolocalizar extends MapView {
                 for(int i=0;i<linea.length();i++){
                     if(linea.charAt(i)==' '){
                         latitud=linea.substring(0, i-1);
-                        longitud=linea.substring(i+1,linea.length());
-                        System.out.println(longitud + " "+latitud);
+                        longitud=linea.substring(i+1,linea.length());                        
                         archivo.delete();
                         obtenerLugar();                        
                         return true;
@@ -179,9 +180,9 @@ public class Geolocalizar extends MapView {
                             // Getting the first result
                             GeocoderResult result = results[0];
                             // Getting a location of the result
-                            LatLng location = result.getGeometry().getLocation();
+                            
                             lugar=result.getFormattedAddress();
-                            System.out.println(result.getFormattedAddress()+" "+location.toString());
+                            
                         }
                     } 
                     });

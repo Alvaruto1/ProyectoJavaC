@@ -123,7 +123,7 @@ public class ProgramaCNP {
     /**
      * posicion cai cercano
      */
-    private int posCaiCercano=0;
+    private int posCaiCercano=152;
    
     
     
@@ -349,15 +349,18 @@ public class ProgramaCNP {
         double lat = 4.5981206;
         double lon = -74.0760435;  
         
-        if(latitud!=0||longitud!=0){
-            System.out.println("Entra por acacacac           ddddd");
+        if(latitud!=0||longitud!=0){            
             lat=latitud;
             lon=longitud;
         } 
-        System.out.println(lat+"--"+lon);
         
-        mapaC.generarMapa(lat,lon);  
-        posCaiCercano=mapaC.caiMasCercano(lat, lon);
+        
+        mapaC.generarMapa(lat,lon); 
+        if(latitud!=0||longitud!=0){            
+            posCaiCercano=mapaC.caiMasCercano(lat, lon);
+        } 
+        
+        System.out.println(posCaiCercano+"----------------");
         
         return mapaC;
     }
@@ -395,10 +398,18 @@ public class ProgramaCNP {
      * @return infromación
      */
     public String actualizarCaiCercano(){
-        String dir,tel,nombre,t;        
-        nombre=MapaCais.datosCais.get(posCaiCercano)[0];
-        dir=MapaCais.datosCais.get(posCaiCercano)[1];
-        tel=MapaCais.datosCais.get(posCaiCercano)[2];
+        String dir,tel,nombre,t;
+        if(MapaCais.datosCais.size()==0){
+            nombre="CAI ROSARIO";
+            dir="AV JIMENEZ NO. 5-00";
+            tel="2860744";
+            
+        }else{
+            nombre=MapaCais.datosCais.get(posCaiCercano)[0];
+            dir=MapaCais.datosCais.get(posCaiCercano)[1];
+            tel=MapaCais.datosCais.get(posCaiCercano)[2];            
+        }
+        
         t="<HTML><B>"+nombre+"</B>"
                 +"<BR><I>DIRECCIÓN:</I> "+dir
                 +"<BR><I>TELEFONO:</I> "+tel+"</HTML>";
