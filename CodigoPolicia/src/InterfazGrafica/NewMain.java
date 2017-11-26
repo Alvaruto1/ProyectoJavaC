@@ -6,6 +6,7 @@
 package InterfazGrafica;
 
 import Logica.MapaCais;
+import Logica.ProgramaCNP;
 import Logica.Usuario;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -19,12 +20,12 @@ import org.jfree.data.general.DefaultPieDataset;
  * @author alvar
  */
 public class NewMain {
-    
+    ProgramaCNP programa;
     ArrayList <Usuario> usuario = new ArrayList();
     
     IniciarSesion ventana1= new IniciarSesion();
     Registro ventana2= new Registro();            
-    MenuPrincipal ventana3= new MenuPrincipal();
+    MenuPrincipal ventana3= new MenuPrincipal(programa);
     
     public NewMain(){
         prueba2();

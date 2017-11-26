@@ -1,10 +1,11 @@
 package Logica;
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * 
  */
-public class CodPol {
+public class CodPol implements Serializable{
 
     /**
      * Default constructor

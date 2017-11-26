@@ -3,6 +3,11 @@ import InterfazGrafica.*;
 import com.teamdev.jxmaps.swing.MapView;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import java.util.*;
 import javax.swing.JFrame;
@@ -17,7 +22,7 @@ public class ProgramaCNP {
     /**
      * Default constructor
      */
-    public ProgramaCNP() {
+    public ProgramaCNP() {        
     }
 
     
@@ -25,9 +30,7 @@ public class ProgramaCNP {
      * codigo de policia
      */ 
     private CodPol codigoPolicia = new CodPol();
-    // vistas del programa Codigo de Polciia
-    
-    
+    // vistas del programa Codigo de Polciia   
     /**
      * ventana correspondiente al registro del usuario
      */
@@ -35,7 +38,7 @@ public class ProgramaCNP {
     /**
      * ventana correspondiente al menu principal
      */
-    private MenuPrincipal ventanaMenu = new MenuPrincipal();
+    private MenuPrincipal ventanaMenu = new MenuPrincipal(this);
     /**
      * ventana correspondiente al menu principal
      */
@@ -80,13 +83,18 @@ public class ProgramaCNP {
      * Ventana ubicacion
      */    
     private UbicacionCAI ventanaUbicacion = new UbicacionCAI(this);
+    /**
+     * sugerencias
+     */
+    private ArrayList<Sugerencia> sugerencia= new ArrayList<>();
+  
    
     
     
     /**
      * arreglo de usuarios
      */    
-    private ArrayList <Usuario> usuarios = new ArrayList <Usuario>();
+    private ArrayList <Usuario> usuarios = new ArrayList<Usuario>();
 
     public ArrayList<Usuario> getUsuarios() {
         return usuarios;
@@ -126,13 +134,12 @@ public class ProgramaCNP {
     private int posCaiCercano=152;
    
     
-    
-    
     /**
      * @param args[]     
      */       
-    public static void main(String args[]) {    
-        new ProgramaCNP().iniciarProgramaCNP();        
+    public static void main(String args[]) { 
+        ProgramaCNP programa = new ProgramaCNP();          
+        programa.iniciarProgramaCNP();
     }
 
     public double getLatitud() {
@@ -259,8 +266,9 @@ public class ProgramaCNP {
      * @return 
      */
     public boolean enviarSugerencia(String comentario, String correo){
-        Sugerencia suge = new Sugerencia();
+        Sugerencia suge = new Sugerencia();        
         suge.hacerSugerencia(comentario, correo);
+        sugerencia.add(suge);
         JavaMail javaMail = new JavaMail(emailPCNP,"appcodigopolicia.com",comentario,emailPCNP, "Sugerencia: "+correo+"("+suge.getFecha()+")");
         return javaMail.enviarCorreo();      
     }
@@ -415,13 +423,61 @@ public class ProgramaCNP {
                 +"<BR><I>TELEFONO:</I> "+tel+"</HTML>";
         return t; 
     }
+    
+    /**
+     * guardar los datos cambidados duante la sesion
+     */
+    public void guardarDatos(){
+        try{
+            ObjectOutputStream guardar = new ObjectOutputStream(new FileOutputStream("src/datos/Usuarios.dat"));
+            guardar.writeObject(usuarios);             
+            guardar.close();
+            
+        }catch(IOException e){
+            JOptionPane.showMessageDialog(ventanaMenu,e, "Estado datos",JOptionPane.ERROR_MESSAGE);
+        }
+        try{
+            ObjectOutputStream guardar = new ObjectOutputStream(new FileOutputStream("src/datos/CodPol.dat"));            
+            guardar.writeObject(codigoPolicia);
+            guardar.close();
+            
+        }catch(IOException e){
+            JOptionPane.showMessageDialog(ventanaMenu,e, "Estado datos",JOptionPane.ERROR_MESSAGE);
+        }  
+    }
+    
+    /**
+     * recupera los datos
+     */
+    
+    public void recuperarDatos(){
+        try{
+            ObjectInputStream recuperar = new ObjectInputStream(new FileInputStream("src/datos/Usuarios.dat"));
+            usuarios=(ArrayList<Usuario>)recuperar.readObject();   
+            for(Usuario u: usuarios){
+                System.out.println(u.obtenerAlias());
+            }           
+            recuperar.close();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(ventanaMenu,e, "Estado datos",JOptionPane.ERROR_MESSAGE);
+            
+        }
+        try{
+            ObjectInputStream recuperar = new ObjectInputStream(new FileInputStream("src/datos/CodPol.dat")); 
+            codigoPolicia = (CodPol) recuperar.readObject();
+            recuperar.close();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(ventanaMenu,e, "Estado datos",JOptionPane.ERROR_MESSAGE);
+            
+        }
+    }
      
     /**
      * Inicializa las ventanas con sus respectivos parametros
      */
-    public void inicializarVentanas(){        
-        this.ventanaRegistro.inicioVentana(ventanaMenu, ventanaSesion, ventanaPanico, ventanaInfraccion, this);
+    public void inicializarVentanas(){     
         this.ventanaMenu.inicioVentana(ventanaSesion, ventanaRegistro, ventanaNorma, ventanaQuiz, ventanaSugerencia, ventanaInfraccion, ventanaPanico, ventanaUbicacion);
+        this.ventanaRegistro.inicioVentana(ventanaMenu, ventanaSesion, ventanaPanico, ventanaInfraccion, this);        
         this.ventanaSesion.inicioVentana(ventanaMenu, ventanaRegistro, ventanaInfraccion, ventanaPanico, this);
         this.ventanaInfraccion.inicioVentana(ventanaMenu,ventanaPanico);
         this.ventanaPanico.inicioVentana(ventanaMenu, ventanaInfraccion);

@@ -1,5 +1,6 @@
 package InterfazGrafica;
 
+import Logica.ProgramaCNP;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
@@ -44,6 +45,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
      * ventana ubicacion CAI
      */
     private UbicacionCAI ubicacion;
+    /**
+     * programa codigo de policia
+     */
+    private ProgramaCNP programa;
     
     
 
@@ -53,11 +58,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
     
     /**
      * constructor por defecto
+     * @param programa codigo de policia
      */
-    public MenuPrincipal() {        
+    public MenuPrincipal(ProgramaCNP programa) { 
+        
+        this.programa = programa;
         initComponents();
         this.setLocationRelativeTo(null);
-        cerrarPrograma();        
+        
+        
+        cerrarPrograma();   
+        
     }
     
     /**
@@ -67,6 +78,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         addWindowListener(new WindowAdapter(){
             public void windowClosing(WindowEvent e){
                 if(JOptionPane.showConfirmDialog(null,"Esta seguro de cerrar el programa","Cerrar Programa", JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){
+                    programa.guardarDatos();
                     setDefaultCloseOperation(EXIT_ON_CLOSE);
                 }
                 else{
@@ -104,6 +116,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.sugerencia = s;
         this.infraccion = i;
         this.panico = p;
+        programa.recuperarDatos();
     }    
     
   

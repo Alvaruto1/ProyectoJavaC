@@ -1,10 +1,11 @@
 package Logica;
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * 
  */
-public class Denuncia {
+public class Denuncia implements Serializable{
 
     /**
      * Default constructor

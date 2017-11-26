@@ -1,11 +1,12 @@
 package Logica;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * 
  */
-public class Norma {
+public class Norma implements Serializable{
 
     /**
      * contructor parametrico crea y registra datos de una norma

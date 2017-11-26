@@ -1,12 +1,13 @@
 package Logica;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author alvar
  */
-public class LPanico {
+public class LPanico implements Serializable{
     /**
      * mensaje rapido para enviar
      */

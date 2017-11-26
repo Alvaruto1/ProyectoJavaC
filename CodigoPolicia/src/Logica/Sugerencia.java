@@ -1,10 +1,11 @@
 package Logica;
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * 
  */
-public class Sugerencia {
+public class Sugerencia implements Serializable{
 
     /**
      * Default constructor
