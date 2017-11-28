@@ -10,6 +10,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Random;
+import javafx.scene.control.ComboBox;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
@@ -410,10 +411,11 @@ public class Quices extends javax.swing.JFrame {
            combo.add(com);
            
            combo.get(i).setSelectedIndex(new Random().nextInt(2));
-           for(int j=0;j<3;j++){               
+           for(int j=0;j<3;j++){                
                l.add(combo.get(i));
+               
            }                       
-           pComentarios.setLayout(new BoxLayout(pComentarios,BoxLayout.Y_AXIS));  
+           pComentarios.setLayout(new BoxLayout(pComentarios,BoxLayout.Y_AXIS));           
            pComentarios.add(l);
            
            pComentarios.updateUI();

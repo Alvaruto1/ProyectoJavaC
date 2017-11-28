@@ -504,6 +504,7 @@ public class ProgramaCNP {
                     JOptionPane.showMessageDialog(ventana, "El mensaje debe ser menor o igula a 100 caracteres", "Error", JOptionPane.WARNING_MESSAGE);                    
                     return false;
                 }
+                return true;
             case SUGERENCIA:
                 int cont=0,cont1=0;
                 boolean estado=true;
