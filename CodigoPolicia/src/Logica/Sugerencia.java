@@ -30,20 +30,15 @@ public class Sugerencia implements Serializable{
 
     /** registrar sugerencia
      * @param t descripcion de la sugerencia
-     * @return estado de hacer sugerencia
+     * @param correo
      */
-    public boolean hacerSugerencia(String t, String correo) {
+    public void hacerSugerencia(String t, String correo) {
         
-        //analisis texto
-        if(t.equals("") || t.charAt(0)==' '){
-            return false;                   
-        }
-        else{
-            this.texto = t;
-            this.fecha = new Date();   
-            this.correo = correo;
-            return true;
-        }
+       
+        this.texto = t;
+        this.fecha = new Date();   
+        this.correo = correo;
+        
                 
     }
 

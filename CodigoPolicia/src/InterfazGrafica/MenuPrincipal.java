@@ -147,6 +147,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setBackground(new java.awt.Color(153, 255, 51));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                formFocusLost(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowDeactivated(java.awt.event.WindowEvent evt) {
+                formWindowDeactivated(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 704));
@@ -473,6 +486,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ubicacion.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnUbicacionCAIActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        
+        
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusLost
+        
+    }//GEN-LAST:event_formFocusLost
+
+    private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
+        if(programa.obtenerAlias().equals("Invitado")){
+            JOptionPane.showMessageDialog(null,"Buen dia, se recomienda muy amablemente que porfavor se registre para tener accesos completo de nuestro aplicativo", "Recomendacion", JOptionPane.INFORMATION_MESSAGE);            
+                
+        } 
+    }//GEN-LAST:event_formWindowDeactivated
 
     
 

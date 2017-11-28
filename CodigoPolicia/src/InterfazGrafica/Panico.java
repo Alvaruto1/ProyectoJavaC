@@ -356,8 +356,11 @@ public class Panico extends javax.swing.JFrame {
     private void btnEnviarEmergenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarEmergenciaActionPerformed
         
         if(programa.enviarPanico(txtMensaje.getText())){
-           JOptionPane.showMessageDialog(this,"Su mensaje se ha enviado correctamente","Estado mensaje",JOptionPane.INFORMATION_MESSAGE);
-           txtMensaje.setText("");
+            lblDatosCAI.removeAll();
+            String t=programa.actualizarCaiCercano();            
+            lblDatosCAI.setText(t);
+            JOptionPane.showMessageDialog(this,"Su mensaje se ha enviado correctamente","Estado mensaje",JOptionPane.INFORMATION_MESSAGE);
+            txtMensaje.setText("");
         }
         else{
             JOptionPane.showMessageDialog(this,"No se ha podido enviar, intentelo nuevamente","Estado mensaje",JOptionPane.WARNING_MESSAGE); 
