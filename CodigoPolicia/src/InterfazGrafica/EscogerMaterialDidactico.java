@@ -35,6 +35,10 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
      */    
     private MaterialDidactico didactico;
     /**
+     * Ventana perfil
+     */
+    private PerfilUsuario perfil;
+    /**
      * programa codigo de policia
      */    
     private ProgramaCNP programa;
@@ -109,12 +113,14 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
      * @param i ventana infraccion
      * @param panico ventana panico     
      * @param m ventana material didactico    
+     * @param perfil Ventana perfil 
      */
-    public void inicioVentana(MenuPrincipal menu, ReportarInfraccion i , Panico panico, MaterialDidactico m){
+    public void inicioVentana(MenuPrincipal menu, ReportarInfraccion i , Panico panico, MaterialDidactico m, PerfilUsuario perfil){
         this.didactico = m;      
         this.menu = menu;        
         this.infraccion = i;
         this.panico = panico;
+        this.perfil = perfil;
     }
     
     @SuppressWarnings("unchecked")    
@@ -166,6 +172,11 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
 
         lblUsuario.setFont(new java.awt.Font("Dialog", 3, 10)); // NOI18N
         lblUsuario.setText("invitado");
+        lblUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUsuarioMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -527,6 +538,13 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
         filtrarLibro();
         habilitarComponentes(true);
     }//GEN-LAST:event_rbtnBoletinActionPerformed
+
+    private void lblUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseClicked
+        if(!programa.obtenerAlias().equals("Invitado")){
+            perfil.setVisible(true);
+            this.setVisible(false);            
+        }
+    }//GEN-LAST:event_lblUsuarioMouseClicked
 
     
     /**

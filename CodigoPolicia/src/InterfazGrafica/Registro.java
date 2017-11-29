@@ -27,6 +27,10 @@ public class Registro extends javax.swing.JFrame {
      */    
     private Panico panico;
     /**
+     * ventana perfil
+     */
+    private PerfilUsuario perfil;
+    /**
      * Ventana de infraccion
      */    
     private ReportarInfraccion infraccion;
@@ -75,13 +79,15 @@ public class Registro extends javax.swing.JFrame {
      * @param panico
      * @param r infracción
      * @param p programa codigo policia
+     * @param perfil ventana perfil
      */
-    public void inicioVentana(MenuPrincipal menu, IniciarSesion sesion , Panico panico, ReportarInfraccion r, ProgramaCNP p){
+    public void inicioVentana(MenuPrincipal menu, IniciarSesion sesion , Panico panico, ReportarInfraccion r, ProgramaCNP p, PerfilUsuario perfil){
         this.programa = p;        
         this.menu = menu;
         this.sesion = sesion;
         this.panico = panico;
         this.infraccion = r;
+        this.perfil = perfil;
     }    
     
 
@@ -130,6 +136,11 @@ public class Registro extends javax.swing.JFrame {
 
         lblUsuario.setFont(new java.awt.Font("Dialog", 3, 10)); // NOI18N
         lblUsuario.setText("Invitado");
+        lblUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUsuarioMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -440,6 +451,13 @@ public class Registro extends javax.swing.JFrame {
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_menuBtnActionPerformed
+
+    private void lblUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseClicked
+        if(!programa.obtenerAlias().equals("Invitado")){
+            perfil.setVisible(true);
+            this.setVisible(false);            
+        }
+    }//GEN-LAST:event_lblUsuarioMouseClicked
 
     
 

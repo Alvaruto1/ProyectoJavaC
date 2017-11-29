@@ -27,6 +27,10 @@ public class IniciarSesion extends javax.swing.JFrame {
      */
     private ReportarInfraccion infraccion;
     /**
+     * ventana perfil
+     */
+    private PerfilUsuario perfil;
+    /**
      * Ventana del panico
      */    
     private Panico panico;    
@@ -75,13 +79,15 @@ public class IniciarSesion extends javax.swing.JFrame {
      * @param i ventana infraccion
      * @param panico ventana panico
      * @param p programa codigo policia
+     * @param perfil ventana perfil
      */
-    public void inicioVentana(MenuPrincipal menu, Registro registro , ReportarInfraccion i , Panico panico, ProgramaCNP p){
+    public void inicioVentana(MenuPrincipal menu, Registro registro , ReportarInfraccion i , Panico panico, ProgramaCNP p, PerfilUsuario perfil){
         this.programa = p;        
         this.menu = menu;
         this.registro = registro;
         this.infraccion = i;
         this.panico = panico;
+        this.perfil = perfil;
     }
     
     @SuppressWarnings("unchecked")
@@ -127,6 +133,11 @@ public class IniciarSesion extends javax.swing.JFrame {
 
         lblUsuario.setFont(new java.awt.Font("Dialog", 3, 10)); // NOI18N
         lblUsuario.setText("Invitado");
+        lblUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUsuarioMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -401,6 +412,13 @@ public class IniciarSesion extends javax.swing.JFrame {
             
         
     }//GEN-LAST:event_menuBtnMouseClicked
+
+    private void lblUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseClicked
+        if(!programa.obtenerAlias().equals("Invitado")){
+            perfil.setVisible(true);
+            this.setVisible(false);            
+        }
+    }//GEN-LAST:event_lblUsuarioMouseClicked
 
     
 

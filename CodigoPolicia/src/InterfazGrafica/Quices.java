@@ -36,6 +36,10 @@ public class Quices extends javax.swing.JFrame {
      */    
     private Panico panico;
     /**
+     * ventana perfil
+     */
+    private PerfilUsuario perfil;
+    /**
      * Ventana de infraccion
      */    
     private ReportarInfraccion infraccion;
@@ -87,12 +91,14 @@ public class Quices extends javax.swing.JFrame {
      * @param panico pánico   
      * @param r ventana infraccion    
      * @param p programa codigo policia
+     * @param perfil ventana perfil
      */
-    public void inicioVentana(MenuPrincipal menu, Panico panico, ReportarInfraccion r, ProgramaCNP p){        
+    public void inicioVentana(MenuPrincipal menu, Panico panico, ReportarInfraccion r, ProgramaCNP p, PerfilUsuario perfil){        
         this.programa = p;        
         this.menu = menu;
         this.panico = panico;
         this.infraccion = r;
+        this.perfil = perfil;
     } 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -140,6 +146,11 @@ public class Quices extends javax.swing.JFrame {
 
         lblUsuario.setFont(new java.awt.Font("Dialog", 3, 10)); // NOI18N
         lblUsuario.setText("invitado");
+        lblUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUsuarioMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -372,6 +383,13 @@ public class Quices extends javax.swing.JFrame {
         } 
         
     }//GEN-LAST:event_formWindowActivated
+
+    private void lblUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseClicked
+        if(!programa.obtenerAlias().equals("Invitado")){
+            perfil.setVisible(true);
+            this.setVisible(false);            
+        }
+    }//GEN-LAST:event_lblUsuarioMouseClicked
     
     private void calificarQuiz(){
         ArrayList <String> respuestas = new ArrayList<>() ;

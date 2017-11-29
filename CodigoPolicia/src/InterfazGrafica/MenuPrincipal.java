@@ -46,6 +46,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     private UbicacionCAI ubicacion;
     /**
+     * Ventana perfil
+     */
+    private PerfilUsuario perfil;
+    /**
      * programa codigo de policia
      */
     private ProgramaCNP programa;
@@ -103,8 +107,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
      * @param i ventena infraccion  
      * @param p ventantana panico
      * @param ubicacion vewntana ubicacion
+     * @param perfil perfil
      */
-    public void inicioVentana(IniciarSesion venSesion, Registro venRegistro, Normas n, Quices q, Sugerencias s, ReportarInfraccion i, Panico p, UbicacionCAI ubicacion){
+    public void inicioVentana(IniciarSesion venSesion, Registro venRegistro, Normas n, Quices q, Sugerencias s, ReportarInfraccion i, Panico p, UbicacionCAI ubicacion, PerfilUsuario perfil){
         this.ubicacion = ubicacion;
         this.sesion = venSesion;
         this.registro = venRegistro;
@@ -113,6 +118,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.sugerencia = s;
         this.infraccion = i;
         this.panico = p;
+        this.perfil = perfil;
         programa.recuperarDatos();
     }    
     
@@ -173,6 +179,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         lblUsuario.setFont(new java.awt.Font("Dialog", 3, 10)); // NOI18N
         lblUsuario.setText("invitado");
+        lblUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUsuarioMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -499,6 +510,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 
         } 
     }//GEN-LAST:event_formWindowDeactivated
+
+    private void lblUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseClicked
+        if(!programa.obtenerAlias().equals("Invitado")){
+            perfil.setVisible(true);
+            this.setVisible(false);            
+        }
+    }//GEN-LAST:event_lblUsuarioMouseClicked
 
     
 

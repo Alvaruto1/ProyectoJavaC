@@ -34,6 +34,10 @@ public class Articulos extends javax.swing.JFrame {
      */    
     private Comentarios comentario;
     /**
+     * Ventana perfil
+     */
+    private PerfilUsuario perfil;
+    /**
      * programa de codigo policia
      */    
     private ProgramaCNP programa;
@@ -98,12 +102,14 @@ public class Articulos extends javax.swing.JFrame {
      * @param panico panico
      * @param r ventana infraccion   
      * @param com ventana comentario
+     * @param perfil perfil
      */
-    public void inicioVentana(MenuPrincipal menu, Panico panico, ReportarInfraccion r, Comentarios com){
+    public void inicioVentana(MenuPrincipal menu, Panico panico, ReportarInfraccion r, Comentarios com, PerfilUsuario perfil){
         this.comentario = com;               
         this.menu = menu;
         this.panico = panico;
         this.infraccion = r;
+        this.perfil=perfil;
     }   
     
     @SuppressWarnings("unchecked")
@@ -164,6 +170,11 @@ public class Articulos extends javax.swing.JFrame {
 
         lblUsuario.setFont(new java.awt.Font("Dialog", 3, 10)); // NOI18N
         lblUsuario.setText("invitado");
+        lblUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUsuarioMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -536,6 +547,13 @@ public class Articulos extends javax.swing.JFrame {
             btnEnviarComentario.setEnabled(true);
         } 
     }//GEN-LAST:event_formWindowActivated
+
+    private void lblUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseClicked
+        if(!programa.obtenerAlias().equals("Invitado")){
+            perfil.setVisible(true);
+            this.setVisible(false);            
+        }
+    }//GEN-LAST:event_lblUsuarioMouseClicked
     
     /**
      * filtra por articulo

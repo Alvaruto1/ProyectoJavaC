@@ -32,6 +32,10 @@ public class ReportarInfraccion extends javax.swing.JFrame {
      */    
     private MenuPrincipal menu;
     /**
+     * ventana perfil
+     */
+    private PerfilUsuario perfil;
+    /**
      * Ventana del panico
      */    
     private Panico panico;
@@ -112,11 +116,13 @@ public class ReportarInfraccion extends javax.swing.JFrame {
      * inicia la ventana con sus respectivos parametros
      * @param menu principal   
      * @param p ventana panico
+     * @param perfil ventana perfil
      */
-    public void inicioVentana(MenuPrincipal menu, Panico p){ 
+    public void inicioVentana(MenuPrincipal menu, Panico p, PerfilUsuario perfil){ 
         
         this.menu = menu;    
         this.panico = p;
+        this.perfil = perfil;
     }
     
     @SuppressWarnings("unchecked")
@@ -178,6 +184,11 @@ public class ReportarInfraccion extends javax.swing.JFrame {
 
         lblUsuario.setFont(new java.awt.Font("Dialog", 3, 10)); // NOI18N
         lblUsuario.setText("invitado");
+        lblUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUsuarioMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -614,6 +625,13 @@ public class ReportarInfraccion extends javax.swing.JFrame {
             txtDescripcion.setEnabled(true);
         }
     }//GEN-LAST:event_formWindowActivated
+
+    private void lblUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseClicked
+        if(!programa.obtenerAlias().equals("Invitado")){
+            perfil.setVisible(true);
+            this.setVisible(false);            
+        }
+    }//GEN-LAST:event_lblUsuarioMouseClicked
     /**
      * obtener la ruta de la prueba
      * @return ruta

@@ -29,6 +29,10 @@ public class Panico extends javax.swing.JFrame {
      */    
     private ReportarInfraccion infraccion;
     /**
+     * ventana perfil
+     */
+    private PerfilUsuario perfil;
+    /**
      * programa codigo polica
      */    
     private ProgramaCNP programa;
@@ -72,10 +76,12 @@ public class Panico extends javax.swing.JFrame {
      * inicia la ventana con sus respectivos parametros
      * @param r ventan infraccion
      * @param menu principal   
+     * @param perfil ventana perfil
      */
-    public void inicioVentana(MenuPrincipal menu, ReportarInfraccion r){              
+    public void inicioVentana(MenuPrincipal menu, ReportarInfraccion r, PerfilUsuario perfil){              
         this.menu = menu;  
         this.infraccion = r;
+        this.perfil = perfil;
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -128,6 +134,11 @@ public class Panico extends javax.swing.JFrame {
 
         lblUsuario.setFont(new java.awt.Font("Dialog", 3, 10)); // NOI18N
         lblUsuario.setText("invitado");
+        lblUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUsuarioMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -387,6 +398,13 @@ public class Panico extends javax.swing.JFrame {
         String t=programa.actualizarCaiCercano();            
         lblDatosCAI.setText(t);
     }//GEN-LAST:event_formWindowActivated
+
+    private void lblUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseClicked
+        if(!programa.obtenerAlias().equals("Invitado")){
+            perfil.setVisible(true);
+            this.setVisible(false);            
+        }
+    }//GEN-LAST:event_lblUsuarioMouseClicked
 
     
 

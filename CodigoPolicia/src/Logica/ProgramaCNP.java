@@ -44,6 +44,10 @@ public class ProgramaCNP {
      */
     private Registro ventanaRegistro = new Registro();
     /**
+     * Ventana correspondiente al perfil del usuario
+     */
+    private PerfilUsuario ventanaPerfil = new PerfilUsuario(this);
+    /**
      * ventana correspondiente al menu principal
      */
     private MenuPrincipal ventanaMenu = new MenuPrincipal(this);
@@ -583,19 +587,19 @@ public class ProgramaCNP {
      * Inicializa las ventanas con sus respectivos parametros
      */
     public void inicializarVentanas() {
-        this.ventanaMenu.inicioVentana(ventanaSesion, ventanaRegistro, ventanaNorma, ventanaQuiz, ventanaSugerencia, ventanaInfraccion, ventanaPanico, ventanaUbicacion);
-        this.ventanaRegistro.inicioVentana(ventanaMenu, ventanaSesion, ventanaPanico, ventanaInfraccion, this);
-        this.ventanaSesion.inicioVentana(ventanaMenu, ventanaRegistro, ventanaInfraccion, ventanaPanico, this);
-        this.ventanaInfraccion.inicioVentana(ventanaMenu, ventanaPanico);
-        this.ventanaPanico.inicioVentana(ventanaMenu, ventanaInfraccion);
-        this.ventanaNorma.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico, ventanaArticulo, ventanaEscogerDidactico);
-        this.ventanaDidactico.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico, ventanaComentario, ventanaEscogerDidactico);
-        this.ventanaEscogerDidactico.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico, ventanaDidactico);
-        this.ventanaArticulo.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, ventanaComentario);
-        this.ventanaComentario.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, ventanaArticulo, ventanaDidactico);
-        this.ventanaQuiz.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, this);
-        this.ventanaSugerencia.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion);
-        this.ventanaUbicacion.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion);
+        this.ventanaMenu.inicioVentana(ventanaSesion, ventanaRegistro, ventanaNorma, ventanaQuiz, ventanaSugerencia, ventanaInfraccion, ventanaPanico, ventanaUbicacion, ventanaPerfil);
+        this.ventanaRegistro.inicioVentana(ventanaMenu, ventanaSesion, ventanaPanico, ventanaInfraccion, this, ventanaPerfil);
+        this.ventanaSesion.inicioVentana(ventanaMenu, ventanaRegistro, ventanaInfraccion, ventanaPanico, this, ventanaPerfil);
+        this.ventanaInfraccion.inicioVentana(ventanaMenu, ventanaPanico, ventanaPerfil);
+        this.ventanaPanico.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPerfil);
+        this.ventanaNorma.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico, ventanaArticulo, ventanaEscogerDidactico, ventanaPerfil);
+        this.ventanaDidactico.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico, ventanaComentario, ventanaEscogerDidactico, ventanaPerfil);
+        this.ventanaEscogerDidactico.inicioVentana(ventanaMenu, ventanaInfraccion, ventanaPanico, ventanaDidactico, ventanaPerfil);
+        this.ventanaArticulo.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, ventanaComentario, ventanaPerfil);
+        this.ventanaComentario.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, ventanaArticulo, ventanaDidactico, ventanaPerfil);
+        this.ventanaQuiz.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, this, ventanaPerfil);
+        this.ventanaSugerencia.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, ventanaPerfil);
+        this.ventanaUbicacion.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, ventanaPerfil);
     }
 
     /**

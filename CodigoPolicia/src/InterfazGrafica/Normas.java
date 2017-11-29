@@ -35,6 +35,10 @@ public class Normas extends javax.swing.JFrame {
      */    
     private Panico panico;
     /**
+     * ventana perfil
+     */
+    private PerfilUsuario perfil;
+    /**
      * Ventana articulos
      */    
     private Articulos articulo;
@@ -88,13 +92,15 @@ public class Normas extends javax.swing.JFrame {
      * @param panico ventana panico 
      * @param a artículo
      * @param m menú
+     * @param perfil ventana perfil
      */
-    public void inicioVentana(MenuPrincipal menu, ReportarInfraccion i , Panico panico, Articulos a, EscogerMaterialDidactico m){
+    public void inicioVentana(MenuPrincipal menu, ReportarInfraccion i , Panico panico, Articulos a, EscogerMaterialDidactico m, PerfilUsuario perfil){
         this.escogerDidactico = m;
         this.articulo = a;       
         this.menu = menu;        
         this.infraccion = i;
         this.panico = panico;
+        this.perfil = perfil;
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -136,6 +142,11 @@ public class Normas extends javax.swing.JFrame {
 
         lblUsuario.setFont(new java.awt.Font("Dialog", 3, 10)); // NOI18N
         lblUsuario.setText("invitado");
+        lblUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUsuarioMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -372,6 +383,13 @@ public class Normas extends javax.swing.JFrame {
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuActionPerformed
+
+    private void lblUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseClicked
+        if(!programa.obtenerAlias().equals("Invitado")){
+            perfil.setVisible(true);
+            this.setVisible(false);            
+        }
+    }//GEN-LAST:event_lblUsuarioMouseClicked
 
     private void visualizarCodPDF(){
         SwingController controlador = new SwingController();        

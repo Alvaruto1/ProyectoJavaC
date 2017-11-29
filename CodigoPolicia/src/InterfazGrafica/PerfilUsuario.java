@@ -82,7 +82,7 @@ public class PerfilUsuario extends javax.swing.JFrame {
     /**
      * inicia la ventana con sus respectivos parametros
      * @param menu ventana principal     
-     * @param panico     
+     * @param panico Ventana pánico    
      * @param r ventana infraccion
      */
     public void inicioVentana(MenuPrincipal menu, Panico panico, ReportarInfraccion r){     

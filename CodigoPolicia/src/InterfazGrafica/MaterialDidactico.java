@@ -37,6 +37,10 @@ public class MaterialDidactico extends javax.swing.JFrame {
      */    
     private Comentarios comentario; 
     /**
+     * ventana perfil
+     */
+    private PerfilUsuario perfil;
+    /**
      * Ventana de escoger material didactico
      */    
     private EscogerMaterialDidactico escoger;
@@ -92,13 +96,15 @@ public class MaterialDidactico extends javax.swing.JFrame {
      * @param panico ventana panico     
      * @param com ventana comentario 
      * @param es escoger material didactico
+     * @param perfil ventana perfil
      */
-    public void inicioVentana(MenuPrincipal menu, ReportarInfraccion i , Panico panico, Comentarios com, EscogerMaterialDidactico es){
+    public void inicioVentana(MenuPrincipal menu, ReportarInfraccion i , Panico panico, Comentarios com, EscogerMaterialDidactico es, PerfilUsuario perfil){
         this.escoger = es;
         this.comentario = com;              
         this.menu = menu;        
         this.infraccion = i;
         this.panico = panico;
+        this.perfil = perfil;
     }
     
     @SuppressWarnings("unchecked")
@@ -153,6 +159,11 @@ public class MaterialDidactico extends javax.swing.JFrame {
 
         lblUsuario.setFont(new java.awt.Font("Dialog", 3, 10)); // NOI18N
         lblUsuario.setText("invitado");
+        lblUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUsuarioMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -464,6 +475,13 @@ public class MaterialDidactico extends javax.swing.JFrame {
         programa.comentarNorma(txtComentarios.getText(), idNorma);         
         txtComentarios.setText("");
     }//GEN-LAST:event_btnEnviarComentarioActionPerformed
+
+    private void lblUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuarioMouseClicked
+        if(!programa.obtenerAlias().equals("Invitado")){
+            perfil.setVisible(true);
+            this.setVisible(false);            
+        }
+    }//GEN-LAST:event_lblUsuarioMouseClicked
     
     /**
      * redimensiona imagen del material idactico y lo muestra en pantalla
