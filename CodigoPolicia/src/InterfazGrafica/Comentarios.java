@@ -17,10 +17,12 @@ import javax.swing.JLabel;
 
 
 /**
- *
- * @author alvar
+ * Ventana Comentarios
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class Comentarios extends javax.swing.JFrame {
+    
+    //Atributos
     
     /**
      * valor ventana articulos
@@ -64,9 +66,6 @@ public class Comentarios extends javax.swing.JFrame {
      */
     private String idNorma = "1";
     
-    
-    
-    
     /**
      * Titulos Libro/ Titulo/ Capitulo /Articulo
      */
@@ -76,9 +75,11 @@ public class Comentarios extends javax.swing.JFrame {
     //private ArrayList <ArrayList<ArrayList<ArrayList<String>>>> articulo = new ArrayList <ArrayList<ArrayList<ArrayList<String>>>>();
     private String[][][][] articulo = new String[3][15][5][243]; 
     
+    //Métodos
     
     /**
      * Cosntructorl
+     * @param p programa
      */
     public Comentarios(ProgramaCNP p) { 
         this.programa = p;
@@ -121,7 +122,7 @@ public class Comentarios extends javax.swing.JFrame {
     /**
      * inicia la ventana con sus respectivos parametros
      * @param menu ventana principal     
-     * @param panico     
+     * @param panico panico    
      * @param r ventana infraccion
      * @param a ventana articulos
      * @param d ventana didadtico

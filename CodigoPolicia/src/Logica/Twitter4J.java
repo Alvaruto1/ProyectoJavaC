@@ -8,18 +8,22 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 
 /**
- *
- * @author alvar
+ * Clase que se conecta con la API de twitter
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class Twitter4J {
+    
+    //Atributos
+    
     private String tweet;
     private Twitter twitter;
     private twitter4j.Status status;
     private Paging pagina;
     
     /**
-     * configura parametros iniciakes de ka clase twitter
-     * @throws TwitterException 
+     * configura parametros iniciales de la clase twitter
+     * @param lugar lugar
+     * @throws TwitterException excepción
      */
     public void configurar(String lugar) throws TwitterException{
         
@@ -27,7 +31,7 @@ public class Twitter4J {
         
         
         
-        //se instnacia clase Tiwiter        
+        //se instancia clase Twitter        
         twitter = new TwitterFactory().getInstance();
         
         
@@ -53,7 +57,11 @@ public class Twitter4J {
     }
 
     
-    
+    /**
+     * 
+     * @param lugar lugar
+     * @return estado
+     */
     public boolean twittear(String lugar){
         try{
             // Si el numero de caracteres excede el maximo permitido (140) , entonces se lanza una excepcion

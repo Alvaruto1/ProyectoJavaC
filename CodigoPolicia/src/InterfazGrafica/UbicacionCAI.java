@@ -17,10 +17,13 @@ import javax.swing.JOptionPane;
 
 
 /**
- *
- * @author alvar
+ * Ventana UbicaciónCAI
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class UbicacionCAI extends javax.swing.JFrame {
+    
+    //Atributos
+    
     /**
      * Ventana menu pricipal
      */    
@@ -40,8 +43,11 @@ public class UbicacionCAI extends javax.swing.JFrame {
     
     private MapView m;
     
+    //Métodos
+    
     /**
      * Creates new form MenuPrincipal
+     * @param programa programa
      */
     public UbicacionCAI(ProgramaCNP programa) {
         
@@ -59,6 +65,7 @@ public class UbicacionCAI extends javax.swing.JFrame {
     public void cerrarVentanaSecundaria(){
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         addWindowListener(new WindowAdapter(){
+            @Override
             public void windowClosing(WindowEvent e){
                 menu.setVisible(true);
             }
@@ -77,7 +84,7 @@ public class UbicacionCAI extends javax.swing.JFrame {
     /**
      * inicia la ventana con sus respectivos parametros
      * @param menu ventana principal     
-     * @param panico     
+     * @param panico panico   
      * @param r ventana infraccion    
      */
     public void inicioVentana(MenuPrincipal menu, Panico panico, ReportarInfraccion r){        

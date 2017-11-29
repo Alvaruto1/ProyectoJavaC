@@ -4,25 +4,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * 
+ * Clase en donde se manejan individualmente las normas
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class Norma implements Serializable{
-
-    /**
-     * contructor parametrico crea y registra datos de una norma
-     * @param id de la norma # articulo
-     * @param texto de la norma articulo 
-     * @param tema de la norma    
-     * @param titulo titulo de la norma
-     */
-    public Norma(String id, String texto, String tema, String titulo) {        
-        this.id = id;
-        this.texto = texto;
-        this.caricatura = "src/caricaturas/"+id+".jpg";
-        this.boletin = "src/boletines/"+id+".jpg";
-        this.tema = tema;   
-        this.titulo = titulo;
-    }
+    
+    //Atributos
+    
 
     /**
      * id de la norma # numero de articulo
@@ -57,7 +45,25 @@ public class Norma implements Serializable{
      * Acumulado de denuncias
      */
     private int acuDenuncias = 0;   
-
+    
+    //Métodos
+    
+    /**
+     * contructor parametrico crea y registra datos de una norma
+     * @param id de la norma # articulo
+     * @param texto de la norma articulo 
+     * @param tema de la norma    
+     * @param titulo titulo de la norma
+     */
+    public Norma(String id, String texto, String tema, String titulo) {        
+        this.id = id;
+        this.texto = texto;
+        this.caricatura = "src/caricaturas/"+id+".jpg";
+        this.boletin = "src/boletines/"+id+".jpg";
+        this.tema = tema;   
+        this.titulo = titulo;
+    }
+    
     /**
      * obtener numero de dencuncias de la norma
      * @return numero de denuncias
@@ -71,7 +77,7 @@ public class Norma implements Serializable{
      */
     private ArrayList <Comentario> comentarios = new ArrayList <Comentario>();
     
-/** retorna la descipcion de la norma
+    /** retorna la descipcion de la norma
      * @return la descipcion de la norma
      */
     public String mostrarLeyenda() {
@@ -139,7 +145,7 @@ public class Norma implements Serializable{
     }    
     
     /**
-     * acumula las denucnias
+     * acumula las denuncias
      */
     public void acumDenuncias (){
         this.acuDenuncias +=1;        

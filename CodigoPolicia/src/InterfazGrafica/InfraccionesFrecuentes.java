@@ -18,10 +18,13 @@ import org.jfree.data.general.DefaultPieDataset;
 
 
 /**
- *
- * @author alvar
+ * Ventana Infracciones frecuentes
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class InfraccionesFrecuentes extends javax.swing.JFrame {
+    
+    //Atributos
+    
     /**
      * Ventana menu pricipal
      */    
@@ -39,8 +42,11 @@ public class InfraccionesFrecuentes extends javax.swing.JFrame {
      */    
     private ProgramaCNP programa;
     
+    //Métodos
+    
     /**
      * Constructor
+     * @param programa programa 
      */
     public InfraccionesFrecuentes(ProgramaCNP programa) {        
         this.programa = programa;
@@ -55,6 +61,7 @@ public class InfraccionesFrecuentes extends javax.swing.JFrame {
     public void cerrarVentanaSecundaria(){
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         addWindowListener(new WindowAdapter(){
+            @Override
             public void windowClosing(WindowEvent e){
                 menu.setVisible(true);
             }
@@ -73,7 +80,7 @@ public class InfraccionesFrecuentes extends javax.swing.JFrame {
     /**
      * inicia la ventana con sus respectivos parametros
      * @param menu ventana principal     
-     * @param panico     
+     * @param panico programa  
      * @param r ventana infraccion    
      * @param p programa codigo policia
      */

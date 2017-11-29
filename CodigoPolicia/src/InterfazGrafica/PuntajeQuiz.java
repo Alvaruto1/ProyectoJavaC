@@ -6,11 +6,12 @@
 package InterfazGrafica;
 
 /**
- *
- * @author alvar
+ * Ventana puntaje quiz
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class PuntajeQuiz extends javax.swing.JFrame {
     
+    //Métodos
     
     /**
      * Creates new form MenuPrincipal

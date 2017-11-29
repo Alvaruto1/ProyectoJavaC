@@ -17,22 +17,23 @@ import java.net.URISyntaxException;
 
 
 /**
- *
- * @author alvar
+ * Clase para geolocalización del usuario
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class Geolocalizar extends MapView {
     
+    //Atributos
     
     /**
      * ruta del archivo
      */
     private String rutaArchivo="";
     /**
-     * latitud  localizacion
+     * latitud  localización
      */
     private String latitud="";
     /**
-     * longitud  localizacion
+     * longitud  localización
      */
     private String longitud="";
     
@@ -42,6 +43,7 @@ public class Geolocalizar extends MapView {
      */
     private String lugar="";
     
+    //Métodos
     
     /**
      * abrir navegador con la URL
@@ -60,6 +62,7 @@ public class Geolocalizar extends MapView {
             }
         }
     } 
+    
     /**
      * obtener el lugar
      * @return lugar
@@ -80,7 +83,7 @@ public class Geolocalizar extends MapView {
     }
 
     /**
-     * obtener latitud de ubicacion
+     * obtener latitud de ubicación
      * @return latitud
      */
     public String getLatitud() {
@@ -88,7 +91,7 @@ public class Geolocalizar extends MapView {
     }
 
     /**
-     * obtener longitud de ubicacion
+     * obtener longitud de ubicación
      * @return longitud
      */
     public String getLongitud() {

@@ -24,10 +24,12 @@ import java.util.ArrayList;
 
 
 /**
- *
- * @author alvar
+ * Clase en donde se muestran los mapas de los CAI´s
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class MapaCais extends MapView{
+    
+    //Atributos
     
     /**
      * arreglo dwe marcadores del mapa cais
@@ -46,8 +48,10 @@ public class MapaCais extends MapView{
      */
     private int pos=0;
     
+    //Métodos
+    
     /**
-     * constructor
+     * Método constructor
      */
     public MapaCais(){
             
@@ -423,7 +427,7 @@ public class MapaCais extends MapView{
      * algoritmo cai mas cercano
      * @param lat latitud ubicacion usuario
      * @param lon longitud ubicacion usuario
-     * @return 
+     * @return posición
      */
     public int caiMasCercano(Double lat, Double lon){
         double minValor=1000000000;

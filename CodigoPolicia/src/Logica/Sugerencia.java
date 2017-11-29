@@ -3,15 +3,12 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- * 
+ * Clase registra las sugerencias
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class Sugerencia implements Serializable{
 
-    /**
-     * Default constructor
-     */
-    public Sugerencia() {
-    }
+    //Atributos
 
     /**
      * fecha de la sugerencia
@@ -27,10 +24,18 @@ public class Sugerencia implements Serializable{
      * correo de la persona que hace la sugerencia
      */
     private String correo;
-
+    
+    //Métodos
+    
+    /**
+     * Método constructor
+     */
+    public Sugerencia() {
+    }
+    
     /** registrar sugerencia
      * @param t descripcion de la sugerencia
-     * @param correo
+     * @param correo correo
      */
     public void hacerSugerencia(String t, String correo) {
         

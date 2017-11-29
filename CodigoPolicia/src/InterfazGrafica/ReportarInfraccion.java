@@ -20,10 +20,13 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 
 /**
- *
- * @author alvar
+ * Ventana Reportar infracción
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class ReportarInfraccion extends javax.swing.JFrame {
+    
+    //Atributos
+    
     /**
      * Ventana menu pricipal
      */    
@@ -59,9 +62,12 @@ public class ReportarInfraccion extends javax.swing.JFrame {
     private ArrayList <ArrayList<ArrayList<String>>> capitulo = new ArrayList <ArrayList<ArrayList<String>>>();
     //private ArrayList <ArrayList<ArrayList<ArrayList<String>>>> articulo = new ArrayList <ArrayList<ArrayList<ArrayList<String>>>>();
     private String[][][][] articulo = new String[3][15][5][243]; 
-  
+    
+    //Métodos
+    
     /**
      * Constructor
+     * @param p programa
      */
     public ReportarInfraccion(ProgramaCNP p) {    
         this.programa = p;
@@ -86,6 +92,7 @@ public class ReportarInfraccion extends javax.swing.JFrame {
     public void cerrarVentanaSecundaria(){
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         addWindowListener(new WindowAdapter(){
+            @Override
             public void windowClosing(WindowEvent e){
                 menu.setVisible(true);
             }
@@ -609,7 +616,7 @@ public class ReportarInfraccion extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
     /**
      * obtener la ruta de la prueba
-     * @return 
+     * @return ruta
      */
     public String getRutaPrueba(){
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG y PNG","jpg","png");

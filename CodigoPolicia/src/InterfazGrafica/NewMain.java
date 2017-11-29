@@ -16,10 +16,16 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 
 /**
- *
- * @author alvar
+ * Ventana Main de interfaz gráfica
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class NewMain {
+    
+    //Atributos
+    
+    /**
+     * Objetos de programaCNP
+     */
     ProgramaCNP programa;
     ArrayList <Usuario> usuario = new ArrayList();
     
@@ -27,6 +33,11 @@ public class NewMain {
     Registro ventana2= new Registro();            
     MenuPrincipal ventana3= new MenuPrincipal(programa);
     
+    //Métodos
+    
+    /**
+     * Método constructor
+     */
     public NewMain(){
         prueba2();
     }
@@ -39,6 +50,9 @@ public class NewMain {
         
         
     }
+    /**
+     * Método de prueba
+     */
     public void prueba(){
         
         DefaultPieDataset data = new DefaultPieDataset();
@@ -84,6 +98,9 @@ public class NewMain {
         
     }
     
+    /**
+     * Segunda prueba
+     */
     public void prueba2(){
         MapaCais map= new MapaCais();
         map.generarMapa(4.6706622,-74.0527601);

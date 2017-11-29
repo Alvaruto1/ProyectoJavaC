@@ -11,10 +11,13 @@ import javax.swing.ButtonModel;
 import javax.swing.JFrame;
 
 /**
- *
- * @author alvar
+ * Ventana Escoger Material Didáctico
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class EscogerMaterialDidactico extends javax.swing.JFrame {
+    
+    //Atributos
+    
     /**
      * Ventana menu pricipal
      */    
@@ -52,8 +55,11 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
     private ArrayList <ArrayList<ArrayList<String>>> capitulo = new ArrayList <ArrayList<ArrayList<String>>>();    
     private String[][][][] articulo = new String[3][15][5][243]; 
     
+    //Métodos
+    
     /**
      * constructor
+     * @param p programa
      */
     public EscogerMaterialDidactico(ProgramaCNP p) {
         this.programa = p;
@@ -81,6 +87,7 @@ public class EscogerMaterialDidactico extends javax.swing.JFrame {
     public void cerrarVentanaSecundaria(){
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         addWindowListener(new WindowAdapter(){
+            @Override
             public void windowClosing(WindowEvent e){
                 menu.setVisible(true);
             }

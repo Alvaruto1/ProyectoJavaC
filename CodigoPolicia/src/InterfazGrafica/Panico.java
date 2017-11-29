@@ -13,10 +13,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author alvar
+ * Ventana Panico
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class Panico extends javax.swing.JFrame {
+    
+    //Atributos
+    
     /**
      * Ventana menu pricipal
      */    
@@ -30,10 +33,11 @@ public class Panico extends javax.swing.JFrame {
      */    
     private ProgramaCNP programa;
     
-
+    //Métodos
     
     /**
      * Creates new form MenuPrincipal
+     * @param programa programa
      */
     public Panico(ProgramaCNP programa) {        
         initComponents();
@@ -48,6 +52,7 @@ public class Panico extends javax.swing.JFrame {
     public void cerrarVentanaSecundaria(){
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         addWindowListener(new WindowAdapter(){
+            @Override
             public void windowClosing(WindowEvent e){
                 menu.setVisible(true);
             }

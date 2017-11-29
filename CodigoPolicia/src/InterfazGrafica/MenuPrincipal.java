@@ -6,8 +6,8 @@ import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author alvar
+ * Ventana Menú Principal
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class MenuPrincipal extends javax.swing.JFrame {
     
@@ -49,12 +49,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
      * programa codigo de policia
      */
     private ProgramaCNP programa;
-    
-    
 
-    
-    
-    
+    //Métodos
     
     /**
      * constructor por defecto
@@ -76,6 +72,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     public void cerrarPrograma(){        
         addWindowListener(new WindowAdapter(){
+            @Override
             public void windowClosing(WindowEvent e){
                 if(JOptionPane.showConfirmDialog(null,"Esta seguro de cerrar el programa","Cerrar Programa", JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){
                     programa.guardarDatos();

@@ -2,8 +2,13 @@ package Logica;
 
 import java.util.ArrayList;
 
-
+/**
+ * Clase para geolocalización del usuario
+ * @author Nicolas Herrera y Alvaro Niño
+ */
 public class InicializarDatos {
+    
+    //Métodos
     
     /**
      * Coloca los datos en los filtros
@@ -453,7 +458,11 @@ public class InicializarDatos {
         normas.add(new Norma("242","El presente Código deroga todas las disposiciones que le sean contrarias, en especial el Decreto-ley 1355 de 1970, la Ley 1356 de 2009 excepto los artículos 4 y del 218A al 218L; el Decreto número 522 de 1971; la Ley 232 de 1995; el artículo 108 de la Ley 388 de 1997; los artículos 1 y 2 de la Ley 810 de 2003; artículo 12 numeral 2, artículo 17, 18,21, 22, 23, 24, 25, 26, 27, 28, 29, 31, 33, 35 y 36 del Decreto número 2876 de 1984; artículo 26y último inciso o párrafo del artículo 10 de la Ley 679 de 2001, en razón a que se aplicará el proceso verbal abreviado establecido en el presente Código; artículos 5, 6, 7 y 12 de la Ley 1259 de 2008; Ley 746 de julio 19 de 2002; artículo 24, 29 e inciso final del artículo 31 de la Ley 1335 de 2009; y los artículos 12 y 13 de la Ley 140 de 1994.Este Código no modifica ni deroga ninguna norma del *Código Penal.","N.D","DEROGATORIAS."));
         normas.add(new Norma("243","La presente ley regirá seis (6) meses después de su promulgación.","N.D","VIGENCIA."));
     }
-
+    /**
+     * Inicialización de las preguntas del Quiz
+     * @param basePreguntas Preguntas Quiz
+     * @param baseRespuestas Respuestas Quiz
+     */
     public void inicializarBasePreguntasRespuestas(ArrayList<String> basePreguntas, ArrayList<String[]> baseRespuestas){
         
         //preguntas

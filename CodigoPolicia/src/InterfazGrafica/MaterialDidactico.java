@@ -13,10 +13,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
 /**
- *
- * @author alvar
+ * Ventana Material Didáctico
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class MaterialDidactico extends javax.swing.JFrame {
+    
+    //Atributos
+    
     /**
      * Ventana menu pricipal
      */    
@@ -46,8 +49,11 @@ public class MaterialDidactico extends javax.swing.JFrame {
      */
     private String idNorma="1";
     
+    //Métodos
+    
     /**
      * constructor
+     * @param p programa
      */
     public MaterialDidactico(ProgramaCNP p) {
         programa = p;
@@ -63,6 +69,7 @@ public class MaterialDidactico extends javax.swing.JFrame {
     public void cerrarVentanaSecundaria(){
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         addWindowListener(new WindowAdapter(){
+            @Override
             public void windowClosing(WindowEvent e){
                 menu.setVisible(true);
             }

@@ -3,20 +3,15 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- * 
+ * Clase que contiene el código nacional de policía y convivencia en todas sus formas
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class CodPol implements Serializable{
 
-    /**
-     * Default constructor
-     */
-    public CodPol() {
-        //adicion de los articulos 
-        new InicializarDatos().inicializarNormas(normas);    
-    }
+    //Atributos
     
     /**
-     * normas del codigo de policia
+     * normas del código de policia
      */
     private ArrayList <Norma> normas = new ArrayList <Norma>(); 
     
@@ -26,32 +21,40 @@ public class CodPol implements Serializable{
     private String rutaPdf = "src/codigoPDF/codPN.pdf";
     
     /**
-     * cosntante de verificacion si es boletin de la norma
+     * constante de verificación si es boletin de la norma
      */
     public final static int BOLETIN = 0;
     
     /**
-     * cosntante de verificacion si es caricatura de la norma
+     * constante de verificacion si es caricatura de la norma
      */
     public final static int CARICATURA = 1;
     
     /**
-     * cosntante de verificacion si es leyenda de la norma
+     * constante de verificacion si es leyenda de la norma
      */
     public final static int LEYENDA = 2;
     /**
-     * cosntante de verificacion si es titulo
+     * constante de verificacion si es título
      */
     public final static int TITULO = 3;
     /**
-     * cosntante de verificacion si es tema
+     * constante de verificación si es tema
      */
     public final static int TEMA = 4;
     
+    //Métodos
     
+    /**
+     * Método constructor
+     */
+    public CodPol() {
+        //adición de los artículos 
+        new InicializarDatos().inicializarNormas(normas);    
+    }
 
     /**
-     * consulta del codigo completo la ruta del pdf
+     * consulta del código completo la ruta del pdf
      * @return ruta del codigo en pdf
      */
     public String consultar() {
@@ -59,10 +62,10 @@ public class CodPol implements Serializable{
     }
 
     /**
-     * consulta por norma segun opcion (caricatura, boletin o lyenda)
+     * consulta por norma según opción (caricatura, boletin o leyenda)
      * @param id de la norma # articulo
-     * @param opcion dada por ser una caricatura, boletin o lyenda
-     * @return retorna el texto, o caraictura o boletin de la norma
+     * @param opcion dada por ser una caricatura, boletin o leyenda
+     * @return retorna el texto, o caricatura o boletin de la norma
      */
     public String consultarNorma(String id, int opcion) {       
         for (Norma norma : normas) {
@@ -91,9 +94,9 @@ public class CodPol implements Serializable{
     
     /**
      * registra comentario en la norma
-     * @param t descripcion del comentario de la norma
-     * @param email correo de 
-     * @param id 
+     * @param t descripción del comentario de la norma
+     * @param email correo del usuario
+     * @param id identificador
      */
     public void registrarComentario(String t, String email, String id) {    
         

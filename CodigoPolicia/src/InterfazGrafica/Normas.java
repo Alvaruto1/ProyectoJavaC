@@ -11,11 +11,13 @@ import org.icepdf.ri.common.SwingController;
 import org.icepdf.ri.common.SwingViewBuilder;
 
 /**
- *
- * @author alvar
+ * Ventana Normas
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class Normas extends javax.swing.JFrame {
-
+    
+    //Atributos
+    
     /**
      * Ventana menu pricipal
      */    
@@ -45,9 +47,11 @@ public class Normas extends javax.swing.JFrame {
      */    
     private ProgramaCNP programa;
     
+    //Métodos
     
     /**
-     * COnstructor
+     * Constructor
+     * @param programa programa
      */
     public Normas(ProgramaCNP programa) {  
         this.programa = programa;
@@ -61,6 +65,7 @@ public class Normas extends javax.swing.JFrame {
     public void cerrarVentanaSecundaria(){
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         addWindowListener(new WindowAdapter(){
+            @Override
             public void windowClosing(WindowEvent e){
                 menu.setVisible(true);
             }
@@ -81,6 +86,8 @@ public class Normas extends javax.swing.JFrame {
      * @param menu principal     
      * @param i ventana infraccion     
      * @param panico ventana panico 
+     * @param a artículo
+     * @param m menú
      */
     public void inicioVentana(MenuPrincipal menu, ReportarInfraccion i , Panico panico, Articulos a, EscogerMaterialDidactico m){
         this.escogerDidactico = m;

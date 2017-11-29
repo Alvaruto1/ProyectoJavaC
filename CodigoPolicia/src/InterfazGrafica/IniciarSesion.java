@@ -7,10 +7,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author alvar
+ * Ventana Iniciar Sesión
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class IniciarSesion extends javax.swing.JFrame {
+    
+    //Atributos
+    
     /**
      * Ventana menu pricipal
      */    
@@ -32,7 +35,7 @@ public class IniciarSesion extends javax.swing.JFrame {
      */
     private ProgramaCNP programa;
     
-    
+    //Métodos
     
     /**
      * contructor por defecto
@@ -49,6 +52,7 @@ public class IniciarSesion extends javax.swing.JFrame {
     public void cerrarVentanaSecundaria(){
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         addWindowListener(new WindowAdapter(){
+            @Override
             public void windowClosing(WindowEvent e){
                 menu.setVisible(true);
             }

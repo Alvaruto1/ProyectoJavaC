@@ -2,16 +2,12 @@ package Logica;
 import java.util.*;
 
 /**
- * 
+ * Clase que se encarga de realizar el quiz
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class Quiz {
-
-    /**
-     * Constructor parametrico
-     */
-    public Quiz(){
-        establecerBasePregRes();
-    }
+    
+    //Atributos
 
     /**
      * base de preguntas
@@ -37,7 +33,16 @@ public class Quiz {
      * puntaje obtenido al realizar el quiz
      */
     private int puntaje;
-
+    
+    //Métodos
+    
+    /**
+     * Método constructor
+     */
+    public Quiz(){
+        establecerBasePregRes();
+    }
+    
     /**
      * obtener preguntas del quiz
      * @return preguntas

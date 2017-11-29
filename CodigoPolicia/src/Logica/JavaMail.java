@@ -14,10 +14,16 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+/**
+ * Clase en donde se realiza la conexión con Java mail para mandar correos
+ * @author Nicolas Herrera y Alvaro Niño
+ */
 public class JavaMail {
     
+    //Atributos
+    
     /**
-     * usuario o correo de la cuenta gmail el que lo envia
+     * usuario o correo de la cuenta gmail del que lo envía
      */
     private static String usuario = "";
     /**
@@ -37,7 +43,7 @@ public class JavaMail {
      */
     private String asunto = "";
     
-    
+    //Métodos
     
     /**
      * constructor de la clase
@@ -57,7 +63,7 @@ public class JavaMail {
     }
     
     /**
-     * confirguracion y nevio de correo
+     * confirguración y envío de correo
      * @return si fue posible el envio o no
      */
     public boolean enviarCorreo(){
@@ -96,8 +102,13 @@ public class JavaMail {
             
         }
     }
-    
-   public boolean enviarCorreoAdjunto(String ruta1, String ruta2){
+    /**
+     * Envío de correo con archivo adjunto
+     * @param ruta1 Prueba
+     * @param ruta2 Prueba
+     * @return envío correo adjunto
+     */
+    public boolean enviarCorreoAdjunto(String ruta1, String ruta2){
         // propiedades que funcionan clave: valor, las caules se pasan como parametros a sesion
         Properties props = new Properties();
         

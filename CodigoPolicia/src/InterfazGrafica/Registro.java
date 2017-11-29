@@ -7,8 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author alvar
+ * Ventana Registro
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class Registro extends javax.swing.JFrame {
     
@@ -35,6 +35,8 @@ public class Registro extends javax.swing.JFrame {
      */    
     private ProgramaCNP programa;
     
+    //Métodos
+    
     /**
      * Constructor por defecto
      */
@@ -50,6 +52,7 @@ public class Registro extends javax.swing.JFrame {
     public void cerrarVentanaSecundaria(){
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         addWindowListener(new WindowAdapter(){
+            @Override
             public void windowClosing(WindowEvent e){
                 menu.setVisible(true);
             }
@@ -69,6 +72,8 @@ public class Registro extends javax.swing.JFrame {
      * inicia la ventana con sus respectivos parametros
      * @param menu ventana principal
      * @param sesion ventana iniciar sesion
+     * @param panico
+     * @param r infracción
      * @param p programa codigo policia
      */
     public void inicioVentana(MenuPrincipal menu, IniciarSesion sesion , Panico panico, ReportarInfraccion r, ProgramaCNP p){

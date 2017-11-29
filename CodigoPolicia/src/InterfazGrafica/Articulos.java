@@ -10,10 +10,13 @@ import java.util.Arrays;
 import javax.swing.JFrame;
 
 /**
- *
- * @author alvar
+ * Ventana Artículos
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class Articulos extends javax.swing.JFrame {
+    
+    //Atributos
+    
     /**
      * Ventana menu pricipal
      */    
@@ -48,9 +51,11 @@ public class Articulos extends javax.swing.JFrame {
     //private ArrayList <ArrayList<ArrayList<ArrayList<String>>>> articulo = new ArrayList <ArrayList<ArrayList<ArrayList<String>>>>();
     private String[][][][] articulo = new String[3][15][5][243]; 
     
+    //Métodos
     
     /**
-     * Constructor
+     * Método Constructor
+     * @param p programa
      */
     public Articulos(ProgramaCNP p) {  
         this.programa = p;
@@ -90,10 +95,9 @@ public class Articulos extends javax.swing.JFrame {
     /**
      * inicia la ventana con sus respectivos parametros
      * @param menu ventana principal     
-     * @param panico     
+     * @param panico panico
      * @param r ventana infraccion   
-     * @param com ventana comentario     
-     * @param p programa codigo policia
+     * @param com ventana comentario
      */
     public void inicioVentana(MenuPrincipal menu, Panico panico, ReportarInfraccion r, Comentarios com){
         this.comentario = com;               

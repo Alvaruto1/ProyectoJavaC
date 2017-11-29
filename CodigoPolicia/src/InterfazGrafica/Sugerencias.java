@@ -7,10 +7,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author alvar
+ * Ventana Sugerencias
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class Sugerencias extends javax.swing.JFrame {
+    
+    //Atributos
+    
     /**
      * Ventana menu pricipal
      */    
@@ -28,8 +31,11 @@ public class Sugerencias extends javax.swing.JFrame {
      */    
     private ProgramaCNP programa;
     
+    //Métodos
+    
     /**
      * Constructor
+     * @param p programa
      */
     public Sugerencias(ProgramaCNP p) {    
         programa = p;
@@ -44,6 +50,7 @@ public class Sugerencias extends javax.swing.JFrame {
     public void cerrarVentanaSecundaria(){
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         addWindowListener(new WindowAdapter(){
+            @Override
             public void windowClosing(WindowEvent e){
                 menu.setVisible(true);
             }
@@ -62,7 +69,7 @@ public class Sugerencias extends javax.swing.JFrame {
     /**
      * inicia la ventana con sus respectivos parametros
      * @param menu ventana principal     
-     * @param panico     
+     * @param panico panico   
      * @param r ventana infraccion  
      */
     public void inicioVentana(MenuPrincipal menu, Panico panico, ReportarInfraccion r){        

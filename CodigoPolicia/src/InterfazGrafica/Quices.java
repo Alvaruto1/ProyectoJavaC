@@ -20,10 +20,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
- *
- * @author alvar
+ * Ventana Quices
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class Quices extends javax.swing.JFrame {
+    
+    //Atributos
+    
     /**
      * Ventana menu pricipal
      */    
@@ -44,6 +47,9 @@ public class Quices extends javax.swing.JFrame {
     private Quiz quiz;
     
     private ArrayList <JComboBox> combo = new ArrayList <JComboBox>();
+    
+    //Métodos
+    
     /**
      * Constructor
      */
@@ -59,6 +65,7 @@ public class Quices extends javax.swing.JFrame {
     public void cerrarVentanaSecundaria(){
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         addWindowListener(new WindowAdapter(){
+            @Override
             public void windowClosing(WindowEvent e){
                 menu.setVisible(true);
             }
@@ -77,7 +84,7 @@ public class Quices extends javax.swing.JFrame {
     /**
      * inicia la ventana con sus respectivos parametros
      * @param menu ventana principal     
-     * @param panico     
+     * @param panico pánico   
      * @param r ventana infraccion    
      * @param p programa codigo policia
      */

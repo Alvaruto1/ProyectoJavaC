@@ -4,22 +4,27 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- *
- * @author alvar
+ * Clase para envío de mansaje de pánico
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class LPanico implements Serializable{
+    
+    //Atributos
+    
     /**
      * mensaje rapido para enviar
      */
     private String mensaje;
     /**
-     * localizacion persona
+     * localización persona
      */    
     private String localizacion;   
     /**
-     * fecha de envio
+     * fecha de envío
      */
     private Date fecha;
+    
+    //Métodos
     
     /**
      * constructor parametrico
