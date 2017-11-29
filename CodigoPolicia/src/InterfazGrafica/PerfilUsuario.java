@@ -16,11 +16,12 @@ import javax.swing.JOptionPane;
 
 
 /**
- *
- * @author alvar
+ * Ventana perfil usuario
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class PerfilUsuario extends javax.swing.JFrame {
     
+    //Atributos
     
     private MenuPrincipal menu;
     /**
@@ -41,7 +42,7 @@ public class PerfilUsuario extends javax.swing.JFrame {
     private String idNorma = "1";
      
     
-    
+    //Métodos
        
     
     /**
@@ -61,6 +62,7 @@ public class PerfilUsuario extends javax.swing.JFrame {
     public void cerrarVentanaSecundaria(){
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         addWindowListener(new WindowAdapter(){
+            @Override
             public void windowClosing(WindowEvent e){
                 menu.setVisible(true);
             }

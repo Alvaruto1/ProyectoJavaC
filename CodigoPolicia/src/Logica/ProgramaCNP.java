@@ -12,25 +12,33 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Clase central que controla el sistema
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class ProgramaCNP {
-
+    
+    //Atributos
+    
     /**
-     * Default constructor
+     * Identificador sugerencia
      */
-    public ProgramaCNP() {
-    }
-
     public final static int SUGERENCIA =0;
+    /**
+     * Identificador twitter
+     */
     public final static int TWITTER =1;
+    /**
+     * Identificador comentario denuncia
+     */
     public final static int COMEN_DENUN =1;
     
     /**
-     * codigo de policia
+     * código de policia
      */
     private CodPol codigoPolicia = new CodPol();
-    // vistas del programa Codigo de Polciia   
+    
+    // vistas del programa Codigo de Polcia   
+    
     /**
      * ventana correspondiente al registro del usuario
      */
@@ -93,9 +101,6 @@ public class ProgramaCNP {
      */
     private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 
-    public ArrayList<Usuario> getUsuarios() {
-        return usuarios;
-    }
     /**
      * estado si se encuentra loggeado o no un usuario
      */
@@ -130,6 +135,18 @@ public class ProgramaCNP {
      */
     private int posCaiCercano = 152;
 
+    //Métodos
+    
+    /**
+     * Default constructor
+     */
+    public ProgramaCNP() {
+    }
+    
+    public ArrayList<Usuario> getUsuarios() {
+        return usuarios;
+    }
+    
     /**
      * @param args[]
      */
@@ -137,15 +154,24 @@ public class ProgramaCNP {
         ProgramaCNP programa = new ProgramaCNP();
         programa.iniciarProgramaCNP();
     }
-
+    /**
+     * Obtiene latitud usuario
+     * @return latitud usuario
+     */
     public double getLatitud() {
         return latitud;
     }
-
+    /**
+     * Obtiene longitud usuario
+     * @return longitud
+     */
     public double getLongitud() {
         return longitud;
     }
-
+    /**
+     * Obtienes posicion CAI cercano
+     * @return Posición CAI cercano
+     */
     public int getPosCaiCercano() {
         return posCaiCercano;
     }
@@ -186,6 +212,7 @@ public class ProgramaCNP {
      * @param alias nombre del usuario
      * @param email correo del usuario
      * @param contra contraseña del usuario
+     * @return texto
      */
     public String registrarUsuario(String alias, String email, String contra) {
         Usuario u = new Usuario();
@@ -445,7 +472,7 @@ public class ProgramaCNP {
      */
     public void guardarDatos() {
         try {
-            ObjectOutputStream guardar = new ObjectOutputStream(new FileOutputStream("src/datos/Usuarios.dat"));
+            ObjectOutputStream guardar = new ObjectOutputStream(new FileOutputStream("src/Datos/Usuarios.dat"));
             guardar.writeObject(usuarios);
             guardar.close();
 
@@ -453,7 +480,7 @@ public class ProgramaCNP {
             JOptionPane.showMessageDialog(ventanaMenu, e, "Estado datos", JOptionPane.ERROR_MESSAGE);
         }
         try {
-            ObjectOutputStream guardar = new ObjectOutputStream(new FileOutputStream("src/datos/CodPol.dat"));
+            ObjectOutputStream guardar = new ObjectOutputStream(new FileOutputStream("src/Datos/CodPol.dat"));
             guardar.writeObject(codigoPolicia);
             guardar.close();
 
@@ -467,7 +494,7 @@ public class ProgramaCNP {
      */
     public void recuperarDatos() {
         try {
-            ObjectInputStream recuperar = new ObjectInputStream(new FileInputStream("src/datos/Usuarios.dat"));
+            ObjectInputStream recuperar = new ObjectInputStream(new FileInputStream("src/Datos/Usuarios.dat"));
             usuarios = (ArrayList<Usuario>) recuperar.readObject();
             for (Usuario u : usuarios) {
                 System.out.println(u.obtenerAlias());
@@ -478,7 +505,7 @@ public class ProgramaCNP {
 
         }
         try {
-            ObjectInputStream recuperar = new ObjectInputStream(new FileInputStream("src/datos/CodPol.dat"));
+            ObjectInputStream recuperar = new ObjectInputStream(new FileInputStream("src/Datos/CodPol.dat"));
             codigoPolicia = (CodPol) recuperar.readObject();
             recuperar.close();
         } catch (Exception e) {

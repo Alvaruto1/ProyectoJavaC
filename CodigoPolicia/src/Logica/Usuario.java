@@ -3,15 +3,12 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- * 
+ * Clase que maneja el funcionamiento de los usuarios individualmente
+ * @author Nicolas Herrera y Alvaro Niño
  */
 public class Usuario implements Serializable{
 
-    /**
-     * Default constructor
-     */
-    public Usuario() {
-    }
+    //Atributos
 
     /**
      * Nombre de usuario unico 
@@ -47,6 +44,14 @@ public class Usuario implements Serializable{
      * Denuncias realizados por los usuarios
      */
     private ArrayList <Denuncia> denuncias = new ArrayList <Denuncia>();
+    
+    //Métodos
+    
+    /**
+     * Método constructor
+     */
+    public Usuario() {
+    }
 
     /**
      * cambiar contraseña
@@ -103,7 +108,7 @@ public class Usuario implements Serializable{
     }
 
     /**
-     * @param contra 
+     * @param contra contraseña
      * @return la contraseña del usuario
      */
     public boolean autenticar(String contra) {
@@ -141,7 +146,7 @@ public class Usuario implements Serializable{
      * comprueba que este disponible el alias
      * @param a alias del usuario
      * @param u listado de alias
-     * @return 
+     * @return estado
      */    
     public boolean comprobarAliasUsuario(String a,ArrayList <Usuario> u){
         if(u!=null){
@@ -162,7 +167,7 @@ public class Usuario implements Serializable{
     /**
      * crear mensaje panico
      * @param mensaje de panico
-     * @return 
+     * @return estado
      */
     public boolean enviarPanico(String mensaje){
         String t = mensaje;
