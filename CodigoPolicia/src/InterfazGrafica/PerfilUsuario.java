@@ -279,7 +279,6 @@ public class PerfilUsuario extends javax.swing.JFrame {
         lblArticulo7.setForeground(new java.awt.Color(16, 67, 16));
         lblArticulo7.setText("Confirmar");
 
-        psConfirmaContra.setEditable(false);
         psConfirmaContra.setBackground(new java.awt.Color(153, 255, 102));
         psConfirmaContra.setForeground(new java.awt.Color(51, 51, 51));
 
@@ -546,12 +545,13 @@ public class PerfilUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        actualizarSesion(programa.obtenerAlias());
         mostrarPerfil();
     }//GEN-LAST:event_formWindowActivated
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
         programa.cerrarSesion();
+        psConfirmaContra.setText("");
+        psNuevaContra.setText("");
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
