@@ -360,6 +360,7 @@ public class InfraccionesFrecuentes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        actualizarSesion(programa.obtenerAlias());
         hacerGrafica();
         
     }//GEN-LAST:event_formWindowActivated

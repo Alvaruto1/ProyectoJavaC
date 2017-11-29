@@ -496,7 +496,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUbicacionCAIActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        
+        actualizarSesion(programa.obtenerAlias());
         
     }//GEN-LAST:event_formWindowActivated
 

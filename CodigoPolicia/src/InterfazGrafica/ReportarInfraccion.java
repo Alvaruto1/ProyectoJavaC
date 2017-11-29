@@ -601,6 +601,7 @@ public class ReportarInfraccion extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxArticuloActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        actualizarSesion(programa.obtenerAlias());
         if("Invitado".equals(programa.obtenerAlias())){
             cbxArticulo.setEnabled(false);
             cbxCapitulo.setEnabled(false);

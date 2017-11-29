@@ -564,6 +564,7 @@ public class Comentarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEnviarComentarioActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        actualizarSesion(programa.obtenerAlias());
         obtenerArticuloVentanaAnterios();
        
         

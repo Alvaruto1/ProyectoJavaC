@@ -451,6 +451,7 @@ public class MaterialDidactico extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVerComentariosActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        actualizarSesion(programa.obtenerAlias());
         mostrarMaterial();
         idNorma=EscogerMaterialDidactico.id;
         if("Invitado".equals(programa.obtenerAlias())){

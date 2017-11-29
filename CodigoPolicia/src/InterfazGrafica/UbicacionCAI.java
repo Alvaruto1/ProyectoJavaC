@@ -415,7 +415,7 @@ public class UbicacionCAI extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         
-        
+        actualizarSesion(programa.obtenerAlias());
         
         
         

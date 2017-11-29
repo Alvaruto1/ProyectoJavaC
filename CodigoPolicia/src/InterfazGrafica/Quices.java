@@ -371,6 +371,7 @@ public class Quices extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        actualizarSesion(programa.obtenerAlias());
         pComentarios.removeAll();
         hacerQuiz();
         if("Invitado".equals(programa.obtenerAlias())){

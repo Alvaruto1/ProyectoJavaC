@@ -546,6 +546,7 @@ public class PerfilUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        actualizarSesion(programa.obtenerAlias());
         mostrarPerfil();
     }//GEN-LAST:event_formWindowActivated
 

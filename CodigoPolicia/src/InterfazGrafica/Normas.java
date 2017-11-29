@@ -126,6 +126,11 @@ public class Normas extends javax.swing.JFrame {
         setBackground(new java.awt.Color(153, 255, 51));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 704));
@@ -390,6 +395,10 @@ public class Normas extends javax.swing.JFrame {
             this.setVisible(false);            
         }
     }//GEN-LAST:event_lblUsuarioMouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        actualizarSesion(programa.obtenerAlias());
+    }//GEN-LAST:event_formWindowActivated
 
     private void visualizarCodPDF(){
         SwingController controlador = new SwingController();        

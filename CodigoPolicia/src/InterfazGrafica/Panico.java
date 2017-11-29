@@ -385,6 +385,7 @@ public class Panico extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEnviarEmergenciaActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        actualizarSesion(programa.obtenerAlias());
         if("Invitado".equals(programa.obtenerAlias())){
             btnEnviarEmergencia.setEnabled(false);            
             txtMensaje.setEnabled(false);
