@@ -12,34 +12,25 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
- * Clase principal desde donde se maneja todo el sistema
- * @author Nicolas Herrera y Alvaro Niño
+ *
  */
 public class ProgramaCNP {
-    
-    //Atributos
-    
 
     /**
-     * identificador de sugerencia
+     * Default constructor
      */
+    public ProgramaCNP() {
+    }
+
     public final static int SUGERENCIA =0;
-    /**
-     * Identificador de twitter
-     */
     public final static int TWITTER =1;
-    /**
-     * Identificador de comentar denuncia
-     */
     public final static int COMEN_DENUN =1;
     
     /**
      * codigo de policia
      */
     private CodPol codigoPolicia = new CodPol();
-    
     // vistas del programa Codigo de Polciia   
-    
     /**
      * ventana correspondiente al registro del usuario
      */
@@ -101,7 +92,10 @@ public class ProgramaCNP {
      * arreglo de usuarios
      */
     private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
-    
+
+    public ArrayList<Usuario> getUsuarios() {
+        return usuarios;
+    }
     /**
      * estado si se encuentra loggeado o no un usuario
      */
@@ -135,23 +129,6 @@ public class ProgramaCNP {
      * posicion cai cercano
      */
     private int posCaiCercano = 152;
-    
-    //Métodos
-    
-    /**
-     * Método constructor
-     */
-    public ProgramaCNP() {
-    }
-    
-    /**
-     * Obtención de lista de usuarios
-     * @return usuarios
-     */
-    public ArrayList<Usuario> getUsuarios() {
-        return usuarios;
-    }
-    
 
     /**
      * @param args[]
@@ -209,7 +186,6 @@ public class ProgramaCNP {
      * @param alias nombre del usuario
      * @param email correo del usuario
      * @param contra contraseña del usuario
-     * @return texto
      */
     public String registrarUsuario(String alias, String email, String contra) {
         Usuario u = new Usuario();
@@ -274,7 +250,7 @@ public class ProgramaCNP {
     }
 
     /**
-     * obtiene los comentarios de la norma
+     * obtiene los coemntarios de la norma
      *
      * @param id de la norma
      * @return retorna un arreglo de coemntarios
@@ -286,9 +262,9 @@ public class ProgramaCNP {
     /**
      * envia un sugerencia sobre el programa
      *
-     * @param comentario Comentario 
-     * @param correo Correo
-     * @return Método que envía el correo
+     * @param comentario
+     * @param correo
+     * @return
      */
     public boolean enviarSugerencia(String comentario, String correo) {
         if(analisisTexto(COMEN_DENUN, comentario, correo, ventanaSugerencia)){
@@ -307,7 +283,7 @@ public class ProgramaCNP {
     /**
      * envia un mensaje via twitter
      *
-     * @param comentario comentario
+     * @param comentario
      * @return estado de envio mensaje de panico
      */
     public boolean enviarPanico(String comentario) {
@@ -335,7 +311,7 @@ public class ProgramaCNP {
      * @param descripcion de la infraccion
      * @param ruta1 evidencia fotografica
      * @param ruta2 evidencia video
-     * @return método de envío de correo
+     * @return
      */
     public boolean enviarReporte(String descripcion, String ruta1, String ruta2) {
 
@@ -407,7 +383,7 @@ public class ProgramaCNP {
             posCaiCercano = mapaC.caiMasCercano(lat, lon);
         }
 
-        System.out.println(posCaiCercano + "----------------");
+       
 
         return mapaC;
     }
@@ -416,7 +392,7 @@ public class ProgramaCNP {
      * obtener unciacion del usario
      *
      * @param ventana ventana en donde se ejecuta la ubicacion
-     * @return si se obtuvo o no la ubicacion
+     * @return si se obtvo o no la ubicacion
      */
     public boolean obtnerUbicacion(JFrame ventana) {
 
@@ -439,12 +415,14 @@ public class ProgramaCNP {
     }
 
     /**
-     * actualizar datos cai cercano
+     * actulizar dadtos cai cercano
      *
      * @return infromación
      */
     public String actualizarCaiCercano() {
         String dir, tel, nombre, t;
+        obtenerMapaCais(); //// line arreglo 777777777777777777777777777777777777777777777777777777777
+        
         if (MapaCais.datosCais.size() == 0) {
             nombre = "CAI ROSARIO";
             dir = "AV JIMENEZ NO. 5-00";
@@ -512,10 +490,9 @@ public class ProgramaCNP {
     /**
      * analiza los textos que se van a enviar como comentario, mensjae de tiwiter(panico), sugerencia
      * @param n podra ser TWITTER, SUGERENCIA o COMENTARIO
-     * @param texto texto
-     * @param correo correo
-     * @param ventana ventana
-     * @return estado
+     * @param texto 
+     * @param correo
+     * @return 
      */
     public boolean analisisTexto(int n, String texto, String correo, JFrame ventana) {
         
@@ -558,6 +535,21 @@ public class ProgramaCNP {
             default:
                 return true;               
         }
+    }
+    
+    /**
+     * cambiar contraseña
+     * @param u usuario
+     * @param contra contraseña
+     * @param confirm confrimacion correo
+     * @return 
+     */
+    public boolean cambiarContrasenia(Usuario u, String contra, String confirm){
+        return u.cambiarContrasenia(contra, confirm);
+    }
+    
+    public void cerrarSesion(){
+        this.usuarioAlias = "Invitado";        
     }
 
     /**

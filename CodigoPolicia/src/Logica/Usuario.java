@@ -3,12 +3,15 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- * Clase en donde se maneja el usuario individualmente
- * @author Nicolas Herrera y Alvaro Niño
+ * 
  */
 public class Usuario implements Serializable{
 
-    //Atributos
+    /**
+     * Default constructor
+     */
+    public Usuario() {
+    }
 
     /**
      * Nombre de usuario unico 
@@ -44,15 +47,31 @@ public class Usuario implements Serializable{
      * Denuncias realizados por los usuarios
      */
     private ArrayList <Denuncia> denuncias = new ArrayList <Denuncia>();
-    
-    //Métodos
-    
+
     /**
-     * Método constructor
+     * cambiar contraseña
+     * @param contra contraseña
+     * @param confirm contraseña confirmacion
+     * @return si fue posible cambiarla
      */
-    public Usuario() {
+    public boolean cambiarContrasenia(String contra, String confirm){
+        
+        if (!contra.trim().equals(contra) || contra.equals("")){            
+            return false;
+        }
+        else{
+            if(contra.equals(confirm)){
+                this.contra = contra;
+                return true;
+            }  
+            else{
+                return false;
+            }
+        }  
+        
+        
+        
     }
-    
     /**
      * @param alias nombre unico del usuario
      * @param email correo del usuario
@@ -84,7 +103,7 @@ public class Usuario implements Serializable{
     }
 
     /**
-     * @param contra contraseña
+     * @param contra 
      * @return la contraseña del usuario
      */
     public boolean autenticar(String contra) {
@@ -122,7 +141,7 @@ public class Usuario implements Serializable{
      * comprueba que este disponible el alias
      * @param a alias del usuario
      * @param u listado de alias
-     * @return  estado
+     * @return 
      */    
     public boolean comprobarAliasUsuario(String a,ArrayList <Usuario> u){
         if(u!=null){
@@ -143,7 +162,7 @@ public class Usuario implements Serializable{
     /**
      * crear mensaje panico
      * @param mensaje de panico
-     * @return estado
+     * @return 
      */
     public boolean enviarPanico(String mensaje){
         String t = mensaje;
@@ -202,7 +221,7 @@ public class Usuario implements Serializable{
      * @param a alias del usuario
      * @param e email del usuario
      * @param c contrasenioa del usuario
-     * @return estado
+     * @return 
      */
     private boolean analisisDatosRegistros(String a, String e, String c){
         boolean estado=true;
@@ -248,12 +267,7 @@ public class Usuario implements Serializable{
         return estado;
         
     }
-    /**
-     * Registrar denuncia
-     * @param t texto
-     * @param id identificador
-     * @return  estado
-     */
+    
     public boolean registrarDenuncia(String t, String id) {
         //analisis registroDenuncia
         
@@ -269,12 +283,13 @@ public class Usuario implements Serializable{
                
         
     }
-    /**
-     * 
-     * @return denuncias
-     */
+    
     public ArrayList<Denuncia> getDenuncias() {
         return denuncias;
-    }   
+    }  
+    
+    public ArrayList<LPanico> getPanicos() {
+        return mensajePanico;
+    } 
 
 }
