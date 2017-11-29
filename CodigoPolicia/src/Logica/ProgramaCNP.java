@@ -600,6 +600,7 @@ public class ProgramaCNP {
         this.ventanaQuiz.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, this, ventanaPerfil);
         this.ventanaSugerencia.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, ventanaPerfil);
         this.ventanaUbicacion.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion, ventanaPerfil);
+        this.ventanaPerfil.inicioVentana(ventanaMenu, ventanaPanico, ventanaInfraccion);
     }
 
     /**
@@ -619,6 +620,7 @@ public class ProgramaCNP {
         ventanaQuiz.actualizarSesion(usuarioAlias);
         ventanaSugerencia.actualizarSesion(usuarioAlias);
         ventanaUbicacion.actualizarSesion(usuarioAlias);
+        ventanaPerfil.actualizarSesion(usuarioAlias);
     }
 
     public String obtenerAlias() {

@@ -244,7 +244,7 @@ public class PerfilUsuario extends javax.swing.JFrame {
 
         lblAlias.setBackground(new java.awt.Color(16, 67, 16));
         lblAlias.setFont(new java.awt.Font("Arial Black", 2, 10)); // NOI18N
-        lblAlias.setForeground(new java.awt.Color(0, 255, 204));
+        lblAlias.setForeground(new java.awt.Color(0, 0, 0));
         lblAlias.setText("Nombre de Usuario");
         lblAlias.setToolTipText("");
 
@@ -256,7 +256,7 @@ public class PerfilUsuario extends javax.swing.JFrame {
 
         lblCorreo.setBackground(new java.awt.Color(16, 67, 16));
         lblCorreo.setFont(new java.awt.Font("Arial Black", 2, 10)); // NOI18N
-        lblCorreo.setForeground(new java.awt.Color(0, 255, 204));
+        lblCorreo.setForeground(new java.awt.Color(0, 0, 0));
         lblCorreo.setText("Nombre de Usuario");
         lblCorreo.setToolTipText("");
 
@@ -271,10 +271,17 @@ public class PerfilUsuario extends javax.swing.JFrame {
         lblArticulo6.setForeground(new java.awt.Color(16, 67, 16));
         lblArticulo6.setText("Nueva");
 
+        psNuevaContra.setBackground(new java.awt.Color(153, 255, 102));
+        psNuevaContra.setForeground(new java.awt.Color(51, 51, 51));
+
         lblArticulo7.setBackground(new java.awt.Color(16, 67, 16));
         lblArticulo7.setFont(new java.awt.Font("Arial Black", 1, 10)); // NOI18N
         lblArticulo7.setForeground(new java.awt.Color(16, 67, 16));
         lblArticulo7.setText("Confirmar");
+
+        psConfirmaContra.setEditable(false);
+        psConfirmaContra.setBackground(new java.awt.Color(153, 255, 102));
+        psConfirmaContra.setForeground(new java.awt.Color(51, 51, 51));
 
         btnCambiarContra.setText("Cambiar");
         btnCambiarContra.addActionListener(new java.awt.event.ActionListener() {
@@ -291,7 +298,7 @@ public class PerfilUsuario extends javax.swing.JFrame {
 
         lblNumPanicos.setBackground(new java.awt.Color(16, 67, 16));
         lblNumPanicos.setFont(new java.awt.Font("Arial Black", 2, 10)); // NOI18N
-        lblNumPanicos.setForeground(new java.awt.Color(0, 255, 204));
+        lblNumPanicos.setForeground(new java.awt.Color(0, 0, 0));
         lblNumPanicos.setText("Nombre de Usuario");
         lblNumPanicos.setToolTipText("");
 
@@ -303,10 +310,12 @@ public class PerfilUsuario extends javax.swing.JFrame {
 
         lblNumInfra.setBackground(new java.awt.Color(16, 67, 16));
         lblNumInfra.setFont(new java.awt.Font("Arial Black", 2, 10)); // NOI18N
-        lblNumInfra.setForeground(new java.awt.Color(0, 255, 204));
+        lblNumInfra.setForeground(new java.awt.Color(0, 0, 0));
         lblNumInfra.setText("Nombre de Usuario");
         lblNumInfra.setToolTipText("");
 
+        combReportes.setBackground(new java.awt.Color(153, 255, 102));
+        combReportes.setForeground(new java.awt.Color(51, 51, 51));
         combReportes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lblArticulo8.setBackground(new java.awt.Color(16, 67, 16));
@@ -317,7 +326,7 @@ public class PerfilUsuario extends javax.swing.JFrame {
 
         lblPuntaje.setBackground(new java.awt.Color(16, 67, 16));
         lblPuntaje.setFont(new java.awt.Font("Arial Black", 2, 10)); // NOI18N
-        lblPuntaje.setForeground(new java.awt.Color(0, 255, 204));
+        lblPuntaje.setForeground(new java.awt.Color(0, 0, 0));
         lblPuntaje.setText("Nombre de Usuario");
         lblPuntaje.setToolTipText("");
 
@@ -399,7 +408,7 @@ public class PerfilUsuario extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblArticulo3)
                     .addComponent(lblCorreo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(lblArticulo5)
                 .addGap(3, 3, 3)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -420,7 +429,7 @@ public class PerfilUsuario extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblArticulo8)
                     .addComponent(lblPuntaje))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblArticulo2)
                     .addComponent(lblNumPanicos))
@@ -550,11 +559,13 @@ public class PerfilUsuario extends javax.swing.JFrame {
         String alias = programa.obtenerAlias();
         for(Usuario u: programa.getUsuarios()){
             if(u.obtenerAlias().equals(alias)){
-                if(u.cambiarContrasenia(new String(psNuevaContra.getPassword()),new String(psNuevaContra.getPassword()))){
+                if(u.cambiarContrasenia(new String(psNuevaContra.getPassword()),new String(psConfirmaContra.getPassword()))){
                     JOptionPane.showMessageDialog(this, "Ud ha cambiado su contraseña correctamente ","Cambio Contraseña",JOptionPane.INFORMATION_MESSAGE);
                 }
                 else{
-                    JOptionPane.showMessageDialog(this, "Ud ha cambiado su contraseña correctamente ","Cambio Contraseña",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Por favor verifique que las contraseñas son iguales, ademas recuerde que no puede ser vacia, ni con espacios en blanco ","Cambio Contraseña",JOptionPane.ERROR_MESSAGE);
+                    psConfirmaContra.setText("");
+                    psNuevaContra.setText("");
                 }
             }
         }
@@ -634,8 +645,6 @@ public class PerfilUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel lblNumPanicos;
     private javax.swing.JLabel lblPuntaje;
     private javax.swing.JLabel lblUsuario;
-    private javax.swing.JPanel pComentarios1;
-    private javax.swing.JScrollPane pSCOmentarios1;
     private javax.swing.JPasswordField psConfirmaContra;
     private javax.swing.JPasswordField psNuevaContra;
     // End of variables declaration//GEN-END:variables

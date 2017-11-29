@@ -506,7 +506,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
         if(programa.obtenerAlias().equals("Invitado")){
-            JOptionPane.showMessageDialog(null,"Buen dia, se recomienda muy amablemente que porfavor se registre para tener accesos completo de nuestro aplicativo", "Recomendacion", JOptionPane.INFORMATION_MESSAGE);            
+            JOptionPane.showMessageDialog(null,"<HTML>Buen dia, se recomienda muy amablemente que porfavor se registre <BR> para tener accesos completo de nuestro aplicativo</HTML>", "Recomendacion", JOptionPane.INFORMATION_MESSAGE);            
                 
         } 
     }//GEN-LAST:event_formWindowDeactivated
